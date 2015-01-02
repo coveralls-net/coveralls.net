@@ -1,0 +1,21 @@
+.DS_Store
+
+# Ignore files created as a result
+# of the conversion
+_UpgradeReport_Files
+Backup
+UpgradeLog.*
+
+**/bin/*
+**/obj/*
+*.suo
+*.user
+*.DotSettings
+*.nuspec
+*.nupkg
+
+packages
+
+# Coverage results
+TestResult.xml
+results.xml

@@ -13,5 +13,5 @@ nuget:
   disable_publish_on_pr: true
 
 build:
-  project: Symitar.sln
+  project: coveralls.net.sln
   verbosity: minimal

@@ -12,10 +12,12 @@ UpgradeLog.*
 *.user
 *.DotSettings
 *.nuspec
-!coveralls.net.nuspec
 *.nupkg
 
 packages
+package
+
+!coveralls.net.nuspec
 
 # Coverage results
 TestResult.xml

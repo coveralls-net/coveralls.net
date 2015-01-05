@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using CommandLine;
 using Coveralls.Lib;
@@ -79,29 +80,27 @@ namespace coveralls.net
             };
 
             // Send to coveralls.io
-            if (!Send(coverallsData))
-            {
-                Console.Error.WriteLine("Coveralls - Send Failed");
-                Environment.Exit(2);
-            }
-
-            Environment.Exit(0);
-        }
-
-        private static bool Send(CoverallsData data)
-        {
-            var json = JsonConvert.SerializeObject(data);
-            var content = new StringContent(json);
-
+            HttpResponseMessage response;
             using (var client = new HttpClient())
             {
                 using (var formData = new MultipartFormDataContent())
                 {
+                    var json = JsonConvert.SerializeObject(coverallsData);
+                    Console.Error.WriteLine(json);
+                    var content = new StringContent(json);
                     formData.Add(content, "json_file", "coverage.json");
-                    var response = client.PostAsync(@"https://coveralls.io/api/v1/jobs", formData);
-                    return response.Result.IsSuccessStatusCode;
+                    response = client.PostAsync(@"https://coveralls.io/api/v1/jobs", formData).Result;
                 }
             }
+
+            if (!response.IsSuccessStatusCode)
+            {
+                Console.Error.WriteLine("Coveralls - Send Error");
+                Console.Error.WriteLine(response.ReasonPhrase);
+                Environment.Exit(2);
+            }
+
+            Environment.Exit(0);
         }
     }
 

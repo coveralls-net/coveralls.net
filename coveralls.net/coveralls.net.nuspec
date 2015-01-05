@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <package >
   <metadata>
     <id>coveralls.net</id>
@@ -11,6 +11,6 @@
     <description>$description$</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2015</copyright>
-    <tags>coveralls coveralls.io code coverage</tags>
+    <tags>symitar poweron repgen ras symsharp</tags>
   </metadata>
 </package>

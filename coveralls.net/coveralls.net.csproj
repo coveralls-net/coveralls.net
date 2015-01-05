@@ -61,8 +61,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="package\coveralls.io.1.0.5483.23527.nupkg" />
-    <None Include="package\coveralls.net.1.0.5483.23527.nupkg" />
     <None Include="package\coveralls.net.nuspec" />
   </ItemGroup>
   <ItemGroup>
@@ -82,7 +80,7 @@
   </Target>
   <PropertyGroup>
     <PostBuildEvent>mkdir $(ProjectDir)package\tools
-xcopy /Q /Y $(TargetDir)* $(ProjectDir)package\tools</PostBuildEvent>
+xcopy /Q /Y $(TargetDir)*.exe $(ProjectDir)package\tools</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

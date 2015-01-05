@@ -20,6 +20,12 @@ namespace Coveralls.Lib
 
             set
             {
+                if (string.IsNullOrEmpty(value))
+                {
+                    _sourceLines = new List<string>();
+                    return;
+                }
+
                 var lines = new List<string>();
                 using (var sr = new StringReader(value))
                 {

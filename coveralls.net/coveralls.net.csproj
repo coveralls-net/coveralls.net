@@ -60,8 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="coveralls.net.nuspec" />
     <None Include="packages.config" />
+    <None Include="package\coveralls.io.1.0.5483.23527.nupkg" />
+    <None Include="package\coveralls.net.1.0.5483.23527.nupkg" />
+    <None Include="package\coveralls.net.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Coveralls.Lib\Coveralls.Lib.csproj">
@@ -69,6 +71,7 @@
       <Name>Coveralls.Lib</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -77,6 +80,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>mkdir $(ProjectDir)package\tools
+xcopy /Q /Y $(TargetDir)* $(ProjectDir)package\tools</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

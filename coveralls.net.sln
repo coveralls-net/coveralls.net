@@ -15,6 +15,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3D7AE902-F242-4017-A875-223014351329}"
 	ProjectSection(SolutionItems) = preProject
 		appveyor.yml = appveyor.yml
+		coveralls.net.metaproj = coveralls.net.metaproj
 		README.md = README.md
 	EndProjectSection
 EndProject

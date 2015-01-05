@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+
+  <!-- Application Configurations -->
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)'==''">Debug</Configuration>
+    <NUnitPath>packages\NUnit.Runners.2.6.4\tools\</NUnitPath>
+    <OpenCoverPath>packages\OpenCover.4.5.3522\</OpenCoverPath>
+    <CoverallsPath>packages\coveralls.io.1.1.0\tools\</CoverallsPath>
+    <MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\..\Libs\msbuild\</MSBuildCommunityTasksPath>
+    <!-- Add paths to assemblies to test -->
+    <TestAssembliesPath>Coveralls.Tests\bin\$(Configuration)\Coveralls.Tests.dll</TestAssembliesPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AllProjects Include="Symitar*\*.csproj" />
+  </ItemGroup>
+
+  <Target Name="Clean">
+    <MSBuild Projects="@(AllProjects)" Targets="Clean" />
+  </Target>
+
+  <Target Name="Compile">
+    <MSBuild Projects="@(AllProjects)" Targets="Build" Properties="WarningLevel=1" />
+  </Target>
+
+  <Target Name="Coverage" DependsOnTargets="Clean;Compile">
+    <!-- /domain=single is not support by the NUnit msbuild task, and it is required for OpenCover coverage test -->
+    <Exec Command="$(OpenCoverPath)OpenCover.Console.exe -register:user -target:&quot;$(NUnitPath)nunit-console-x86.exe&quot; -targetargs:&quot;/noshadow $(TestAssembliesPath) /domain:single&quot; -output:coverage.xml" />
+    <Exec Command="$(CoverallsPath)coveralls.net.exe --opencover coverage.xml" />
+    <Delete Files=".\coveragereport" />
+  </Target>
+
+  <Target Name="Build" DependsOnTargets="Clean;Compile;" />
+
+</Project>

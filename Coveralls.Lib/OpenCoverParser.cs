@@ -46,7 +46,7 @@ namespace Coveralls.Lib
                         Source = _fileSystem.ReadFileText(fullPath)
                     };
 
-                    foreach (var @class in file.XPathSelectElements("./Classes/Class"))
+                    foreach (var @class in module.XPathSelectElements("./Classes/Class"))
                     {
                         foreach (var method in @class.XPathSelectElements("./Methods/Method"))
                         {

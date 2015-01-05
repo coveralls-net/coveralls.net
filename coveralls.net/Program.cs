@@ -17,7 +17,15 @@ namespace coveralls.net
     {
         public string ReadFileText(string path)
         {
-            return File.Exists(path) ? File.ReadAllText(path) : null;
+            if (!Path.IsPathRooted(path))
+                path = Directory.GetCurrentDirectory() + "\\" + path;
+
+            if (File.Exists(path))
+            {
+                var content = File.ReadAllText(path);
+                return content;
+            }
+            return null;
         }
     }
 
@@ -38,8 +46,14 @@ namespace coveralls.net
                     parser = new OpenCoverParser(fileSystem);
                     break;
             }
-            parser.Report = XDocument.Parse(fileSystem.ReadFileText(opts.InputFile));
+            var reportXml = fileSystem.ReadFileText(opts.InputFile);
+            if (reportXml.IsBlank())
+            {
+                Console.Error.WriteLine("Coveralls - Invalid Report File");
+                Environment.Exit(1);
+            }
 
+            parser.Report = XDocument.Parse(reportXml);
             var coverageFiles = parser.Generate();
 
             // Job and Commit Data
@@ -68,7 +82,7 @@ namespace coveralls.net
             if (!Send(coverallsData))
             {
                 Console.Error.WriteLine("Coveralls - Send Failed");
-                Environment.Exit(1);
+                Environment.Exit(2);
             }
 
             Environment.Exit(0);

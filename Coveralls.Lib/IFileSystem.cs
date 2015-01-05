@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace coveralls.net
+namespace Coveralls.Lib
 {
-    public class Program
+    public interface IFileSystem
     {
-        static void Main(string[] args)
-        {
-        }
+        string LoadFileText(string path);
     }
 }

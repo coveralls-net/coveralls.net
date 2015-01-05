@@ -86,8 +86,7 @@ namespace coveralls.net
                 using (var formData = new MultipartFormDataContent())
                 {
                     var json = JsonConvert.SerializeObject(coverallsData);
-                    var content = new StringContent(json);
-                    formData.Add(content, "json_file", "coverage.json");
+                    formData.Add(new StringContent(json), "json_file", "coverage.json");
                     response = client.PostAsync(@"https://coveralls.io/api/v1/jobs", formData).Result;
                 }
             }

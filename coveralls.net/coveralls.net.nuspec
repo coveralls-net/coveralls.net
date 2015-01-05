@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>coveralls.net</id>
+    <id>coveralls.io</id>
+    <title>Coveralls.Net</title>
     <version>$version$</version>
     <authors>$author$</authors>
     <owners>$author$</owners>

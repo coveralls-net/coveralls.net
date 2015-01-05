@@ -12,6 +12,7 @@ UpgradeLog.*
 *.user
 *.DotSettings
 *.nuspec
+!coveralls.net.nuspec
 *.nupkg
 
 packages

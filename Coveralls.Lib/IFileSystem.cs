@@ -8,6 +8,6 @@ namespace Coveralls.Lib
 {
     public interface IFileSystem
     {
-        string LoadFileText(string path);
+        string ReadFileText(string path);
     }
 }

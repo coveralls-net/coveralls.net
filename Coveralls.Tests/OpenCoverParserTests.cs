@@ -21,19 +21,33 @@ namespace Coveralls.Tests
         public void EmptyReport_NoResults()
         {
             var fileSystem = Substitute.For<IFileSystem>();
-            var parser = new OpenCoverParser(fileSystem) { Report = LoadResourceXml("Coveralls.Tests.Files.EmptyReport.xml") };
+            var parser = new OpenCoverParser(fileSystem) { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.EmptyReport.xml") };
 
             var results = parser.Generate();
 
             results.Count.Should().Be(0);
         }
 
-        private XDocument LoadResourceXml(string resourceName)
+        [Test]
+        public void SingleFileReport_OneCoverageFile()
+        {
+            var fileSystem = Substitute.For<IFileSystem>();
+            var parser = new OpenCoverParser(fileSystem) { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.SingleFileCoverage.xml") };
+
+            var results = parser.Generate();
+
+            results.Count.Should().Be(1);
+        }
+    }
+
+    public static class TestHelpers
+    {
+        public static XDocument LoadResourceXml(string resourceName)
         {
             return XDocument.Parse(LoadResourceText(resourceName));
         }
 
-        private string LoadResourceText(string resourceName)
+        public static string LoadResourceText(string resourceName)
         {
             var executingAssembly = Assembly.GetExecutingAssembly();
             using (var stream = executingAssembly.GetManifestResourceStream(resourceName))

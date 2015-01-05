@@ -59,7 +59,7 @@ namespace coveralls.net
             {
                 ServiceName = "appveyor",
                 ServiceJobId = Environment.GetEnvironmentVariable("APPVEYOR_JOB_ID") ?? "0",
-                RepoToken = "UCIcRAOyPJIDrjvG8MreBKnKPonmR2L10",
+                RepoToken = Environment.GetEnvironmentVariable("COVERALLS_REPO_TOKEN"),
                 SourceFiles = coverageFiles.ToArray(),
                 Git = gitData
             };

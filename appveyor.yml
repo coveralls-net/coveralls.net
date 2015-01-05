@@ -27,7 +27,7 @@ artifacts:
 - path: coveralls.net/package/*.nupkg
   name: package
 after_test:
-- msbuild coveralls.net.metaproj /t:Package
+- msbuild coveralls.net.metaproj /t:Coverage
   
 deploy:
 - provider: NuGet

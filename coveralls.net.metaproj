@@ -6,7 +6,7 @@
     <Configuration Condition="'$(Configuration)'==''">Debug</Configuration>
     <NUnitPath>packages\NUnit.Runners.2.6.4\tools\</NUnitPath>
     <OpenCoverPath>packages\OpenCover.4.5.3522\</OpenCoverPath>
-    <CoverallsPath>packages\coveralls.io.1.1.0\tools\</CoverallsPath>
+    <CoverallsPath>packages\coveralls.io.1.1.13\tools\</CoverallsPath>
     <NuGetSpecPath>coveralls.net\package\</NuGetSpecPath>
     <MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\..\Libs\msbuild\</MSBuildCommunityTasksPath>
     <!-- Add paths to assemblies to test -->
@@ -28,7 +28,6 @@
   <Target Name="Coverage" DependsOnTargets="Clean;Compile">
     <Exec Command="$(OpenCoverPath)OpenCover.Console.exe -register:user -target:&quot;$(NUnitPath)nunit-console-x86.exe&quot; -targetargs:&quot;/noshadow $(TestAssembliesPath) /domain:single&quot; -output:coverage.xml" />
     <Exec Command="$(CoverallsPath)coveralls.net.exe --opencover coverage.xml" />
-    <Delete Files=".\coveragereport" />
     <Delete Files=".\coverage.xml" />
   </Target>
 

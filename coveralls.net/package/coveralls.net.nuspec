@@ -2,10 +2,10 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>coveralls.io</id>
-        <version>$version$</version>
+        <version>0.0</version>
         <title>Coveralls.Net</title>
-        <authors>$author$</authors>
-        <owners>$author$</owners>
+        <authors>jdeering</authors>
+        <owners>jdeering</owners>
         <licenseUrl>http://www.gnu.org/licenses/gpl-3.0.txt</licenseUrl>
         <projectUrl>https://github.com/jdeering/coveralls.net</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>

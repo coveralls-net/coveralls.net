@@ -9,6 +9,10 @@ assembly_info:
 
 skip_tags: true
 
+environment:
+  COVERALLS_REPO_TOKEN:
+    secure: fm7taq4Ao1Fu09OLM+KKQJlLwUsmDq9801njnfwhSTadQ3eAcYx+meW/LxK/4Mq0
+
 nuget:
   disable_publish_on_pr: true
 

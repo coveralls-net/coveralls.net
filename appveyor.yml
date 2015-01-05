@@ -15,6 +15,15 @@ nuget:
 build:
   project: coveralls.net.sln
   verbosity: minimal
+
+after_build:
+- msbuild coveralls.net.metaproj /t:Package
+
+artifacts:
+- path: coveralls.net/package/*.nupkg
+  name: package
+after_test:
+- msbuild coveralls.net.metaproj /t:Package
   
 deploy:
 - provider: NuGet

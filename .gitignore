@@ -22,3 +22,4 @@ package
 # Coverage results
 TestResult.xml
 results.xml
+coverage.xml

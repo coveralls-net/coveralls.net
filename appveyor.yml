@@ -12,8 +12,7 @@ assembly_info:
 skip_tags: true
 
 cache:
-  - packages\OpenCover*
-  - packages\coveralls.io*\tools
+  - packages
 
 environment:
   COVERALLS_REPO_TOKEN:
@@ -23,7 +22,7 @@ nuget:
   disable_publish_on_pr: true
 
 install:
-- nuget restore
+  - nuget restore
 
 build:
   project: coveralls.net.sln

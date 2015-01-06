@@ -27,7 +27,8 @@
 
   <Target Name="Coverage" DependsOnTargets="Clean;Compile">
     <Exec Command="$(OpenCoverPath)OpenCover.Console.exe -filter:&quot;+[Coveralls*]*&quot; -hideskipped:All -register:user -target:&quot;$(NUnitPath)nunit-console-x86.exe&quot; -targetargs:&quot;/noshadow $(TestAssembliesPath) /domain:single&quot; -output:coverage.xml" />
-    
+    <Exec Command="$(CoverallsPath)coveralls.net.exe --opencover coverage.xml" />
+    <Delete Files=".\coverage.xml" />
   </Target>
 
   <Target Name="Package" DependsOnTargets="Clean;Compile">

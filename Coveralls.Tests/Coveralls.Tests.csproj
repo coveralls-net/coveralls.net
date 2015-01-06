@@ -54,8 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoverageFileTests.cs" />
     <Compile Include="CoverallsBootstrapTests.cs" />
     <Compile Include="StringExtensionTests.cs" />
+    <Compile Include="TestHelpers.cs" />
     <EmbeddedResource Include="Files\Utilities.cs" />
     <Compile Include="OpenCoverParserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

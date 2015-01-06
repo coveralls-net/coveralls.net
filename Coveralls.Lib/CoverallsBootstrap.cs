@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -77,8 +78,7 @@ namespace Coveralls.Lib
                     var reportXml = FileSystem.ReadFileText(_opts.InputFile);
                     if (reportXml.IsBlank())
                     {
-                        Console.Error.WriteLine("Coveralls - Invalid Report File");
-                        Environment.Exit(1);
+                        throw new Exception("Invalid coverage file");
                     }
                     parser.Report = XDocument.Parse(reportXml);
 

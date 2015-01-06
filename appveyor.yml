@@ -24,7 +24,7 @@ build:
 
 after_build:
 - cd coveralls.net\package
-- nuget pack -Version {version}
+- nuget pack coveralls.net.nuspec -Version "{version}"
 
 artifacts:
 - path: coveralls.net/package/*.nupkg

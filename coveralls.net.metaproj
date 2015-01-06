@@ -9,32 +9,19 @@
     <CoverallsPath>packages\coveralls.io.1.1.32\tools\</CoverallsPath>
     <NuGetSpecPath>coveralls.net\package\</NuGetSpecPath>
     <MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\..\Libs\msbuild\</MSBuildCommunityTasksPath>
+    
     <!-- Add paths to assemblies to test -->
     <TestAssembliesPath>Coveralls.Tests\bin\$(Configuration)\Coveralls.Tests.dll</TestAssembliesPath>
   </PropertyGroup>
 
-  <ItemGroup>
-    <AllProjects Include="Symitar*\*.csproj" />
-  </ItemGroup>
-
-  <Target Name="Clean">
-    <MSBuild Projects="@(AllProjects)" Targets="Clean" />
-  </Target>
-
-  <Target Name="Compile">
-    <MSBuild Projects="@(AllProjects)" Targets="Build" Properties="WarningLevel=1" />
-  </Target>
-
-  <Target Name="Coverage" DependsOnTargets="Clean;Compile">
-    <Exec Command="$(OpenCoverPath)OpenCover.Console.exe -filter:&quot;+[Coveralls*]*&quot; -hideskipped:All -register:user -target:&quot;$(NUnitPath)nunit-console-x86.exe&quot; -targetargs:&quot;/noshadow $(TestAssembliesPath) /domain:single&quot; -output:coverage.xml" />
-    <Exec Command="$(CoverallsPath)coveralls.net.exe --opencover coverage.xml" />
+  <Target Name="Coverage">
+    <Exec Command="$(APPVEYOR_BUILD_FOLDER)$(OpenCoverPath)OpenCover.Console.exe -filter:&quot;+[Coveralls*]*&quot; -hideskipped:All -register:user -target:&quot;$(NUnitPath)nunit-console.exe&quot; -targetargs:&quot;/noshadow $(TestAssembliesPath) /domain:single&quot; -output:coverage.xml" />
+    <Exec Command="$(APPVEYOR_BUILD_FOLDER)$(CoverallsPath)coveralls.net.exe --opencover coverage.xml" />
     <Delete Files=".\coverage.xml" />
   </Target>
 
-  <Target Name="Package" DependsOnTargets="Clean;Compile">
+  <Target Name="Package">
     <Exec Command="nuget pack -Version $(APPVEYOR_BUILD_VERSION)" WorkingDirectory="$(NuGetSpecPath)" />
   </Target>
-
-  <Target Name="Build" DependsOnTargets="Clean;Compile;" />
 
 </Project>

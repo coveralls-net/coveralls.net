@@ -20,7 +20,7 @@ nuget:
 
 build:
   project: coveralls.net.sln
-  verbosity: detailed
+  verbosity: normal
 
 after_build:
 - msbuild coveralls.net.metaproj /t:Package

@@ -23,6 +23,8 @@ namespace Coveralls.Lib
         {
             _opts = options;
 
+            if(_opts.Parser == ParserTypes.Unknown) throw new ArgumentException("Unknown parser specified.");
+
             if (Environment.GetEnvironmentVariable("APPVEYOR").IsNotBlank())
                 _service = ServiceType.AppVeyor;
             else

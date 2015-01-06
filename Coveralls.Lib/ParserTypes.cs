@@ -3,5 +3,6 @@
     public enum ParserTypes
     {
         OpenCover,
+        Unknown
     }
 }

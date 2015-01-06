@@ -1,5 +1,7 @@
 version: 1.1.{build}
 
+configuration: Release
+
 assembly_info:
   patch: true
   file: AssemblyInfo.*
@@ -25,7 +27,8 @@ after_build:
 
 artifacts:
 - path: coveralls.net/package/*.nupkg
-  name: package
+  name: package
+
 after_test:
 - msbuild coveralls.net.metaproj /t:Coverage
 

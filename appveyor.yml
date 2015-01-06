@@ -11,6 +11,10 @@ assembly_info:
 
 skip_tags: true
 
+cache:
+  - packages\OpenCover*
+  - packages\coveralls.io*\tools
+
 environment:
   COVERALLS_REPO_TOKEN:
     secure: fm7taq4Ao1Fu09OLM+KKQJlLwUsmDq9801njnfwhSTadQ3eAcYx+meW/LxK/4Mq0

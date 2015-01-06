@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace coveralls.net
+namespace Coveralls.Lib
 {
     public sealed class GitData
     {

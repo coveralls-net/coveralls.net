@@ -1,9 +1,8 @@
-﻿using Coveralls.Lib;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace coveralls.net
+namespace Coveralls.Lib
 {
-    internal sealed class CoverallsData
+    public sealed class CoverallsData
     {
         [JsonProperty("service_name")]
         public string ServiceName { get; set; }

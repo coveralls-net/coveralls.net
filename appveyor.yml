@@ -23,14 +23,14 @@ build:
   verbosity: normal
 
 after_build:
-- .\package.ps1
+- ps: .\package.ps1
 
 artifacts:
 - path: coveralls.net/package/*.nupkg
   name: package
 
 after_test:
-- .\coverage.ps1
+- ps: .\coverage.ps1
 
 deploy:
 - provider: NuGet

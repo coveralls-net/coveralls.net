@@ -22,6 +22,9 @@ environment:
 nuget:
   disable_publish_on_pr: true
 
+install:
+- nuget restore
+
 build:
   project: coveralls.net.sln
   verbosity: normal

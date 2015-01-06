@@ -23,6 +23,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coveralls.Tests", "Coverall
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coveralls.Lib", "Coveralls.Lib\Coveralls.Lib.csproj", "{F43802C1-065A-4735-8E2D-ECA06493B79B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{26AD7B7B-A637-4097-952E-3C474898BE1A}"
+	ProjectSection(SolutionItems) = preProject
+		coverage.ps1 = coverage.ps1
+		package.ps1 = package.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +50,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{26AD7B7B-A637-4097-952E-3C474898BE1A} = {3D7AE902-F242-4017-A875-223014351329}
 	EndGlobalSection
 EndGlobal

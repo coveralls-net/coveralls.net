@@ -17,7 +17,7 @@ UpgradeLog.*
 packages
 package
 
-!coveralls.net.nuspec
+!package/coveralls.net.nuspec
 
 # Coverage results
 TestResult.xml

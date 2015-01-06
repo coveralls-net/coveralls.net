@@ -28,7 +28,7 @@ artifacts:
   name: package
 after_test:
 - msbuild coveralls.net.metaproj /t:Coverage
-  
+
 deploy:
 - provider: NuGet
   api_key:

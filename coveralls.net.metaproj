@@ -6,7 +6,7 @@
     <Configuration Condition="'$(Configuration)'==''">Debug</Configuration>
     <NUnitPath>packages\NUnit.Runners.2.6.4\tools\</NUnitPath>
     <OpenCoverPath>packages\OpenCover.4.5.3522\</OpenCoverPath>
-    <CoverallsPath>packages\coveralls.io.1.1.15\tools\</CoverallsPath>
+    <CoverallsPath>packages\coveralls.io.1.1.32\tools\</CoverallsPath>
     <NuGetSpecPath>coveralls.net\package\</NuGetSpecPath>
     <MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\..\Libs\msbuild\</MSBuildCommunityTasksPath>
     <!-- Add paths to assemblies to test -->

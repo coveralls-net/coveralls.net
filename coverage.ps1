@@ -20,6 +20,9 @@ function Run-Coveralls {
 
 if($env:APPVEYOR) {
 	if(Generate-Coverage-Report) {
+		Write-Host "Creating artifact ..."
+		Push-AppveyorArtifact coverage.xml
+
 		Write-Host "Sending report to coveralls.io ..."
 		Run-Coveralls
 	}

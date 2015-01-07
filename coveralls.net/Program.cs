@@ -46,6 +46,11 @@ namespace coveralls.net
                     Git = coveralls.Repository.Data
                 };
 
+                Console.WriteLine("Service: {0}", coverallsData.ServiceName);
+                Console.WriteLine(" Job ID: {0}", coverallsData.ServiceJobId);
+                Console.WriteLine("  Files: {0}", coverallsData.SourceFiles.Length);
+                Console.WriteLine(" Commit: {0}", coverallsData.Git.Head.Id);
+
                 var json = JsonConvert.SerializeObject(coverallsData);
                 SendToCoveralls(json);
             }

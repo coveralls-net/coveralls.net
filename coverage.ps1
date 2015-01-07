@@ -1,4 +1,7 @@
 
+[Environment]::SetEnvironmentVariable("APPVEYOR", "true")
+[Environment]::SetEnvironmentVariable("CONFIGURATION", "Debug")
+
 $APPVEYOR = [Environment]::GetEnvironmentVariable("APPVEYOR")
 $CONFIGURATION = [Environment]::GetEnvironmentVariable("CONFIGURATION")
 
@@ -6,16 +9,20 @@ function Generate-Coverage-Report {
 	if($CONFIGURATION) {
 		Write-Host "Generating coverage report ..."
 		$filter = "+[Coveralls*]*"
-		$args = "/noshadow Coveralls.Tests\bin\$CONFIGURATION\Coveralls.Tests.dll /domain:single"
+		$opencover = ""
+		$nunit = "packages\NUnit.Runners.2.6.4\tools\nunit-console.exe"
+		$nunitArgs = "/noshadow /domain:single Coveralls.Tests\bin\$CONFIGURATION\Coveralls.Tests.dll"
+				
+		$cmd = @"
+packages\OpenCover.4.5.3522\OpenCover.Console.exe -register:user -target:"$nunit" -targetargs:"$nunitArgs" -output:coverage.xml
+"@
+		Write-Host "Running: $cmd"
+		Invoke-Expression -Command:$cmd
 
-		Write-Host "Filter: $filter"
-		Write-Host "Target: nunit-console.exe $args"
-
-		packages\OpenCover.4.5.3522\OpenCover.Console.exe -register:user -filter:"$filter" -hideskipped:All -target:"nunit-console.exe" -targetargs:"$args" -output:coverage.xml
-		return true
+		return $true
 	}
 
-	return false
+	return $false
 }
 
 function Run-Coveralls {

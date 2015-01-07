@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "coveralls.net", "coveralls.net\coveralls.net.csproj", "{96D17631-AC88-4DD8-8D4D-AAA200E49010}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F8FA6EC0-C413-45C0-9BB3-6CAC1DB30093}"
@@ -22,12 +20,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coveralls.Tests", "Coveralls.Tests\Coveralls.Tests.csproj", "{BEAECEE6-B0FC-4CFF-9F75-10DA2A817172}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coveralls.Lib", "Coveralls.Lib\Coveralls.Lib.csproj", "{F43802C1-065A-4735-8E2D-ECA06493B79B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{26AD7B7B-A637-4097-952E-3C474898BE1A}"
-	ProjectSection(SolutionItems) = preProject
-		coverage.ps1 = coverage.ps1
-		package.ps1 = package.ps1
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,8 +42,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{26AD7B7B-A637-4097-952E-3C474898BE1A} = {3D7AE902-F242-4017-A875-223014351329}
 	EndGlobalSection
 EndGlobal

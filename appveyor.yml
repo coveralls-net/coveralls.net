@@ -29,15 +29,17 @@ build:
   verbosity: normal
 
 after_build:
-- ps: .\package.ps1
+  - cd coveralls.net\package
+  - nuget pack coveralls.net.nuspec -Version %APPVEYOR_BUILD_VERSION%
+  - cd ..\..
 
 artifacts:
 - path: coveralls.net/package/*.nupkg
   name: package
 
-test_script:
-  - cmd: nunit-console.exe Coveralls.Tests\bin\%CONFIGURATION%\Coveralls.Tests.dll
-  - ps: .\coverage.ps1
+after_test:
+  - packages\OpenCover.4.5.3522\OpenCover.Console.exe -register:user -target:"packages\NUnit.Runners.2.6.4\tools\nunit-console.exe" -targetargs:"/noshadow /domain:single Coveralls.Tests\bin\%CONFIGURATION%\Coveralls.Tests.dll" -output:coverage.xml
+  - packages\coveralls.io.1.1.50\tools\coveralls.net.exe --opencover coverage.xml
 
 deploy:
 - provider: NuGet

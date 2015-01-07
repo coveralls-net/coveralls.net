@@ -15,7 +15,7 @@ function Generate-Coverage-Report {
 }
 
 function Run-Coveralls {
-	packages\coveralls.io.1.1.32\tools\coveralls.net.exe --opencover coverage.xml
+	packages\coveralls.io.1.1.50\tools\coveralls.net.exe --opencover coverage.xml
 }
 
 if($env:APPVEYOR) {

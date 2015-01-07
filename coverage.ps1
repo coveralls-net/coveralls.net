@@ -7,6 +7,10 @@ function Generate-Coverage-Report {
 		Write-Host "Generating coverage report ..."
 		$filter = "+[Coveralls*]*"
 		$args = "/noshadow Coveralls.Tests\bin\$CONFIGURATION\Coveralls.Tests.dll /domain:single"
+
+		Write-Host "Filter: $filter"
+		Write-Host "Target: nunit-console.exe $args"
+
 		packages\OpenCover.4.5.3522\OpenCover.Console.exe -register:user -filter:"$filter" -hideskipped:All -target:"nunit-console.exe" -targetargs:"$args" -output:coverage.xml
 		return true
 	}

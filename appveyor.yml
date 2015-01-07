@@ -35,7 +35,8 @@ artifacts:
 - path: coveralls.net/package/*.nupkg
   name: package
 
-after_test:
+test:
+- cmd: nunit-console.exe Coveralls.Tests\bin\$(configuration)\Coveralls.Tests.dll
 - ps: .\coverage.ps1
 
 deploy:

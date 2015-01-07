@@ -25,6 +25,18 @@ namespace coveralls.net
                     FileSystem = new LocalFileSystem()
                 };
 
+                if (!coveralls.CoverageFiles.Any())
+                {
+                    Console.WriteLine("No coverage statistics");
+                    return;
+                }
+
+                if (coveralls.RepoToken.IsBlank())
+                {
+                    Console.WriteLine("Invalid Coveralls Repo Token");
+                    return;
+                }
+
                 var coverallsData = new CoverallsData
                 {
                     ServiceName = coveralls.ServiceName,
@@ -36,8 +48,6 @@ namespace coveralls.net
 
                 var json = JsonConvert.SerializeObject(coverallsData);
                 SendToCoveralls(json);
-
-                Environment.Exit(0);
             }
             catch (Exception e)
             {

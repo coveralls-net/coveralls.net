@@ -11,6 +11,10 @@ assembly_info:
 
 skip_tags: true
 
+branches:
+  except:
+    - coverity_scan
+
 cache:
   - packages
 

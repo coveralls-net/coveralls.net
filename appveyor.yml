@@ -36,8 +36,8 @@ artifacts:
   name: package
 
 test_script:
-- cmd: nunit-console.exe Coveralls.Tests\bin\$(configuration)\Coveralls.Tests.dll
-- ps: .\coverage.ps1
+  - cmd: nunit-console.exe Coveralls.Tests\bin\$(configuration)\Coveralls.Tests.dll
+  - ps: .\coverage.ps1
 
 deploy:
 - provider: NuGet

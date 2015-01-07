@@ -36,7 +36,7 @@ artifacts:
   name: package
 
 test_script:
-  - cmd: nunit-console.exe Coveralls.Tests\bin\$(configuration)\Coveralls.Tests.dll
+  - cmd: nunit-console.exe Coveralls.Tests\bin\%CONFIGURATION%\Coveralls.Tests.dll
   - ps: .\coverage.ps1
 
 deploy:

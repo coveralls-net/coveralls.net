@@ -1,6 +1,7 @@
 coveralls.net
 =============
 
+[![NuGet version](https://badge.fury.io/nu/coveralls.net.svg)](http://badge.fury.io/nu/coveralls.net)
 [![Build status](https://ci.appveyor.com/api/projects/status/yxp5vpnesuji5pbd/branch/master?svg=true)](https://ci.appveyor.com/project/jdeering/coveralls-net/branch/master)
 [![Coverage Status](https://img.shields.io/coveralls/jdeering/coveralls.net.svg)](https://coveralls.io/r/jdeering/coveralls.net)
 [![Code Quality](https://scan.coverity.com/projects/3856/badge.svg)](https://scan.coverity.com/projects/3856)

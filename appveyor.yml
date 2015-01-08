@@ -27,7 +27,7 @@
   before_deploy:
     - cd coveralls.net\package
     - nuget pack coveralls.net.nuspec -Version "%APPVEYOR_BUILD_VERSION%"
-	- ps: Get-ChildItem .\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
+    - ps: Get-ChildItem .\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
 
   deploy:
   - provider: NuGet
@@ -74,7 +74,7 @@
   before_deploy:
     - cd coveralls.net\package
     - nuget pack coveralls.net.nuspec -Version "%APPVEYOR_BUILD_VERSION%"
-	- ps: Get-ChildItem .\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
+    - ps: Get-ChildItem .\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
 
   deploy:
   - provider: NuGet

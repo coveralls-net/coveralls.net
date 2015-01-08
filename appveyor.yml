@@ -40,7 +40,16 @@
     only:
 	  - master
 
+  version: 1.1.{build}-beta
+
   configuration: Debug
+
+  assembly_info:
+    patch: true
+    file: AssemblyInfo.*
+    assembly_version: "{version}"
+    assembly_file_version: "{version}"
+    assembly_informational_version: "{version}"
 
   cache:
     - packages
@@ -65,7 +74,7 @@
 
   before_deploy:
     - cd coveralls.net\package
-    - nuget pack coveralls.net.nuspec -Version "%APPVEYOR_BUILD_VERSION%-beta"
+    - nuget pack coveralls.net.nuspec -Version "%APPVEYOR_BUILD_VERSION%"
 
   deploy:
   - provider: NuGet
@@ -73,5 +82,3 @@
       secure: 2fcbcVHpBbBN9Q9vnWfQaWBpTn0H/5Y10cBMVD1XJuJv5Tcyvcr63lsdAMHJyg61
     artifact:
       package
-    on:
-      branch: production

@@ -32,8 +32,6 @@
   - provider: NuGet
     api_key:
       secure: 2fcbcVHpBbBN9Q9vnWfQaWBpTn0H/5Y10cBMVD1XJuJv5Tcyvcr63lsdAMHJyg61
-    on:
-      branch: production
 	  
 -
   branches:

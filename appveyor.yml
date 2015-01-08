@@ -65,11 +65,11 @@
 
   build:
     project: coveralls.net.sln
-    verbosity: quiet
+    verbosity: minimal
 
   after_test:
     - packages\OpenCover.4.5.3522\OpenCover.Console.exe -register:user -target:"packages\NUnit.Runners.2.6.4\tools\nunit-console.exe" -targetargs:"/noshadow /domain:single Coveralls.Tests\bin\%CONFIGURATION%\Coveralls.Tests.dll" -output:coverage.xml
-    - packages\coveralls.io.1.1.56\tools\coveralls.net.exe --opencover coverage.xml
+    - packages\coveralls.io.1.1.60\tools\coveralls.net.exe --opencover coverage.xml
 
   before_deploy:
     - cd coveralls.net\package

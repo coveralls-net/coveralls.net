@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using Coveralls.Lib;
+using Coveralls.Lib.Parser;
 using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
@@ -19,7 +20,7 @@ namespace Coveralls.Tests
         public void EmptyReport_NoResults()
         {
             var fileSystem = Substitute.For<IFileSystem>();
-            var parser = new OpenCoverParser(fileSystem) { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.EmptyReport.xml") };
+            var parser = new OpenCoverParser(fileSystem) { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.OpenCover.EmptyReport.xml") };
 
             var results = parser.Generate();
 
@@ -30,7 +31,7 @@ namespace Coveralls.Tests
         public void SingleFileReport_OneCoverageFile()
         {
             var fileSystem = Substitute.For<IFileSystem>();
-            var parser = new OpenCoverParser(fileSystem) { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.SingleFileCoverage.xml") };
+            var parser = new OpenCoverParser(fileSystem) { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.OpenCover.SingleFileCoverage.xml") };
 
             var results = parser.Generate();
 

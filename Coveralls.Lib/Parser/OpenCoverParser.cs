@@ -1,30 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
-namespace Coveralls.Lib
+namespace Coveralls.Lib.Parser
 {
-    public interface ICoverageParser
+    public class OpenCoverParser : BaseParser
     {
-        XDocument Report { get; set; }
-        List<CoverageFile> Generate();
-    }
-
-    public class OpenCoverParser : ICoverageParser
-    {
-        private IFileSystem _fileSystem;
-        public OpenCoverParser(IFileSystem fileSystem)
+        public OpenCoverParser(IFileSystem fileSystem) : base(fileSystem)
         {
-            _fileSystem = fileSystem;
         }
 
-        public XDocument Report { get; set; }
-
-        public List<CoverageFile> Generate()
+        public override List<CoverageFile> Generate()
         {
             var files = new List<CoverageFile>();
 
@@ -43,7 +29,7 @@ namespace Coveralls.Lib
                     var coverageFile = new CoverageFile
                     {
                         Path = fullPath.ToUnixPath(),
-                        Source = _fileSystem.ReadFileText(fullPath)
+                        Source = FileSystem.ReadFileText(fullPath)
                     };
 
                     foreach (var @class in module.XPathSelectElements("./Classes/Class"))

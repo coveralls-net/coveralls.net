@@ -57,10 +57,12 @@
     <Compile Include="CoverallsData.cs" />
     <Compile Include="GitData.cs" />
     <Compile Include="ICommandOptions.cs" />
+    <Compile Include="Parser\ICoverageParser.cs" />
     <Compile Include="IFileSystem.cs" />
     <Compile Include="IGitRepository.cs" />
-    <Compile Include="OpenCoverParser.cs" />
+    <Compile Include="Parser\OpenCoverParser.cs" />
     <Compile Include="ParserTypes.cs" />
+    <Compile Include="Parser\BaseParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringExtensions.cs" />
   </ItemGroup>

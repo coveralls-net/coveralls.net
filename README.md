@@ -8,18 +8,19 @@ coveralls.net
 
 Coveralls uploader for .Net code coverage reporting
 
-
-## Planned Support
-
-These are the targets, but I'm not sure how far I will be able to get on my own. I am currently only working towards
-support for OpenCover as that is currently my framework of choice.
+## Supported Frameworks
 
 * [OpenCover](https://github.com/sawilde/opencover)
-* [NCover](https://www.ncover.com/)
-* [Visual Studio Coverage](http://msdn.microsoft.com/en-us/library/dd299398%28v=vs.90%29.aspx)
-* [Mono Code Coverage (monocov)](http://www.mono-project.com/docs/debug+profile/profile/code-coverage/)
-* [SharpCover](https://github.com/gaillard/SharpCover)
 
+## Planned
+
+These are the remaining targets, but I'm not sure how far I will be able to get on my own. If you would like to help, please
+fork this repository
+
+* [SharpCover](https://github.com/gaillard/SharpCover)
+* [Mono Code Coverage (monocov)](http://www.mono-project.com/docs/debug+profile/profile/code-coverage/)
+* [Visual Studio Coverage](http://msdn.microsoft.com/en-us/library/dd299398%28v=vs.90%29.aspx)
+* [NCover](https://www.ncover.com/)
 
 ## Versioning
 

@@ -13,25 +13,25 @@ namespace Coveralls.Tests
     public class PathToolsTests
     {
         [Test]
-        public void BlankString_ToUnixPath_IsStillBlank()
+        public void ToUnixPath_GivenBlankString_IsStillBlank()
         {
             string path = "";
             path.ToUnixPath().Should().Be("");
         }
 
         [Test]
-        public void FullPath_ToUnixPath_IsCorrect()
+        public void ToUnixPath_GivenFullPath_IsCorrect()
         {
             string path = @"C:\Src\Path\Test";
             path.ToUnixPath().Should().Be("C:/Src/Path/Test");
         }
 
         [Test]
-        public void RelativePath_ToUnixPath_IsCorrect()
+        public void ToUnixPath_GivenRelativePath_IsCorrect()
         {
             string path = @"Path\Test";
             path.ToUnixPath().Should().Be("Path/Test");
-        
+        }
 
         [Test]
         public void ToRelativePath_EmptyPath_Unchanged()

@@ -27,7 +27,7 @@ namespace Coveralls.Lib
             var relativeUri = folderUri.MakeRelativeUri(pathUri);
             var relativePath = relativeUri.ToString().Replace('/', Path.DirectorySeparatorChar);
 
-            return Uri.UnescapeDataString(relativePath);
+            return Uri.UnescapeDataString(relativePath).ToUnixPath();
         }
     }
 }

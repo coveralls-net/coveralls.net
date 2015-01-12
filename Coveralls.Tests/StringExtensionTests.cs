@@ -67,19 +67,5 @@ namespace Coveralls.Tests
             string s = "WORD";
             s.IsNotBlank().Should().BeTrue();
         }
-
-        [Test]
-        public void BlankString_ToUnixPath_IsStillBlank()
-        {
-            string path = "";
-            path.ToUnixPath().Should().Be("");
-        }
-
-        [Test]
-        public void RelativePath_ToUnixPath_IsCorrect()
-        {
-            string path = @"C:\Src\Path\Test";
-            path.ToUnixPath().Should().Be("C:/Src/Path/Test");
-        }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.IO;
 
 namespace Coveralls.Lib
@@ -12,9 +13,12 @@ namespace Coveralls.Lib
 
         public static string ToRelativePath(this string fullPath, string baseFolder)
         {
+            if (fullPath.IsBlank() || baseFolder.IsBlank()) return fullPath;
+            if (fullPath.Equals(baseFolder)) return "";
+
             var pathUri = new Uri(fullPath);
 
-            if (!baseFolder.EndsWith(Path.DirectorySeparatorChar.ToString()))
+            if (!baseFolder.EndsWith(Path.DirectorySeparatorChar.ToString(CultureInfo.InvariantCulture)))
             {
                 baseFolder += Path.DirectorySeparatorChar;
             }

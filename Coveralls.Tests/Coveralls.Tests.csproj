@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PathToolsTests.cs" />
     <Compile Include="CoverageFileTests.cs" />
     <Compile Include="CoverallsBootstrapTests.cs" />
     <Compile Include="StringExtensionTests.cs" />
@@ -67,10 +68,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Files\SingleFileCoverage.xml" />
+    <EmbeddedResource Include="Files\OpenCover.SingleFileCoverage.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Files\EmptyReport.xml" />
+    <EmbeddedResource Include="Files\OpenCover.EmptyReport.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Coveralls.Lib\Coveralls.Lib.csproj">

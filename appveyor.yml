@@ -1,53 +1,82 @@
-version: 1.1.{build}
+-
+  branches:
+    only:
+      - production
 
-configuration: Release
+  version: 1.1.{build}
 
-assembly_info:
-  patch: true
-  file: AssemblyInfo.*
-  assembly_version: "{version}"
-  assembly_file_version: "{version}"
-  assembly_informational_version: "{version}"
+  configuration: Release
 
-skip_tags: true
+  assembly_info:
+    patch: true
+    file: AssemblyInfo.*
+    assembly_version: "{version}"
+    assembly_file_version: "{version}"
+    assembly_informational_version: "{version}"
 
-branches:
-  except:
-    - coverity_scan
+  nuget:
+    disable_publish_on_pr: true
 
-cache:
-  - packages
+  install:
+    - nuget restore
 
-environment:
-  COVERALLS_REPO_TOKEN:
-    secure: fm7taq4Ao1Fu09OLM+KKQJlLwUsmDq9801njnfwhSTadQ3eAcYx+meW/LxK/4Mq0
+  build:
+    project: coveralls.net.sln
+    verbosity: quiet
 
-nuget:
-  disable_publish_on_pr: true
+  before_deploy:
+    - cd coveralls.net\package
+    - nuget pack coveralls.net.nuspec -Version "%APPVEYOR_BUILD_VERSION%"
+    - ps: Get-ChildItem .\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
 
-install:
-  - nuget restore
+  deploy:
+  - provider: NuGet
+    api_key:
+      secure: 2fcbcVHpBbBN9Q9vnWfQaWBpTn0H/5Y10cBMVD1XJuJv5Tcyvcr63lsdAMHJyg61
 
-build:
-  project: coveralls.net.sln
-  verbosity: normal
+-
+  branches:
+    only:
+      - master
 
-after_build:
-  - cd coveralls.net\package
-  - nuget pack coveralls.net.nuspec -Version %APPVEYOR_BUILD_VERSION%
-  - cd ..\..
+  version: 1.1.{build}-beta
 
-artifacts:
-- path: coveralls.net/package/*.nupkg
-  name: package
+  configuration: Debug
 
-after_test:
-  - packages\OpenCover.4.5.3522\OpenCover.Console.exe -register:user -target:"packages\NUnit.Runners.2.6.4\tools\nunit-console.exe" -targetargs:"/noshadow /domain:single Coveralls.Tests\bin\%CONFIGURATION%\Coveralls.Tests.dll" -output:coverage.xml
-  - packages\coveralls.io.1.1.56\tools\coveralls.net.exe --opencover coverage.xml
+  assembly_info:
+    patch: true
+    file: AssemblyInfo.*
+    assembly_version: "{version}"
+    assembly_file_version: "{version}"
+    assembly_informational_version: "{version}"
 
-deploy:
-- provider: NuGet
-  api_key:
-    secure: 2fcbcVHpBbBN9Q9vnWfQaWBpTn0H/5Y10cBMVD1XJuJv5Tcyvcr63lsdAMHJyg61
-  on:
-    branch: master
+  cache:
+    - packages
+
+  nuget:
+    disable_publish_on_pr: true
+
+  environment:
+    COVERALLS_REPO_TOKEN:
+      secure: fm7taq4Ao1Fu09OLM+KKQJlLwUsmDq9801njnfwhSTadQ3eAcYx+meW/LxK/4Mq0
+
+  install:
+    - nuget restore
+
+  build:
+    project: coveralls.net.sln
+    verbosity: minimal
+
+  after_test:
+    - packages\OpenCover.4.5.3522\OpenCover.Console.exe -register:user -filter:"+[Coveralls*]*" -target:"packages\NUnit.Runners.2.6.4\tools\nunit-console.exe" -targetargs:"/noshadow /domain:single Coveralls.Tests\bin\%CONFIGURATION%\Coveralls.Tests.dll" -output:coverage.xml
+    - packages\coveralls.io.1.1.60\tools\coveralls.net.exe --opencover coverage.xml
+
+  before_deploy:
+    - cd coveralls.net\package
+    - nuget pack coveralls.net.nuspec -Version "%APPVEYOR_BUILD_VERSION%"
+    - ps: Get-ChildItem .\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
+
+  deploy:
+  - provider: NuGet
+    api_key:
+      secure: 2fcbcVHpBbBN9Q9vnWfQaWBpTn0H/5Y10cBMVD1XJuJv5Tcyvcr63lsdAMHJyg61

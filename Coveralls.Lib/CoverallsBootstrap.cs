@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Xml.Linq;
+using Coveralls.Lib.Parser;
 
 namespace Coveralls.Lib
 {

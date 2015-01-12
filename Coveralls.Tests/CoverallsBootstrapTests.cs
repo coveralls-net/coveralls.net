@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Coveralls.Lib;
+using Coveralls.Lib.Parser;
 using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
@@ -156,7 +157,7 @@ namespace Coveralls.Tests
         public void CoverageFiles_ValidFile_ReturnsCorrectCountOfFiles()
         {
             var fileSystem = Substitute.For<IFileSystem>();
-            fileSystem.ReadFileText("").ReturnsForAnyArgs(TestHelpers.LoadResourceText("Coveralls.Tests.Files.SingleFileCoverage.xml"));
+            fileSystem.ReadFileText("").ReturnsForAnyArgs(TestHelpers.LoadResourceText("Coveralls.Tests.Files.OpenCover.SingleFileCoverage.xml"));
 
             var opts = Substitute.For<ICommandOptions>();
             var coveralls = new CoverallsBootstrap(opts);

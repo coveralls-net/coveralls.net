@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -36,6 +37,10 @@ namespace coveralls.net
                     Console.WriteLine("Invalid Coveralls Repo Token");
                     return;
                 }
+
+                var sourceFiles = coveralls.CoverageFiles;
+                foreach (var file in sourceFiles)
+                    file.Path = file.Path.ToRelativePath(Directory.GetCurrentDirectory());
 
                 var coverallsData = new CoverallsData
                 {

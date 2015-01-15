@@ -71,10 +71,17 @@ namespace Coveralls.Tests
             var parser = new OpenCoverParser(fileSystem) { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.OpenCover.SingleFileCoverage.xml") };
 
             var coverageFile = parser.Generate().First();
+
+            var lines = coverageFile.Source.Split(new[] {'\n'});
+
+            lines[11].Trim().Should().Be("{");
+            coverageFile.Coverage[11].Should().Be(16);
+            lines[12].Trim().Should().Be("if (string.IsNullOrEmpty(date))");
             coverageFile.Coverage[12].Should().Be(16);
-            coverageFile.Coverage[13].Should().Be(16);
-            coverageFile.Coverage[22].Should().Be(3);
-            coverageFile.Coverage[24].Should().Be(11);
+            lines[19].Trim().Should().Be("hour = 0;");
+            coverageFile.Coverage[19].Should().Be(3);
+            lines[24].Trim().Should().Be("while (time.Length < 4)");
+            coverageFile.Coverage[24].Should().Be(15);
         }
     }
 }

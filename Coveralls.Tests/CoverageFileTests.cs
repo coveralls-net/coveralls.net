@@ -68,8 +68,8 @@ namespace Coveralls.Tests
 
             coverageFile.Record(1, 1);
 
-            coverageFile.Coverage[0].Should().Be(null);
-            coverageFile.Coverage[1].Should().Be(1);
+            coverageFile.Coverage[0].Should().Be(1);
+            coverageFile.Coverage[1].Should().Be(null);
             coverageFile.Coverage[2].Should().Be(null);
         }
 
@@ -82,10 +82,10 @@ namespace Coveralls.Tests
             coverageFile.Source = sourceText;
 
             coverageFile.Record(1, 1);
-            coverageFile.Record(2, 3);
+            coverageFile.Record(3, 3);
 
-            coverageFile.Coverage[0].Should().Be(null);
-            coverageFile.Coverage[1].Should().Be(1);
+            coverageFile.Coverage[0].Should().Be(1);
+            coverageFile.Coverage[1].Should().Be(null);
             coverageFile.Coverage[2].Should().Be(3);
         }
 

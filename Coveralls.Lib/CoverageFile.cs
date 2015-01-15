@@ -20,6 +20,7 @@ namespace Coveralls.Lib
 
             set
             {
+                _coverage = null;
                 if (string.IsNullOrEmpty(value))
                 {
                     _sourceLines = new List<string>();
@@ -39,18 +40,24 @@ namespace Coveralls.Lib
             }
         }
 
+        private int?[] _coverage;
+
         [JsonProperty("coverage")]
         public int?[] Coverage
         {
             get
             {
-                var length = 1;
-                if (_sourceLines != null) length = _sourceLines.Count;
-                else if (_lineCoverage.Count > 0) length = _lineCoverage.Max(c => c.Key);
+                if (_coverage == null)
+                {
+                    var length = 1;
+                    if (_sourceLines != null) length = _sourceLines.Count;
+                    else if (_lineCoverage.Count > 0) length = _lineCoverage.Max(c => c.Key);
 
-                return Enumerable.Range(0, length)
-                    .Select(index => _lineCoverage.ContainsKey(index) ? (int?)_lineCoverage[index] : null)
-                    .ToArray();
+                    _coverage = Enumerable.Range(1, length)
+                        .Select(index => _lineCoverage.ContainsKey(index) ? (int?)_lineCoverage[index] : null)
+                        .ToArray();
+                }
+                return _coverage;
             }
         }
 

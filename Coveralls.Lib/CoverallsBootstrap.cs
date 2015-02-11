@@ -8,6 +8,7 @@ namespace Coveralls
     internal enum ServiceType
     {
         AppVeyor,
+        Jenkins,
         Unknown
     }
 
@@ -23,7 +24,12 @@ namespace Coveralls
 
             _opts = options;
 
-            _service = Environment.GetEnvironmentVariable("APPVEYOR").IsNotBlank() ? ServiceType.AppVeyor : ServiceType.Unknown;
+            if (Environment.GetEnvironmentVariable("APPVEYOR").IsNotBlank())
+                _service = ServiceType.AppVeyor;
+            else if (Environment.GetEnvironmentVariable("JENKINS_HOME").IsNotBlank())
+                _service = ServiceType.Jenkins;
+            else
+                _service = ServiceType.Unknown;
         }
 
         public void Dispose()
@@ -42,6 +48,8 @@ namespace Coveralls
                 {
                     case ServiceType.AppVeyor:
                         return "appveyor";
+                    case ServiceType.Jenkins:
+                        return "jenkins";
                     default:
                         return "coveralls.net";
                 }
@@ -56,6 +64,8 @@ namespace Coveralls
                 {
                     case ServiceType.AppVeyor:
                         return Environment.GetEnvironmentVariable("APPVEYOR_JOB_ID");
+                    case ServiceType.Jenkins:
+                        return Environment.GetEnvironmentVariable("BUILD_NUMBER");
                     default:
                         return "0";
                 }
@@ -84,13 +94,26 @@ namespace Coveralls
             {
                 if (_files == null || !_files.Any())
                 {
-                    var parser = CreateParser();
-                    var reportXml = FileSystem.ReadFileText(_opts.InputFile);
-                    if (reportXml.IsNotBlank())
+                    List<CoverageFile> allCoverageFiles = new List<CoverageFile>();
+
+                    if (_opts.InputFiles == null || !_opts.InputFiles.Any())
                     {
-                        parser.Report = XDocument.Parse(reportXml);
-                        _files = parser.Generate();
+                        throw new Exception("Missing input file(s)");
                     }
+
+                    foreach (string inputFile in _opts.InputFiles)
+                    {
+                        var parser = CreateParser();
+                        var reportXml = FileSystem.ReadFileText(inputFile);
+                        if (reportXml.IsBlank()) {
+                            throw new Exception("Invalid coverage file");
+                        }
+                        parser.Report = XDocument.Parse(reportXml);
+
+                        allCoverageFiles.AddRange(parser.Generate());
+                    }
+
+                    _files = allCoverageFiles;
                 }
                 return _files;
             }
@@ -107,6 +130,10 @@ namespace Coveralls
                     {
                         case ServiceType.AppVeyor:
                             _repository = new AppVeyorGit();
+                            break;
+                        case ServiceType.Jenkins:
+                            // Jenkins doesn't provide data about the commit in the environment.
+                            _repository = new LocalGit();
                             break;
                         default:
                             _repository = new LocalGit();
@@ -125,14 +152,6 @@ namespace Coveralls
                     return new OpenCoverParser(FileSystem);
             }
             return new OpenCoverParser(FileSystem);
-        }
-
-        public IGitRepository CreateGitRepository()
-        {
-            if (Environment.GetEnvironmentVariable("APPVEYOR_JOB_ID").IsNotBlank()) _repository = new AppVeyorGit();
-            else _repository = new LocalGit();
-
-            return _repository;
         }
     }
 }

@@ -1,12 +1,40 @@
 ﻿using CommandLine;
-using Coveralls;
+using System.Collections.Generic;
+using Coveralls.Lib;
+using System.Linq;
 
 namespace coveralls.net
 {
     internal class CommandLineOptions : ICommandOptions
     {
+        private List<string> _inputFiles;
         [Value(0)]
-        public string InputFile { get; set; }
+        public IEnumerable<string> InputFiles
+        {
+            get { return _inputFiles; }
+            set
+            {
+                // Alter the input list to expand wildcards
+
+                if (value != null && value.Any())
+                {
+                    _inputFiles = new List<string>();
+
+                    foreach (string input in value)
+                    {
+                        string fileName = System.IO.Path.GetFileName(input);
+                        string path = System.IO.Path.GetDirectoryName(input);
+
+                        if (string.IsNullOrEmpty(path))
+                        {
+                            path = System.Environment.CurrentDirectory;
+                        }
+
+                        _inputFiles.AddRange(System.IO.Directory.GetFiles(path, fileName));
+                    }
+                }
+            }
+        }
 
         [Option('p', "parser", HelpText = "Parser to use (Currently only supports OpenCover)")]
         public ParserType Parser { get; set; }

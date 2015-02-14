@@ -28,13 +28,19 @@ namespace coveralls.net
 
                 if (!coveralls.CoverageFiles.Any())
                 {
-                    Console.WriteLine("No coverage statistics");
+                    Console.WriteLine("No coverage statistics files.");
                     return;
+                }
+
+                if (Options.DebugMode)
+                {
+                    Console.WriteLine("[debug] repotoken: '" + coveralls.RepoToken + "'");
                 }
 
                 if (coveralls.RepoToken.IsBlank())
                 {
-                    Console.WriteLine("Invalid Coveralls Repo Token");
+                    Console.WriteLine("Blank or invalid Coveralls Repo Token. "
+                        + "Did you prefix your token with 'secure:' without encrypting it?");
                     return;
                 }
 
@@ -62,6 +68,9 @@ namespace coveralls.net
             catch (Exception e)
             {
                 Console.Error.WriteLine(e.Message);
+                if (e.InnerException != null)
+                    Console.Error.WriteLine(e.InnerException.Message);
+
                 Environment.Exit(1);
             }
         }
@@ -81,7 +90,9 @@ namespace coveralls.net
 
             if (!response.IsSuccessStatusCode)
             {
-                throw new Exception(string.Format("Error sending to Coveralls.io ({0} - {1}", response.StatusCode, response.ReasonPhrase));
+                var msg = "Error sending to Coveralls.io ({0} - {1})."
+                             + "\nError code 422 indicate a problem with your token. Try using the --debug commandline option.";
+                throw new Exception(string.Format(msg, response.StatusCode, response.ReasonPhrase));
             }
         }
     }

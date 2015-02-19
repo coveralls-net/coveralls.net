@@ -61,7 +61,7 @@
       secure: fm7taq4Ao1Fu09OLM+KKQJlLwUsmDq9801njnfwhSTadQ3eAcYx+meW/LxK/4Mq0
 
   install:
-	- nuget restore
+    - nuget restore
 
   build:
     project: coveralls.net.sln

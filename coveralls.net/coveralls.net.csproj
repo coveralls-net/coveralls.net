@@ -117,10 +117,11 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-    <Error Condition="!Exists('..\packages\LibGit2Sharp\build\net40\LibGit2Sharp.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\LibGit2Sharp\build\net40\LibGit2Sharp.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>mkdir $(ProjectDir)package\tools
+    <PostBuildEvent>xcopy /S /Q /Y $(SolutionDir)packages\LibGit2Sharp\lib\net40 $(TargetDir)
+mkdir $(ProjectDir)package\tools
+
 xcopy /S /Q /Y $(TargetDir)* $(ProjectDir)package\tools</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

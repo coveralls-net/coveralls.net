@@ -99,7 +99,7 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy $(SolutionDir)packages\LibGit2Sharp\lib\net40\NativeBinaries\amd64\git* $(TargetDir)</PostBuildEvent>
+    <PostBuildEvent>xcopy /S /Q /Y $(SolutionDir)packages\LibGit2Sharp\lib\net40 $(TargetDir)</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

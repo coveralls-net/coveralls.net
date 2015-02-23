@@ -18,6 +18,12 @@ namespace coveralls.net
         static void Main(string[] args)
         {
             Options = Parser.Default.ParseArguments<CommandLineOptions>(args).Value;
+            
+            if (Options.DebugMode)
+            {
+                Console.WriteLine("[debug] > $env.COVERALLS_REPO_TOKEN: {0}",
+                    Environment.GetEnvironmentVariable("COVERALLS_REPO_TOKEN"));
+            }
 
             try
             {
@@ -26,21 +32,25 @@ namespace coveralls.net
                     FileSystem = new LocalFileSystem()
                 };
 
+                // Use specified repo token over Environment variable
+                if (Options.CoverallsRepoToken.IsNotBlank())
+                    coveralls.RepoToken = Options.CoverallsRepoToken;
+
                 if (!coveralls.CoverageFiles.Any())
                 {
                     Console.WriteLine("No coverage statistics files.");
                     return;
                 }
 
-                if (Options.DebugMode)
-                {
-                    Console.WriteLine("[debug] repotoken: '" + coveralls.RepoToken + "'");
-                }
-
                 if (coveralls.RepoToken.IsBlank())
                 {
-                    Console.WriteLine("Blank or invalid Coveralls Repo Token. "
-                        + "Did you prefix your token with 'secure:' without encrypting it?");
+                    Console.WriteLine("Blank or invalid Coveralls Repo Token.");
+
+                    if (coveralls.ServiceName == "appveyor")
+                    {
+                        Console.WriteLine(" - Did you prefix your token with 'secure:' without encrypting it?");
+                        Console.WriteLine(" - Is this a Pull Request? AppVeyor does not decrypt environment variables for pull requests.");
+                    }
                     return;
                 }
 
@@ -62,7 +72,7 @@ namespace coveralls.net
                 Console.WriteLine("  Files: {0}", coverallsData.SourceFiles.Length);
                 Console.WriteLine(" Commit: {0}", coverallsData.Git.Head.Id);
 
-                var json = JsonConvert.SerializeObject(coverallsData);
+                var json = JsonConvert.SerializeObject(coverallsData, Formatting.Indented);
                 SendToCoveralls(json);
             }
             catch (Exception e)
@@ -77,6 +87,12 @@ namespace coveralls.net
 
         private static void SendToCoveralls(string json)
         {
+            if (Options.DebugMode)
+            {
+                Console.WriteLine("[debug] > Coveralls Data: \n{0}",
+                    JsonPrettyPrint(json));
+            }
+
             // Send to coveralls.io
             HttpResponseMessage response;
             using (var client = new HttpClient())
@@ -90,10 +106,19 @@ namespace coveralls.net
 
             if (!response.IsSuccessStatusCode)
             {
-                var msg = "Error sending to Coveralls.io ({0} - {1})."
-                             + "\nError code 422 indicate a problem with your token. Try using the --debug commandline option.";
-                throw new Exception(string.Format(msg, response.StatusCode, response.ReasonPhrase));
+                var msg = string.Format("Error sending to coveralls.io ({0} - {1}).", 
+                    response.StatusCode,
+                    response.ReasonPhrase);
+                msg += "\n - Error code 422 indicate a problem with your token. Try using the --debug commandline option.";
+
+                throw new Exception(msg);
             }
+        }
+
+        private static string JsonPrettyPrint(string json)
+        {
+            dynamic parsedJson = JsonConvert.DeserializeObject(json);
+            return JsonConvert.SerializeObject(parsedJson, Formatting.Indented);
         }
     }
 }

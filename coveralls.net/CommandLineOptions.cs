@@ -25,5 +25,8 @@ namespace coveralls.net
                 if (_useOpenCover) Parser = ParserTypes.OpenCover;
             }
         }
+
+        [Option("repo-token")]
+        public string CoverallsRepoToken { get; set; }
     }
 }

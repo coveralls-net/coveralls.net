@@ -58,7 +58,7 @@
 
   environment:
     COVERALLS_REPO_TOKEN:
-      secure: fm7taq4Ao1Fu09OLM+KKQJlLwUsmDq9801njnfwhSTadQ3eAcYx+meW/LxK/4Mq0
+      secure: ZN14AzS3UMyukmfWu5cXzVUk6fWg0Lx+2OHMp9ZHdiIrvTcP9qxEgxvLkRGpQ2GO
 
   install:
     - nuget restore
@@ -67,9 +67,11 @@
     project: coveralls.net.sln
     verbosity: minimal
 
+  test_script:
+    - packages\OpenCover.4.5.3723\OpenCover.Console.exe -register:user -filter:"+[Coveralls*]*" -target:"nunit-console.exe" -targetargs:"/noshadow /domain:single Coveralls.Tests\bin\%CONFIGURATION%\Coveralls.Tests.dll" -output:coverage.xml
+
   after_test:
-    - packages\OpenCover.4.5.3522\OpenCover.Console.exe -register:user -filter:"+[Coveralls*]*" -target:"packages\NUnit.Runners.2.6.4\tools\nunit-console.exe" -targetargs:"/noshadow /domain:single Coveralls.Tests\bin\%CONFIGURATION%\Coveralls.Tests.dll" -output:coverage.xml
-    - packages\coveralls.io.1.1.81\tools\coveralls.net.exe --opencover coverage.xml
+    - coveralls.net\package\tools\coveralls.net.exe --opencover coverage.xml
 
   before_deploy:
     - cd coveralls.net\package

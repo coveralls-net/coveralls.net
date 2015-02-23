@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using System.Xml.Linq;
-using Coveralls.Lib.Parser;
 
-namespace Coveralls.Lib
+namespace Coveralls
 {
     internal enum ServiceType
     {

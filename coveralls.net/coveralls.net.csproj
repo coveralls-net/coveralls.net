@@ -92,9 +92,9 @@
     <None Include="package\coveralls.net.nuspec" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Coveralls.Lib\Coveralls.Lib.csproj">
+    <ProjectReference Include="..\Coveralls.Lib\Coveralls.csproj">
       <Project>{f43802c1-065a-4735-8e2d-eca06493b79b}</Project>
-      <Name>Coveralls.Lib</Name>
+      <Name>Coveralls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

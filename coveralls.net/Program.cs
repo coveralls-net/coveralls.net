@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using CommandLine;
-using Coveralls.Lib;
+using Coveralls;
 using Newtonsoft.Json;
 
 namespace coveralls.net

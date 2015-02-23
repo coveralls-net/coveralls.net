@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Coveralls.Lib
+namespace Coveralls
 {
     [ExcludeFromCodeCoverage]
     public abstract class GitRepository : IGitRepository

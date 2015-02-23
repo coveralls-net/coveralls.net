@@ -1,5 +1,5 @@
 ﻿using CommandLine;
-using Coveralls.Lib;
+using Coveralls;
 
 namespace coveralls.net
 {

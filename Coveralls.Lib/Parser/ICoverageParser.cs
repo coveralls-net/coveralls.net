@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Linq;
 
-namespace Coveralls.Lib
+namespace Coveralls
 {
     public interface ICoverageParser
     {

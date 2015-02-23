@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Xml.Linq;
 
-namespace Coveralls.Lib.Parser
+namespace Coveralls
 {
     [ExcludeFromCodeCoverage]
     public class BaseParser : ICoverageParser

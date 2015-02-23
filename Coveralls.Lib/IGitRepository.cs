@@ -1,4 +1,4 @@
-﻿namespace Coveralls.Lib
+﻿namespace Coveralls
 {
     public interface IGitRepository
     {

@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using Coveralls.Lib;
+using Coveralls;
 
 namespace coveralls.net
 {

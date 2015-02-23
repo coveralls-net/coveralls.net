@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Coveralls.Lib
+namespace Coveralls
 {
     public sealed class CoverallsData
     {

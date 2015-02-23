@@ -2,7 +2,7 @@ using System;
 using System.Globalization;
 using System.IO;
 
-namespace Coveralls.Lib
+namespace Coveralls
 {
     public static class PathTools
     {

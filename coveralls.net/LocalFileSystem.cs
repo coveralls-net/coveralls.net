@@ -3,7 +3,7 @@ using Coveralls;
 
 namespace coveralls.net
 {
-    public class LocalFileSystem : IFileSystem
+    internal class LocalFileSystem : IFileSystem
     {
         public string ReadFileText(string path)
         {

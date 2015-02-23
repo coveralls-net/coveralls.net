@@ -11,9 +11,9 @@ using Newtonsoft.Json;
 
 namespace coveralls.net
 {
-    public class Program
+    class Program
     {
-        public static CommandLineOptions Options;
+        static CommandLineOptions Options;
 
         static void Main(string[] args)
         {
@@ -86,7 +86,7 @@ namespace coveralls.net
             }
         }
 
-        private static void SendToCoveralls(string json)
+        static void SendToCoveralls(string json)
         {
             if (Options.DebugMode)
             {
@@ -116,7 +116,7 @@ namespace coveralls.net
             }
         }
 
-        private static string JsonPrettyPrint(string json)
+        static string JsonPrettyPrint(string json)
         {
             dynamic parsedJson = JsonConvert.DeserializeObject(json);
             return JsonConvert.SerializeObject(parsedJson, Formatting.Indented);

@@ -3,7 +3,7 @@ using Coveralls;
 
 namespace coveralls.net
 {
-    public class CommandLineOptions : ICommandOptions
+    internal struct CommandLineOptions : ICommandOptions
     {
         [Value(0)]
         public string InputFile { get; set; }

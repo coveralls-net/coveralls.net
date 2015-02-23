@@ -27,6 +27,8 @@ namespace Coveralls.Lib
 
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Message { get; set; }
+
+        public string PullRequestId { get; set; }
     }
 
     public sealed class GitRemotes

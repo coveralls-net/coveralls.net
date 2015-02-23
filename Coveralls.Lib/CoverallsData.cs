@@ -18,5 +18,14 @@ namespace Coveralls.Lib
 
         [JsonProperty("git", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public GitData Git { get; set; }
+
+        [JsonProperty("service_pull_request", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string ServicePullRequest
+        {
+            get
+            {
+                return Git != null ? Git.Head.PullRequestId : null;
+            }
+        }
     }
 }

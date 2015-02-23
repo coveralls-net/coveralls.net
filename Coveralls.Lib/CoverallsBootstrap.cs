@@ -71,9 +71,6 @@ namespace Coveralls.Lib
                 if (_repoToken.IsBlank())
                 {
                     _repoToken = Environment.GetEnvironmentVariable("COVERALLS_REPO_TOKEN");
-
-                    if(_opts.DebugMode)
-                        Console.WriteLine("env.COVERALLS_REPO_TOKEN: {0}", Environment.GetEnvironmentVariable("COVERALLS_REPO_TOKEN"));
                 }
 
                 return _repoToken;

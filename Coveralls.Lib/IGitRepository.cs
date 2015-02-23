@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using LibGit2Sharp;
@@ -11,6 +12,7 @@ namespace Coveralls.Lib
         GitData Data { get; }
     }
 
+    [ExcludeFromCodeCoverage]
     public abstract class GitRepository : IGitRepository
     {
         public abstract IEnumerable<string> Branches { get; }

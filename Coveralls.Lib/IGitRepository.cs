@@ -1,6 +1,8 @@
-﻿namespace Coveralls
+﻿using System;
+
+namespace Coveralls
 {
-    public interface IGitRepository
+    public interface IGitRepository : IDisposable
     {
         GitData Data { get; }
     }

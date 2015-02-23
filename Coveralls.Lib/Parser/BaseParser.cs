@@ -7,15 +7,19 @@ namespace Coveralls
     [ExcludeFromCodeCoverage]
     public class BaseParser : ICoverageParser
     {
-        protected IFileSystem FileSystem;
+        private IFileSystem _fileSystem;
+        protected IFileSystem FileSystem
+        {
+            get { return _fileSystem; }
+        }
         public BaseParser(IFileSystem fileSystem)
         {
-            FileSystem = fileSystem;
+            _fileSystem = fileSystem;
         }
 
         public XDocument Report { get; set; }
 
-        public virtual List<CoverageFile> Generate()
+        public virtual IEnumerable<CoverageFile> Generate()
         {
             return new List<CoverageFile>();
         }

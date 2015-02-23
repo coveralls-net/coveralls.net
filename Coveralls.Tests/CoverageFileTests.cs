@@ -42,7 +42,7 @@ namespace Coveralls.Tests
 
             coverageFile.Source = sourceText;
 
-            coverageFile.Coverage.Length.Should().Be(3);
+            coverageFile.Coverage.Count().Should().Be(3);
         }
 
         [Test]
@@ -53,9 +53,9 @@ namespace Coveralls.Tests
 
             coverageFile.Source = sourceText;
 
-            coverageFile.Coverage[0].Should().Be(null);
-            coverageFile.Coverage[1].Should().Be(null);
-            coverageFile.Coverage[2].Should().Be(null);
+            coverageFile.Coverage.ToArray()[0].Should().Be(null);
+            coverageFile.Coverage.ToArray()[1].Should().Be(null);
+            coverageFile.Coverage.ToArray()[2].Should().Be(null);
         }
 
         [Test]
@@ -68,9 +68,9 @@ namespace Coveralls.Tests
 
             coverageFile.Record(1, 1);
 
-            coverageFile.Coverage[0].Should().Be(1);
-            coverageFile.Coverage[1].Should().Be(null);
-            coverageFile.Coverage[2].Should().Be(null);
+            coverageFile.Coverage.ToArray()[0].Should().Be(1);
+            coverageFile.Coverage.ToArray()[1].Should().Be(null);
+            coverageFile.Coverage.ToArray()[2].Should().Be(null);
         }
 
         [Test]
@@ -84,9 +84,9 @@ namespace Coveralls.Tests
             coverageFile.Record(1, 1);
             coverageFile.Record(3, 3);
 
-            coverageFile.Coverage[0].Should().Be(1);
-            coverageFile.Coverage[1].Should().Be(null);
-            coverageFile.Coverage[2].Should().Be(3);
+            coverageFile.Coverage.ToArray()[0].Should().Be(1);
+            coverageFile.Coverage.ToArray()[1].Should().Be(null);
+            coverageFile.Coverage.ToArray()[2].Should().Be(3);
         }
 
         [Test]
@@ -96,7 +96,7 @@ namespace Coveralls.Tests
 
             coverageFile.Record(20, 3);
 
-            coverageFile.Coverage.Length.Should().Be(20);
+            coverageFile.Coverage.Count().Should().Be(20);
         }
     }
 }

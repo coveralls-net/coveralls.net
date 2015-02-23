@@ -6,6 +6,6 @@ namespace Coveralls
     public interface ICoverageParser
     {
         XDocument Report { get; set; }
-        List<CoverageFile> Generate();
+        IEnumerable<CoverageFile> Generate();
     }
 }

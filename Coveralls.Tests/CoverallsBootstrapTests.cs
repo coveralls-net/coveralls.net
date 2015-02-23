@@ -39,7 +39,7 @@ namespace Coveralls.Tests
         public void Parser_ParserOpenCoverSpecified_UsesOpenCoverParser()
         {
             var opts = Substitute.For<ICommandOptions>();
-            opts.Parser.ReturnsForAnyArgs(ParserTypes.OpenCover);
+            opts.Parser.ReturnsForAnyArgs(ParserType.OpenCover);
             var coveralls = new CoverallsBootstrap(opts);
             coveralls.CreateParser().Should().BeOfType<OpenCoverParser>();
         }
@@ -48,7 +48,7 @@ namespace Coveralls.Tests
         public void Parser_ParserTypeUnknown_FailsToInitialize()
         {
             var opts = Substitute.For<ICommandOptions>();
-            opts.Parser.ReturnsForAnyArgs(ParserTypes.Unknown);
+            opts.Parser.ReturnsForAnyArgs(ParserType.Unknown);
             
             Assert.Throws<ArgumentException>(() =>
             {
@@ -126,10 +126,7 @@ namespace Coveralls.Tests
             var coveralls = new CoverallsBootstrap(opts);
             coveralls.FileSystem = fileSystem;
 
-            Assert.Throws<Exception>(() =>
-            {
-                var files = coveralls.CoverageFiles;
-            });
+            coveralls.CoverageFiles.Should().BeNull();
         }
 
         [Test]
@@ -142,10 +139,7 @@ namespace Coveralls.Tests
             var coveralls = new CoverallsBootstrap(opts);
             coveralls.FileSystem = fileSystem;
 
-            Assert.Throws<Exception>(() =>
-            {
-                var files = coveralls.CoverageFiles;
-            });
+            coveralls.CoverageFiles.Should().BeNull();
         }
 
         [Test]

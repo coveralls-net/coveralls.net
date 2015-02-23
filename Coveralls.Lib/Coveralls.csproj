@@ -65,19 +65,22 @@
     <Compile Include="CoverageFile.cs" />
     <Compile Include="CoverallsBootstrap.cs" />
     <Compile Include="CoverallsData.cs" />
+    <Compile Include="CoverallsException.cs" />
     <Compile Include="GitData.cs" />
     <Compile Include="GitRepository.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="ICommandOptions.cs" />
     <Compile Include="LocalGit.cs" />
     <Compile Include="Parser\ICoverageParser.cs" />
     <Compile Include="IFileSystem.cs" />
     <Compile Include="IGitRepository.cs" />
     <Compile Include="Parser\OpenCoverParser.cs" />
-    <Compile Include="ParserTypes.cs" />
+    <Compile Include="ParserType.cs" />
     <Compile Include="Parser\BaseParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PathTools.cs" />
     <Compile Include="StringTools.cs" />
+    <Compile Include="UriJsonConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CodeAnalysisRules.ruleset" />

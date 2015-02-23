@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
@@ -10,7 +11,7 @@ namespace Coveralls
         {
         }
 
-        public override List<CoverageFile> Generate()
+        public override IEnumerable<CoverageFile> Generate()
         {
             var files = new List<CoverageFile>();
 
@@ -41,8 +42,8 @@ namespace Coveralls
                                 var sequenceFileId = sequencePoint.Attribute("fileid").Value;
                                 if (fileid == sequenceFileId)
                                 {
-                                    var line = int.Parse(sequencePoint.Attribute("sl").Value);
-                                    var visits = int.Parse(sequencePoint.Attribute("vc").Value);
+                                    var line = int.Parse(sequencePoint.Attribute("sl").Value, CultureInfo.CurrentCulture);
+                                    var visits = int.Parse(sequencePoint.Attribute("vc").Value, CultureInfo.CurrentCulture);
 
                                     coverageFile.Record(line, visits);
                                 }

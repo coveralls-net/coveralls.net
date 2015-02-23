@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace Coveralls
 {
@@ -36,7 +37,7 @@ namespace Coveralls
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Name { get; set; }
 
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Url { get; set; }
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Ignore, ItemConverterType = typeof(UriJsonConverter))]
+        public Uri Uri { get; set; }
     }
 }

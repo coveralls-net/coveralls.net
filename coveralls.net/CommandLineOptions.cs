@@ -9,7 +9,7 @@ namespace coveralls.net
         public string InputFile { get; set; }
 
         [Option('p', "parser", HelpText = "Parser to use (Currently only supports OpenCover)")]
-        public ParserTypes Parser { get; set; }
+        public ParserType Parser { get; set; }
 
         [Option('d', "debug", HelpText = "Debug mode. WILL PRINT SENSITIVE DATA")]
         public bool DebugMode { get; set; }
@@ -22,7 +22,7 @@ namespace coveralls.net
             set
             {
                 _useOpenCover = value;
-                if (_useOpenCover) Parser = ParserTypes.OpenCover;
+                if (_useOpenCover) Parser = ParserType.OpenCover;
             }
         }
 

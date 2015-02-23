@@ -17,7 +17,7 @@ namespace Coveralls.Tests
 
             var results = parser.Generate();
 
-            results.Count.Should().Be(0);
+            results.Count().Should().Be(0);
         }
 
         [Test]
@@ -28,7 +28,7 @@ namespace Coveralls.Tests
 
             var results = parser.Generate();
 
-            results.Count.Should().Be(1);
+            results.Count().Should().Be(1);
         }
 
         [Test]
@@ -68,13 +68,13 @@ namespace Coveralls.Tests
             var lines = coverageFile.Source.Split(new[] {'\n'});
 
             lines[11].Trim().Should().Be("{");
-            coverageFile.Coverage[11].Should().Be(16);
+            coverageFile.Coverage.ToArray()[11].Should().Be(16);
             lines[12].Trim().Should().Be("if (string.IsNullOrEmpty(date))");
-            coverageFile.Coverage[12].Should().Be(16);
+            coverageFile.Coverage.ToArray()[12].Should().Be(16);
             lines[19].Trim().Should().Be("hour = 0;");
-            coverageFile.Coverage[19].Should().Be(3);
+            coverageFile.Coverage.ToArray()[19].Should().Be(3);
             lines[24].Trim().Should().Be("while (time.Length < 4)");
-            coverageFile.Coverage[24].Should().Be(15);
+            coverageFile.Coverage.ToArray()[24].Should().Be(15);
         }
     }
 }

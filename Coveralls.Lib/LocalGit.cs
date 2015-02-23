@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using LibGit2Sharp;
 
-namespace Coveralls.Lib
+namespace Coveralls
 {
     public class LocalGit : GitRepository
     {
@@ -20,6 +21,14 @@ namespace Coveralls.Lib
             }
 
             _repository = new Repository(directory.FullName + "\\.git");
+        }
+
+        public sealed override void Dispose()
+        {
+            _repository.Dispose();
+            _repository = null;
+
+            GC.SuppressFinalize(this);
         }
 
         public override IEnumerable<string> Branches

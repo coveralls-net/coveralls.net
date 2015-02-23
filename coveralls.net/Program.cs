@@ -6,16 +6,16 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using CommandLine;
-using Coveralls.Lib;
+using Coveralls;
 using Newtonsoft.Json;
 
 namespace coveralls.net
 {
-    public class Program
+    internal class Program
     {
-        public static CommandLineOptions Options;
+        internal static CommandLineOptions Options;
 
-        static void Main(string[] args)
+        internal static void Main(string[] args)
         {
             Options = Parser.Default.ParseArguments<CommandLineOptions>(args).Value;
             
@@ -69,7 +69,7 @@ namespace coveralls.net
 
                 Console.WriteLine("     Service: {0}", coverallsData.ServiceName);
                 Console.WriteLine("      Job ID: {0}", coverallsData.ServiceJobId);
-                Console.WriteLine("       Files: {0}", coverallsData.SourceFiles.Length);
+                Console.WriteLine("       Files: {0}", coverallsData.SourceFiles.Count());
                 Console.WriteLine("      Commit: {0}", coverallsData.Git.Head.Id);
                 Console.WriteLine("Pull Request: {0}", coverallsData.Git.Head.Id);
 
@@ -86,7 +86,7 @@ namespace coveralls.net
             }
         }
 
-        private static void SendToCoveralls(string json)
+        internal static void SendToCoveralls(string json)
         {
             if (Options.DebugMode)
             {
@@ -112,11 +112,11 @@ namespace coveralls.net
                     response.ReasonPhrase);
                 msg += "\n - Error code 422 indicate a problem with your token. Try using the --debug commandline option.";
 
-                throw new Exception(msg);
+                throw new CoverallsException(msg);
             }
         }
 
-        private static string JsonPrettyPrint(string json)
+        internal static string JsonPrettyPrint(string json)
         {
             dynamic parsedJson = JsonConvert.DeserializeObject(json);
             return JsonConvert.SerializeObject(parsedJson, Formatting.Indented);

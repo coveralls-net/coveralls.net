@@ -2,23 +2,27 @@ using System;
 using System.Globalization;
 using System.IO;
 
-namespace Coveralls.Lib
+namespace Coveralls
 {
     public static class PathTools
     {
         public static string ToUnixPath(this string path)
         {
+            if (string.IsNullOrEmpty(path)) return "";
+
             return path.Replace('\\', '/');
         }
 
         public static string ToRelativePath(this string fullPath, string baseFolder)
         {
-            if (fullPath.IsBlank() || baseFolder.IsBlank()) return fullPath;
+            if (string.IsNullOrEmpty(fullPath)) return fullPath;
+            if (string.IsNullOrEmpty(baseFolder)) return fullPath;
+
             if (fullPath.Equals(baseFolder)) return "";
 
             var pathUri = new Uri(fullPath);
 
-            if (!baseFolder.EndsWith(Path.DirectorySeparatorChar.ToString(CultureInfo.InvariantCulture)))
+            if (!baseFolder.EndsWith(Path.DirectorySeparatorChar.ToString(CultureInfo.InvariantCulture), StringComparison.Ordinal))
             {
                 baseFolder += Path.DirectorySeparatorChar;
             }

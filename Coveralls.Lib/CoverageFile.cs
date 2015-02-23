@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace Coveralls.Lib
+namespace Coveralls
 {
     public class CoverageFile
     {
@@ -40,10 +40,9 @@ namespace Coveralls.Lib
             }
         }
 
-        private int?[] _coverage;
-
+        private IEnumerable<int?> _coverage;
         [JsonProperty("coverage")]
-        public int?[] Coverage
+        public IEnumerable<int?> Coverage
         {
             get
             {
@@ -54,8 +53,7 @@ namespace Coveralls.Lib
                     else if (_lineCoverage.Count > 0) length = _lineCoverage.Max(c => c.Key);
 
                     _coverage = Enumerable.Range(1, length)
-                        .Select(index => _lineCoverage.ContainsKey(index) ? (int?)_lineCoverage[index] : null)
-                        .ToArray();
+                        .Select(index => _lineCoverage.ContainsKey(index) ? (int?)_lineCoverage[index] : null);
                 }
                 return _coverage;
             }

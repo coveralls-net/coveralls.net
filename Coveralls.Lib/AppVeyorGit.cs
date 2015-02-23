@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Coveralls.Lib
+namespace Coveralls
 {
     public class AppVeyorGit : GitRepository
     {

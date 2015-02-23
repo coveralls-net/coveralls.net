@@ -1,6 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
-namespace Coveralls.Lib
+namespace Coveralls
 {
     public sealed class CoverallsData
     {
@@ -14,7 +15,7 @@ namespace Coveralls.Lib
         public string RepoToken { get; set; }
 
         [JsonProperty("source_files")]
-        public CoverageFile[] SourceFiles { get; set; }
+        public IEnumerable<CoverageFile> SourceFiles { get; set; }
 
         [JsonProperty("git", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public GitData Git { get; set; }

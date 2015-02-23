@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using System.Xml.Linq;
-using Coveralls.Lib.Parser;
 
-namespace Coveralls.Lib
+namespace Coveralls
 {
     internal enum ServiceType
     {
@@ -16,21 +11,25 @@ namespace Coveralls.Lib
         Unknown
     }
 
-    public class CoverallsBootstrap
+    public class CoverallsBootstrap : IDisposable
     {
         private ICommandOptions _opts;
         private ServiceType _service;
 
         public CoverallsBootstrap(ICommandOptions options)
         {
+            if (options == null) throw new ArgumentException("Invalid command line options.", "options");
+            if (options.Parser == ParserType.Unknown) throw new ArgumentException("Unknown parser specified.");
+
             _opts = options;
 
-            if(_opts.Parser == ParserTypes.Unknown) throw new ArgumentException("Unknown parser specified.");
+            _service = Environment.GetEnvironmentVariable("APPVEYOR").IsNotBlank() ? ServiceType.AppVeyor : ServiceType.Unknown;
+        }
 
-            if (Environment.GetEnvironmentVariable("APPVEYOR").IsNotBlank())
-                _service = ServiceType.AppVeyor;
-            else
-                _service = ServiceType.Unknown;
+        public void Dispose()
+        {
+            _repository.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         public IFileSystem FileSystem { get; set; }
@@ -87,13 +86,11 @@ namespace Coveralls.Lib
                 {
                     var parser = CreateParser();
                     var reportXml = FileSystem.ReadFileText(_opts.InputFile);
-                    if (reportXml.IsBlank())
+                    if (reportXml.IsNotBlank())
                     {
-                        throw new Exception("Invalid coverage file");
+                        parser.Report = XDocument.Parse(reportXml);
+                        _files = parser.Generate();
                     }
-                    parser.Report = XDocument.Parse(reportXml);
-
-                    _files = parser.Generate();
                 }
                 return _files;
             }
@@ -124,7 +121,7 @@ namespace Coveralls.Lib
         {
             switch (_opts.Parser)
             {
-                case ParserTypes.OpenCover:
+                case ParserType.OpenCover:
                     return new OpenCoverParser(FileSystem);
             }
             return new OpenCoverParser(FileSystem);
@@ -132,8 +129,10 @@ namespace Coveralls.Lib
 
         public IGitRepository CreateGitRepository()
         {
-            if (Environment.GetEnvironmentVariable("APPVEYOR_JOB_ID").IsNotBlank()) return new AppVeyorGit();
-            else return new LocalGit();
+            if (Environment.GetEnvironmentVariable("APPVEYOR_JOB_ID").IsNotBlank()) _repository = new AppVeyorGit();
+            else _repository = new LocalGit();
+
+            return _repository;
         }
     }
 }

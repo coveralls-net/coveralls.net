@@ -1,6 +1,6 @@
-﻿namespace Coveralls.Lib
+﻿namespace Coveralls
 {
-    public enum ParserTypes
+    public enum ParserType
     {
         Default, // OpenCover
         OpenCover,

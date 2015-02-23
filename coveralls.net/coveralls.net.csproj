@@ -30,6 +30,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <NuGetPackageImportStamp>ea5efce6</NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <BuildToolsFxCopVersion>1.0.1</BuildToolsFxCopVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -41,16 +42,22 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <RunCodeAnalysis>False</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>BasicDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisTreatWarningsAsErrors>True</CodeAnalysisTreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <RunCodeAnalysis>True</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>BasicDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisTreatWarningsAsErrors>True</CodeAnalysisTreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommandLine, Version=2.0.0.0, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
@@ -80,13 +87,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="CodeAnalysisRules.ruleset" />
     <None Include="packages.config" />
     <None Include="package\coveralls.net.nuspec" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Coveralls.Lib\Coveralls.Lib.csproj">
+    <ProjectReference Include="..\Coveralls.Lib\Coveralls.csproj">
       <Project>{f43802c1-065a-4735-8e2d-eca06493b79b}</Project>
-      <Name>Coveralls.Lib</Name>
+      <Name>Coveralls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

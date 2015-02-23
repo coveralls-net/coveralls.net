@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Coveralls.Lib
+namespace Coveralls
 {
     [ExcludeFromCodeCoverage]
     public abstract class GitRepository : IGitRepository
@@ -27,6 +28,11 @@ namespace Coveralls.Lib
 
                 return _data;
             }
+        }
+
+        public virtual void Dispose()
+        {
+            GC.SuppressFinalize(this);
         }
     }
 }

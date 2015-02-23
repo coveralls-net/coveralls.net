@@ -184,5 +184,25 @@ namespace Coveralls.Tests
 
             coveralls.RepoToken.Should().Be("1234abcd");
         }
+
+        [Test]
+        public void GitRepository_BlankAppVeyorVariable_LocalGit()
+        {
+            var opts = Substitute.For<ICommandOptions>();
+            var coveralls = new CoverallsBootstrap(opts);
+
+            coveralls.CreateGitRepository().Should().BeOfType<LocalGit>();
+        }
+
+        [Test]
+        public void GitRepository_AppVeyorVariableExists_LocalGit()
+        {
+            Environment.SetEnvironmentVariable("APPVEYOR_JOB_ID", "12345");
+
+            var opts = Substitute.For<ICommandOptions>();
+            var coveralls = new CoverallsBootstrap(opts);
+
+            coveralls.CreateGitRepository().Should().BeOfType<AppVeyorGit>();
+        }
     }
 }

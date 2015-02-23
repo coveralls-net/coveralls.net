@@ -58,7 +58,7 @@
 
   environment:
     COVERALLS_REPO_TOKEN:
-      secure: fm7taq4Ao1Fu09OLM+KKQJlLwUsmDq9801njnfwhSTadQ3eAcYx+meW/LxK/4Mq0
+      secure: 7slhRtUVG7VaqcwNQjD5Kph7NTudBTPrGZswajNcSP9iA9QZIVNI38wm1pfc3/vZ
 
   install:
     - nuget restore

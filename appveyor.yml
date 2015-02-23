@@ -71,7 +71,7 @@
     - packages\OpenCover.4.5.3723\OpenCover.Console.exe -register:user -filter:"+[Coveralls*]*" -target:"nunit-console.exe" -targetargs:"/noshadow /domain:single Coveralls.Tests\bin\%CONFIGURATION%\Coveralls.Tests.dll" -output:coverage.xml
 
   after_test:
-    - coveralls.net\package\tools\coveralls.net.exe --debug --opencover coverage.xml
+    - coveralls.net\package\tools\coveralls.net.exe --opencover coverage.xml
 
   before_deploy:
     - cd coveralls.net\package

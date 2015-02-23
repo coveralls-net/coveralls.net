@@ -68,11 +68,8 @@
     verbosity: minimal
 
   after_test:
-    - nuget install NUnit.Runners -ExcludeVersion -NonInteractive -NoCache -OutputDirectory packages
-    - nuget install OpenCover -ExcludeVersion -NonInteractive -NoCache -OutputDirectory packages
-    - nuget install coveralls.io -ExcludeVersion -NonInteractive -NoCache -OutputDirectory packages
-    - packages\OpenCover\OpenCover.Console.exe -register:user -filter:"+[Coveralls*]*" -target:"packages\NUnit.Runners\tools\nunit-console.exe" -targetargs:"/noshadow /domain:single Coveralls.Tests\bin\%CONFIGURATION%\Coveralls.Tests.dll" -output:coverage.xml
-    - packages\coveralls.io\tools\coveralls.net.exe --opencover coverage.xml
+    - packages\OpenCover.4.5.3723\OpenCover.Console.exe -register:user -filter:"+[Coveralls*]*" -target:"packages\NUnit.Runners.2.6.4\tools\nunit-console.exe" -targetargs:"/noshadow /domain:single Coveralls.Tests\bin\%CONFIGURATION%\Coveralls.Tests.dll" -output:coverage.xml
+    - coveralls.net\package\tools\coveralls.net.exe --opencover coverage.xml
 
   before_deploy:
     - cd coveralls.net\package

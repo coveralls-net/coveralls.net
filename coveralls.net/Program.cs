@@ -26,6 +26,10 @@ namespace coveralls.net
                     FileSystem = new LocalFileSystem()
                 };
 
+                // Use specified repo token over Environment variable
+                if (Options.CoverallsRepoToken.IsNotBlank())
+                    coveralls.RepoToken = Options.CoverallsRepoToken;
+
                 if (!coveralls.CoverageFiles.Any())
                 {
                     Console.WriteLine("No coverage statistics files.");

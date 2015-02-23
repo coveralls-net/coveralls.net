@@ -58,7 +58,7 @@
 
   environment:
     COVERALLS_REPO_TOKEN:
-      secure: 7slhRtUVG7VaqcwNQjD5Kph7NTudBTPrGZswajNcSP9iA9QZIVNI38wm1pfc3/vZ
+      secure: ZN14AzS3UMyukmfWu5cXzVUk6fWg0Lx+2OHMp9ZHdiIrvTcP9qxEgxvLkRGpQ2GO
 
   install:
     - nuget restore
@@ -71,7 +71,7 @@
     - packages\OpenCover.4.5.3723\OpenCover.Console.exe -register:user -filter:"+[Coveralls*]*" -target:"nunit-console.exe" -targetargs:"/noshadow /domain:single Coveralls.Tests\bin\%CONFIGURATION%\Coveralls.Tests.dll" -output:coverage.xml
 
   after_test:
-    - coveralls.net\package\tools\coveralls.net.exe --repo-token 7tmi9FWyPENcNM664ozTrC2vgLe7GLnI9 --opencover coverage.xml
+    - coveralls.net\package\tools\coveralls.net.exe --opencover coverage.xml
 
   before_deploy:
     - cd coveralls.net\package

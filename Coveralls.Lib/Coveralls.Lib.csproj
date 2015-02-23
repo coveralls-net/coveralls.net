@@ -54,11 +54,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppVeyorGit.cs" />
     <Compile Include="CoverageFile.cs" />
     <Compile Include="CoverallsBootstrap.cs" />
     <Compile Include="CoverallsData.cs" />
     <Compile Include="GitData.cs" />
+    <Compile Include="GitRepository.cs" />
     <Compile Include="ICommandOptions.cs" />
+    <Compile Include="LocalGit.cs" />
     <Compile Include="Parser\ICoverageParser.cs" />
     <Compile Include="IFileSystem.cs" />
     <Compile Include="IGitRepository.cs" />

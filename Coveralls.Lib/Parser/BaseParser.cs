@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Xml.Linq;
 
 namespace Coveralls.Lib.Parser
 {
+    [ExcludeFromCodeCoverage]
     public class BaseParser : ICoverageParser
     {
         protected IFileSystem FileSystem;

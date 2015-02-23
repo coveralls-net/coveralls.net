@@ -68,5 +68,23 @@ namespace Coveralls.Tests
 
             path.ToRelativePath(baseFolder).Should().Be(@"");
         }
+
+        [Test]
+        public void ToRelativePath_BaseFolderStartsPath_ReturnsCurrentSubPathInUnixForm()
+        {
+            var path = @"c:\full\path\test";
+            var baseFolder = @"c:\full\";
+
+            path.ToRelativePath(baseFolder).Should().Be(@"path/test");
+        }
+
+        [Test]
+        public void ToRelativePath_BaseFolderMissingTrailingSlash_ReturnsCurrentSubPathInUnixForm()
+        {
+            var path = @"c:\full\path\test";
+            var baseFolder = @"c:\full";
+
+            path.ToRelativePath(baseFolder).Should().Be(@"path/test");
+        }
     }
 }

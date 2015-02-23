@@ -3,7 +3,7 @@ using Coveralls;
 
 namespace coveralls.net
 {
-    internal struct CommandLineOptions : ICommandOptions
+    internal class CommandLineOptions : ICommandOptions
     {
         [Value(0)]
         public string InputFile { get; set; }
@@ -28,5 +28,38 @@ namespace coveralls.net
 
         [Option("repo-token")]
         public string CoverallsRepoToken { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj.GetType() != typeof (CommandLineOptions)) return false;
+
+            var other = (CommandLineOptions)obj;
+
+            return this.InputFile == other.InputFile &&
+                this.Parser == other.Parser &&
+                this.DebugMode == other.DebugMode &&
+                this.UseOpenCover == other.UseOpenCover &&
+                this.CoverallsRepoToken == other.CoverallsRepoToken;
+        }
+
+        public override int GetHashCode()
+        {
+            var hash = 11;
+            hash = (hash * 7) + InputFile.GetHashCode();
+            hash = (hash * 7) + Parser.GetHashCode();
+            hash = (hash * 7) + DebugMode.GetHashCode();
+            hash = (hash * 7) + CoverallsRepoToken.GetHashCode();
+            return hash;
+        }
+
+        public static bool operator ==(CommandLineOptions a, CommandLineOptions b)
+        {
+            return a.Equals(b);
+        }
+
+        public static bool operator !=(CommandLineOptions a, CommandLineOptions b)
+        {
+            return !a.Equals(b);
+        }
     }
 }

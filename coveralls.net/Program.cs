@@ -11,11 +11,11 @@ using Newtonsoft.Json;
 
 namespace coveralls.net
 {
-    class Program
+    internal class Program
     {
-        static CommandLineOptions Options;
+        internal static CommandLineOptions Options;
 
-        static void Main(string[] args)
+        internal static void Main(string[] args)
         {
             Options = Parser.Default.ParseArguments<CommandLineOptions>(args).Value;
             
@@ -86,7 +86,7 @@ namespace coveralls.net
             }
         }
 
-        static void SendToCoveralls(string json)
+        internal static void SendToCoveralls(string json)
         {
             if (Options.DebugMode)
             {
@@ -112,11 +112,11 @@ namespace coveralls.net
                     response.ReasonPhrase);
                 msg += "\n - Error code 422 indicate a problem with your token. Try using the --debug commandline option.";
 
-                throw new Exception(msg);
+                throw new CoverallsException(msg);
             }
         }
 
-        static string JsonPrettyPrint(string json)
+        internal static string JsonPrettyPrint(string json)
         {
             dynamic parsedJson = JsonConvert.DeserializeObject(json);
             return JsonConvert.SerializeObject(parsedJson, Formatting.Indented);

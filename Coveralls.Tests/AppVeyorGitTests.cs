@@ -20,6 +20,7 @@ namespace Coveralls.Tests
             Environment.SetEnvironmentVariable("APPVEYOR_REPO_COMMIT_MESSAGE", "");
             Environment.SetEnvironmentVariable("APPVEYOR_REPO_COMMIT_AUTHOR", "");
             Environment.SetEnvironmentVariable("APPVEYOR_REPO_COMMIT_AUTHOREMAIL", "");
+            Environment.SetEnvironmentVariable("APPVEYOR_PULL_REQUEST_NUMBER", "");
         }
 
         [Test]
@@ -62,6 +63,16 @@ namespace Coveralls.Tests
             git.Head.Message.Should().Be("Initial commit");
             git.Head.Author.Should().Be("jdeering");
             git.Head.AuthorEmail.Should().Be("jason@deering.me");
+        }
+
+        [Test]
+        public void Head_PullRequestNumberSet_HasCorrectValue()
+        {
+            Environment.SetEnvironmentVariable("APPVEYOR_PULL_REQUEST_NUMBER", "1234abcd");
+
+            var git = new AppVeyorGit();
+
+            git.Head.PullRequestId.Should().Be("1234abcd");
         }
     }
 }

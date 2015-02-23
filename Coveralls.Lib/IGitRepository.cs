@@ -109,6 +109,7 @@ namespace Coveralls.Lib
                         Message = Environment.GetEnvironmentVariable("APPVEYOR_REPO_COMMIT_MESSAGE"),
                         Author = Environment.GetEnvironmentVariable("APPVEYOR_REPO_COMMIT_AUTHOR"),
                         AuthorEmail = Environment.GetEnvironmentVariable("APPVEYOR_REPO_COMMIT_AUTHOREMAIL"),
+                        PullRequestId = Environment.GetEnvironmentVariable("APPVEYOR_PULL_REQUEST_NUMBER")
                     };
                 }
                 return _head;

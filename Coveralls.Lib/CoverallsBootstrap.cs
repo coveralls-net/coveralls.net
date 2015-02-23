@@ -63,9 +63,19 @@ namespace Coveralls.Lib
             }
         }
 
+        private string _repoToken;
         public string RepoToken
         {
-            get { return Environment.GetEnvironmentVariable("COVERALLS_REPO_TOKEN"); }
+            get
+            {
+                if (_repoToken.IsBlank())
+                {
+                    _repoToken = Environment.GetEnvironmentVariable("COVERALLS_REPO_TOKEN");
+                }
+
+                return _repoToken;
+            }
+            set { _repoToken = value; }
         }
 
         private IEnumerable<CoverageFile> _files;

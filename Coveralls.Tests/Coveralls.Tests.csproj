@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoverallsDataTests.cs" />
+    <Compile Include="GitDataSerializationTests.cs" />
     <Compile Include="PathToolsTests.cs" />
     <Compile Include="CoverageFileTests.cs" />
     <Compile Include="CoverallsBootstrapTests.cs" />

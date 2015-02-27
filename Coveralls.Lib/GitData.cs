@@ -37,7 +37,7 @@ namespace Coveralls
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Name { get; set; }
 
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Ignore, ItemConverterType = typeof(UriJsonConverter))]
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Uri Uri { get; set; }
     }
 }

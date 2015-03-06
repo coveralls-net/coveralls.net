@@ -1,6 +1,6 @@
 ﻿using CommandLine;
+using Coveralls;
 using System.Collections.Generic;
-using Coveralls.Lib;
 using System.Linq;
 
 namespace coveralls.net
@@ -8,6 +8,7 @@ namespace coveralls.net
     internal class CommandLineOptions : ICommandOptions
     {
         private List<string> _inputFiles;
+
         [Value(0)]
         public IEnumerable<string> InputFiles
         {
@@ -54,7 +55,18 @@ namespace coveralls.net
             }
         }
 
-        [Option("repo-token")]
+        private bool _sendFullSources;
+        [Option('f', "full-sources", DefaultValue = false, HelpText="Send full sources instead of the digest" )]
+        public bool SendFullSources
+        {
+            get { return _sendFullSources; }
+            set
+            {
+                _sendFullSources = value;
+            }
+        }
+
+        [Option('r', "repo-token")]
         public string CoverallsRepoToken { get; set; }
 
         public override bool Equals(object obj)
@@ -63,7 +75,20 @@ namespace coveralls.net
 
             var other = (CommandLineOptions)obj;
 
-            return this.InputFile == other.InputFile &&
+            if (this.InputFiles.Count() != other.InputFiles.Count())
+            {
+                return false;
+            }
+
+            for (int i = 0; i < InputFiles.Count(); i++)
+            {
+                if (this.InputFiles.ElementAt(i) != other.InputFiles.ElementAt(i))
+                {
+                    return false;
+                }
+            }
+
+            return
                 this.Parser == other.Parser &&
                 this.DebugMode == other.DebugMode &&
                 this.UseOpenCover == other.UseOpenCover &&
@@ -73,7 +98,11 @@ namespace coveralls.net
         public override int GetHashCode()
         {
             var hash = 11;
-            hash = (hash * 7) + InputFile.GetHashCode();
+            foreach (string inputFile in InputFiles)
+            {
+                hash = (hash * 7) + inputFile.GetHashCode();
+            }
+            
             hash = (hash * 7) + Parser.GetHashCode();
             hash = (hash * 7) + DebugMode.GetHashCode();
             hash = (hash * 7) + CoverallsRepoToken.GetHashCode();

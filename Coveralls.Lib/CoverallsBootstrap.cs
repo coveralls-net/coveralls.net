@@ -87,6 +87,7 @@ namespace Coveralls
             set { _repoToken = value; }
         }
 
+
         private IEnumerable<CoverageFile> _files;
         public IEnumerable<CoverageFile> CoverageFiles
         {
@@ -96,25 +97,34 @@ namespace Coveralls
                 {
                     List<CoverageFile> allCoverageFiles = new List<CoverageFile>();
 
-                    if (_opts.InputFiles == null || !_opts.InputFiles.Any())
-                    {
-                        throw new Exception("Missing input file(s)");
-                    }
-
                     foreach (string inputFile in _opts.InputFiles)
                     {
                         var parser = CreateParser();
                         var reportXml = FileSystem.ReadFileText(inputFile);
-                        if (reportXml.IsBlank()) {
-                            throw new Exception("Invalid coverage file");
+                        if (reportXml.IsNotBlank())
+                        {
+                            parser.Report = XDocument.Parse(reportXml);
+                            allCoverageFiles.AddRange(parser.Generate());
                         }
-                        parser.Report = XDocument.Parse(reportXml);
-
-                        allCoverageFiles.AddRange(parser.Generate());
                     }
 
-                    _files = allCoverageFiles;
+                    // If we want the md5 digest and not the full source, loop through the coverage files
+                    // and set the option on the class.
+
+                    if (_opts.SendFullSources)
+                    {
+                        foreach(CoverageFile coverageFile in allCoverageFiles)
+                        {
+                            coverageFile.Digest = false;
+                        }
+                    }
+
+                    if(allCoverageFiles.Any())
+                    {
+                        _files = allCoverageFiles;
+                    }
                 }
+
                 return _files;
             }
         }
@@ -153,5 +163,6 @@ namespace Coveralls
             }
             return new OpenCoverParser(FileSystem);
         }
+
     }
 }

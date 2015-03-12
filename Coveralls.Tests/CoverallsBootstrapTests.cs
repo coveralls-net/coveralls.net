@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using NSubstitute;
@@ -155,7 +156,7 @@ namespace Coveralls.Tests
         }
 
         [Test]
-        public void CoverageFiles_EmptyReportFile_ThrowsException()
+        public void CoverageFiles_EmptyReportFile_CoverageFilesIsNull()
         {
             var fileSystem = Substitute.For<IFileSystem>();
             fileSystem.ReadFileText("").ReturnsForAnyArgs("");
@@ -174,6 +175,7 @@ namespace Coveralls.Tests
             fileSystem.ReadFileText("").ReturnsForAnyArgs(TestHelpers.LoadResourceText("Coveralls.Tests.Files.OpenCover.SingleFileCoverage.xml"));
 
             var opts = Substitute.For<ICommandOptions>();
+            opts.InputFiles.Returns(new List<string> {"coverage.xml"});
             var coveralls = new CoverallsBootstrap(opts);
             coveralls.FileSystem = fileSystem;
 

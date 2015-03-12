@@ -49,8 +49,9 @@ namespace Coveralls.Tests
             fileSystem.ReadFileText(@"c:\src\SymSharp\Symitar\Utilities.cs")
                 .Returns(TestHelpers.LoadResourceText("Coveralls.Tests.Files.Utilities.cs"));
             var parser = new OpenCoverParser(fileSystem) { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.OpenCover.SingleFileCoverage.xml") };
-
+            
             var coverageFile = parser.Generate().First();
+            coverageFile.Digest = false;
 
             coverageFile.Source.Split('\n').Length.Should().Be(140);
         }
@@ -64,6 +65,7 @@ namespace Coveralls.Tests
             var parser = new OpenCoverParser(fileSystem) { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.OpenCover.SingleFileCoverage.xml") };
 
             var coverageFile = parser.Generate().First();
+            coverageFile.Digest = false;
 
             var lines = coverageFile.Source.Split(new[] {'\n'});
 

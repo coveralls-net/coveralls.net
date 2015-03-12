@@ -16,10 +16,10 @@ namespace Coveralls
         [JsonProperty("name")]
         public string Path { get; set; }
 
-        [JsonProperty("source")]
+        [JsonProperty("source", NullValueHandling = NullValueHandling.Ignore)]
         public string Source
         {
-            get { return _source; }
+            get { return Digest ? null : _source; }
             set
             {
                 _coverage = null;
@@ -41,35 +41,23 @@ namespace Coveralls
             }
         }
 
-        [JsonProperty("source_digest")]
+        [JsonProperty("source_digest", NullValueHandling = NullValueHandling.Ignore)]
         public string SourceDigest
         {
             get
             {
-                MD5 hash = MD5.Create();
-                byte[] md5Digest = hash.ComputeHash(Encoding.UTF8.GetBytes(_source));
+                if (!Digest) return null;
 
-                // Convert to string
-                StringBuilder builder = new StringBuilder();
+                var hash = MD5.Create();
+                var md5Digest = hash.ComputeHash(Encoding.UTF8.GetBytes(_source));
 
-                foreach (byte b in md5Digest) {
+                var builder = new StringBuilder();
+                foreach (var b in md5Digest) 
+                {
                     builder.Append(b.ToString("x2"));
                 }
                 return builder.ToString();
             }
-        }
-
-        // Special functions to determine whether the Source or SourceDigest properties should
-        // get serialized
-
-        public bool ShouldSerializeSourceDigest()
-        {
-            return _digest;
-        }
-
-        public bool ShouldSerializeSource()
-        {
-            return !_digest;
         }
 
         private bool _digest = true;
@@ -114,6 +102,5 @@ namespace Coveralls
         {
             _lineCoverage[line] = coverage;
         }
-
     }
 }

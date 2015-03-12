@@ -95,34 +95,29 @@ namespace Coveralls
             {
                 if (_files == null || !_files.Any())
                 {
-                    List<CoverageFile> allCoverageFiles = new List<CoverageFile>();
+                    var coverageFileList = new List<CoverageFile>();
 
-                    foreach (string inputFile in _opts.InputFiles)
+                    foreach (var inputFile in _opts.InputFiles)
                     {
                         var parser = CreateParser();
                         var reportXml = FileSystem.ReadFileText(inputFile);
                         if (reportXml.IsNotBlank())
                         {
                             parser.Report = XDocument.Parse(reportXml);
-                            allCoverageFiles.AddRange(parser.Generate());
+                            coverageFileList.AddRange(parser.Generate());
                         }
                     }
 
-                    // If we want the md5 digest and not the full source, loop through the coverage files
-                    // and set the option on the class.
-
                     if (_opts.SendFullSources)
                     {
-                        foreach(CoverageFile coverageFile in allCoverageFiles)
+                        // Send full source instead of MD5 digest
+                        foreach (var coverageFile in coverageFileList)
                         {
                             coverageFile.Digest = false;
                         }
                     }
 
-                    if(allCoverageFiles.Any())
-                    {
-                        _files = allCoverageFiles;
-                    }
+                    if(coverageFileList.Any()) _files = coverageFileList;
                 }
 
                 return _files;

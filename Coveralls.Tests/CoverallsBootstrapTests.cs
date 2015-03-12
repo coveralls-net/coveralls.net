@@ -14,6 +14,8 @@ namespace Coveralls.Tests
         {
             Environment.SetEnvironmentVariable("APPVEYOR", "");
             Environment.SetEnvironmentVariable("APPVEYOR_JOB_ID", "");
+            Environment.SetEnvironmentVariable("JENKINS_HOME", "");
+            Environment.SetEnvironmentVariable("BUILD_NUMBER", "");
             Environment.SetEnvironmentVariable("COVERALLS_REPO_TOKEN", "");
         }
 
@@ -97,6 +99,18 @@ namespace Coveralls.Tests
         }
 
         [Test]
+        public void ServiceJobId_OnJenkins_ReadsEnvVariable()
+        {
+            Environment.SetEnvironmentVariable("JENKINS_HOME", "True");
+            Environment.SetEnvironmentVariable("BUILD_NUMBER", "23");
+
+            var opts = Substitute.For<ICommandOptions>();
+            var coveralls = new CoverallsBootstrap(opts);
+
+            coveralls.ServiceJobId.Should().Be("23");
+        }
+
+        [Test]
         public void Repository_OnLocal_IsCorrectType()
         {
             var opts = Substitute.For<ICommandOptions>();
@@ -114,6 +128,17 @@ namespace Coveralls.Tests
             var coveralls = new CoverallsBootstrap(opts);
 
             coveralls.Repository.Should().BeOfType<AppVeyorGit>();
+        }
+
+        [Test]
+        public void Repository_OnJenkins_IsCorrectType()
+        {
+            Environment.SetEnvironmentVariable("JENKINS_HOME", "True");
+
+            var opts = Substitute.For<ICommandOptions>();
+            var coveralls = new CoverallsBootstrap(opts);
+
+            coveralls.Repository.Should().BeOfType<LocalGit>();
         }
 
         [Test]
@@ -172,26 +197,6 @@ namespace Coveralls.Tests
             var coveralls = new CoverallsBootstrap(opts);
 
             coveralls.RepoToken.Should().Be("1234abcd");
-        }
-
-        [Test]
-        public void GitRepository_BlankAppVeyorVariable_LocalGit()
-        {
-            var opts = Substitute.For<ICommandOptions>();
-            var coveralls = new CoverallsBootstrap(opts);
-
-            coveralls.CreateGitRepository().Should().BeOfType<LocalGit>();
-        }
-
-        [Test]
-        public void GitRepository_AppVeyorVariableExists_LocalGit()
-        {
-            Environment.SetEnvironmentVariable("APPVEYOR_JOB_ID", "12345");
-
-            var opts = Substitute.For<ICommandOptions>();
-            var coveralls = new CoverallsBootstrap(opts);
-
-            coveralls.CreateGitRepository().Should().BeOfType<AppVeyorGit>();
         }
     }
 }

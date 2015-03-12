@@ -1,12 +1,41 @@
 ﻿using CommandLine;
 using Coveralls;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace coveralls.net
 {
     internal class CommandLineOptions : ICommandOptions
     {
+        private List<string> _inputFiles;
+
         [Value(0)]
-        public string InputFile { get; set; }
+        public IEnumerable<string> InputFiles
+        {
+            get { return _inputFiles; }
+            set
+            {
+                // Alter the input list to expand wildcards
+
+                if (value != null && value.Any())
+                {
+                    _inputFiles = new List<string>();
+
+                    foreach (string input in value)
+                    {
+                        string fileName = System.IO.Path.GetFileName(input);
+                        string path = System.IO.Path.GetDirectoryName(input);
+
+                        if (string.IsNullOrEmpty(path))
+                        {
+                            path = System.Environment.CurrentDirectory;
+                        }
+
+                        _inputFiles.AddRange(System.IO.Directory.GetFiles(path, fileName));
+                    }
+                }
+            }
+        }
 
         [Option('p', "parser", HelpText = "Parser to use (Currently only supports OpenCover)")]
         public ParserType Parser { get; set; }
@@ -26,7 +55,18 @@ namespace coveralls.net
             }
         }
 
-        [Option("repo-token")]
+        private bool _sendFullSources;
+        [Option('f', "full-sources", DefaultValue = false, HelpText="Send full sources instead of the digest" )]
+        public bool SendFullSources
+        {
+            get { return _sendFullSources; }
+            set
+            {
+                _sendFullSources = value;
+            }
+        }
+
+        [Option('r', "repo-token")]
         public string CoverallsRepoToken { get; set; }
 
         public override bool Equals(object obj)
@@ -35,7 +75,20 @@ namespace coveralls.net
 
             var other = (CommandLineOptions)obj;
 
-            return this.InputFile == other.InputFile &&
+            if (this.InputFiles.Count() != other.InputFiles.Count())
+            {
+                return false;
+            }
+
+            for (int i = 0; i < InputFiles.Count(); i++)
+            {
+                if (this.InputFiles.ElementAt(i) != other.InputFiles.ElementAt(i))
+                {
+                    return false;
+                }
+            }
+
+            return
                 this.Parser == other.Parser &&
                 this.DebugMode == other.DebugMode &&
                 this.UseOpenCover == other.UseOpenCover &&
@@ -45,7 +98,11 @@ namespace coveralls.net
         public override int GetHashCode()
         {
             var hash = 11;
-            hash = (hash * 7) + InputFile.GetHashCode();
+            foreach (string inputFile in InputFiles)
+            {
+                hash = (hash * 7) + inputFile.GetHashCode();
+            }
+            
             hash = (hash * 7) + Parser.GetHashCode();
             hash = (hash * 7) + DebugMode.GetHashCode();
             hash = (hash * 7) + CoverallsRepoToken.GetHashCode();

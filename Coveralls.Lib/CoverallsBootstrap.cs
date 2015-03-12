@@ -8,6 +8,7 @@ namespace Coveralls
     internal enum ServiceType
     {
         AppVeyor,
+        Jenkins,
         Unknown
     }
 
@@ -23,7 +24,12 @@ namespace Coveralls
 
             _opts = options;
 
-            _service = Environment.GetEnvironmentVariable("APPVEYOR").IsNotBlank() ? ServiceType.AppVeyor : ServiceType.Unknown;
+            if (Environment.GetEnvironmentVariable("APPVEYOR").IsNotBlank())
+                _service = ServiceType.AppVeyor;
+            else if (Environment.GetEnvironmentVariable("JENKINS_HOME").IsNotBlank())
+                _service = ServiceType.Jenkins;
+            else
+                _service = ServiceType.Unknown;
         }
 
         public void Dispose()
@@ -42,6 +48,8 @@ namespace Coveralls
                 {
                     case ServiceType.AppVeyor:
                         return "appveyor";
+                    case ServiceType.Jenkins:
+                        return "jenkins";
                     default:
                         return "coveralls.net";
                 }
@@ -56,6 +64,8 @@ namespace Coveralls
                 {
                     case ServiceType.AppVeyor:
                         return Environment.GetEnvironmentVariable("APPVEYOR_JOB_ID");
+                    case ServiceType.Jenkins:
+                        return Environment.GetEnvironmentVariable("BUILD_NUMBER");
                     default:
                         return "0";
                 }
@@ -77,6 +87,7 @@ namespace Coveralls
             set { _repoToken = value; }
         }
 
+
         private IEnumerable<CoverageFile> _files;
         public IEnumerable<CoverageFile> CoverageFiles
         {
@@ -84,14 +95,36 @@ namespace Coveralls
             {
                 if (_files == null || !_files.Any())
                 {
-                    var parser = CreateParser();
-                    var reportXml = FileSystem.ReadFileText(_opts.InputFile);
-                    if (reportXml.IsNotBlank())
+                    List<CoverageFile> allCoverageFiles = new List<CoverageFile>();
+
+                    foreach (string inputFile in _opts.InputFiles)
                     {
-                        parser.Report = XDocument.Parse(reportXml);
-                        _files = parser.Generate();
+                        var parser = CreateParser();
+                        var reportXml = FileSystem.ReadFileText(inputFile);
+                        if (reportXml.IsNotBlank())
+                        {
+                            parser.Report = XDocument.Parse(reportXml);
+                            allCoverageFiles.AddRange(parser.Generate());
+                        }
+                    }
+
+                    // If we want the md5 digest and not the full source, loop through the coverage files
+                    // and set the option on the class.
+
+                    if (_opts.SendFullSources)
+                    {
+                        foreach(CoverageFile coverageFile in allCoverageFiles)
+                        {
+                            coverageFile.Digest = false;
+                        }
+                    }
+
+                    if(allCoverageFiles.Any())
+                    {
+                        _files = allCoverageFiles;
                     }
                 }
+
                 return _files;
             }
         }
@@ -107,6 +140,10 @@ namespace Coveralls
                     {
                         case ServiceType.AppVeyor:
                             _repository = new AppVeyorGit();
+                            break;
+                        case ServiceType.Jenkins:
+                            // Jenkins doesn't provide data about the commit in the environment.
+                            _repository = new LocalGit();
                             break;
                         default:
                             _repository = new LocalGit();
@@ -127,12 +164,5 @@ namespace Coveralls
             return new OpenCoverParser(FileSystem);
         }
 
-        public IGitRepository CreateGitRepository()
-        {
-            if (Environment.GetEnvironmentVariable("APPVEYOR_JOB_ID").IsNotBlank()) _repository = new AppVeyorGit();
-            else _repository = new LocalGit();
-
-            return _repository;
-        }
     }
 }

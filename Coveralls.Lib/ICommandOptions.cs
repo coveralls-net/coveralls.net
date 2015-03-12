@@ -1,10 +1,13 @@
-﻿namespace Coveralls
+﻿using System.Collections.Generic;
+
+namespace Coveralls
 {
     public interface ICommandOptions
     {
-        string InputFile { get; }
+        IEnumerable<string> InputFiles { get; }
         ParserType Parser { get; }
         bool UseOpenCover { get; }
-        bool DebugMode { get; }
+        string CoverallsRepoToken { get; }
+        bool SendFullSources { get; }
     }
 }

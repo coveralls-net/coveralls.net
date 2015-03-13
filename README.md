@@ -62,7 +62,7 @@ For more information on SemVer, please visit http://semver.org/.
 
 ## Bug tracker
 
-Have a bug or a feature request? [Please open a new issue](https://github.com/jdeering/coveralls.net/issues). Before opening a new issue, please search for existing issues.
+Have a bug or a feature request? [Please open a new issue](https://github.com/coveralls-net/coveralls.net/issues). Before opening a new issue, please search for existing issues.
 
 
 ## Contributing

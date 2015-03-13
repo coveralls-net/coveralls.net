@@ -119,4 +119,4 @@
       C:\Tools\Coverity\bin\cov-build.exe --dir cov-int $buildCmd $buildArgs  
   - cmd: nuget install PublishCoverity -ExcludeVersion
   - cmd: PublishCoverity\PublishCoverity.exe compress -o coverity.zip -i cov-int
-  - cmd: PublishCoverity\PublishCoverity.exe publish -z coverity.zip -r coveralls-net/coveralls.net -t %CoverityProjectToken% -e jason@deering.me --nologo
+  - cmd: PublishCoverity\PublishCoverity.exe publish -z coverity.zip -r coveralls.net -t %CoverityProjectToken% -e jason@deering.me --nologo

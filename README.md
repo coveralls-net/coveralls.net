@@ -4,6 +4,7 @@ coveralls.net
 [![GitHub version](https://badge.fury.io/gh/coveralls-net%2Fcoveralls.net.svg)](http://badge.fury.io/gh/coveralls-net%2Fcoveralls.net)
 [![Build status](https://ci.appveyor.com/api/projects/status/78g2e7d9im25modd?svg=true)](https://ci.appveyor.com/project/jdeering/coveralls-net-gmbph)
 [![Coverage Status](https://coveralls.io/repos/coveralls-net/coveralls.net/badge.svg)](https://coveralls.io/r/coveralls-net/coveralls.net)
+[![Code Quality](https://scan.coverity.com/projects/4516/badge.svg)](https://scan.coverity.com/projects/4516)
 
 Coveralls uploader for .Net code coverage reporting
 

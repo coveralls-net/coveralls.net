@@ -17,7 +17,7 @@ Coveralls is a service which keep track of code coverate statistics. The process
 
 For detailed instructions, please visit the [wiki](https://github.com/coveralls-net/coveralls.net/wiki)
 
-## Supported Coverage Frameworks
+## Supported Frameworks
 
 #### Coverage Tools
 
@@ -30,10 +30,10 @@ For detailed instructions, please visit the [wiki](https://github.com/coveralls-
 
 ## Planned
 
-#### Coverage Tools
-
 These are the remaining targets, but I'm not sure how far I will be able to get on my own. If you would like to help, please
 fork this repository
+
+#### Coverage Tools
 
 * [SharpCover](https://github.com/gaillard/SharpCover)
 * [Mono Code Coverage (monocov)](http://www.mono-project.com/docs/debug+profile/profile/code-coverage/)

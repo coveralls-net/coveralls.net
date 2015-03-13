@@ -3,7 +3,7 @@ using Coveralls;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace coveralls.net
+namespace Coveralls.Net
 {
     internal class CommandLineOptions : ICommandOptions
     {

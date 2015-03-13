@@ -1,16 +1,12 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using CommandLine;
-using Coveralls;
+using Coveralls.Net.Properties;
 using Newtonsoft.Json;
 
-namespace coveralls.net
+namespace Coveralls.Net
 {
     internal class Program
     {
@@ -22,8 +18,7 @@ namespace coveralls.net
             
             if (Options.DebugMode)
             {
-                Console.WriteLine("[debug] > $env.COVERALLS_REPO_TOKEN: {0}",
-                    Environment.GetEnvironmentVariable("COVERALLS_REPO_TOKEN"));
+                Console.WriteLine(Resources.RepoTokenDebug, Environment.GetEnvironmentVariable("COVERALLS_REPO_TOKEN"));
             }
 
             try
@@ -39,18 +34,17 @@ namespace coveralls.net
 
                 if (!coveralls.CoverageFiles.Any())
                 {
-                    Console.WriteLine("No coverage statistics files.");
+                    Console.WriteLine(Resources.NoCoverageFilesErrorMessage);
                     return;
                 }
 
                 if (coveralls.RepoToken.IsBlank())
                 {
-                    Console.WriteLine("Blank or invalid Coveralls Repo Token.");
+                    Console.WriteLine(Resources.BlankTokenErrorMessage);
 
                     if (coveralls.ServiceName == "appveyor")
                     {
-                        Console.WriteLine(" - Did you prefix your token with 'secure:' without encrypting it?");
-                        Console.WriteLine(" - Is this a Pull Request? AppVeyor does not decrypt environment variables for pull requests.");
+                        Console.Write(Resources.AppVeyorBlankToken);
                     }
                     return;
                 }
@@ -68,11 +62,15 @@ namespace coveralls.net
                     Git = coveralls.Repository.Data
                 };
 
-                Console.WriteLine("     Service: {0}", coverallsData.ServiceName);
-                Console.WriteLine("      Job ID: {0}", coverallsData.ServiceJobId);
-                Console.WriteLine("       Files: {0}", coverallsData.SourceFiles.Count());
-                Console.WriteLine("      Commit: {0}", coverallsData.Git.Head.Id);
-                Console.WriteLine("Pull Request: {0}", coverallsData.Git.Head.Id);
+                if (Options.DebugMode)
+                {
+                    Console.Write(Resources.CoverallsDebug, 
+                        coverallsData.ServiceName,
+                        coverallsData.ServiceJobId,
+                        coverallsData.SourceFiles.Count(),
+                        coverallsData.Git.Head.Id
+                    );
+                }
 
                 var json = JsonConvert.SerializeObject(coverallsData);
                 SendToCoveralls(json);
@@ -91,8 +89,7 @@ namespace coveralls.net
         {
             if (Options.DebugMode)
             {
-                Console.WriteLine("[debug] > Coveralls Data: \n{0}",
-                    JsonPrettyPrint(json));
+                Console.WriteLine(Resources.CoverallsJsonHeader, JsonPrettyPrint(json));
             }
 
             // Send to coveralls.io

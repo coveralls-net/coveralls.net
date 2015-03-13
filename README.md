@@ -7,54 +7,30 @@ coveralls.net
 
 Coveralls uploader for .Net code coverage reporting
 
-
-
 ## Getting started
 
 Coveralls is a service which keep track of code coverate statistics. The process is as follows
 
-* You push your code to GitHub.
-* Your build server AppVeyor builds, runs unit tests, and using `coveralls.net` sends coverage information to the coverage service.
-* In turn, your coveralls badge gets updated.
+* Push your code to GitHub
+* Build server builds, runs unit tests, and using `coveralls.net`, sends coverage information to [coveralls.io](http://coveralls.io)
+* Your project's coveralls badge gets updated
 
-Getting started is easy, just do the following
+For detailed instructions, please visit the [wiki](https://github.com/coveralls-net/coveralls.net/wiki)
 
-0. Using nuget, add the following dependencies to your project `nunit-runner`, `coveralls.net`, `opencover`.
-1. Separate your test files into a separate `...Tests` project.
-1. We assume you already have a set up with AppVeyor. If not get started on that.
-2. Register at https://coveralls.io/ and point to your github project
-3. Coveralls will the tell you your secret token like `repo_token: PlKcHlYUjBpsvFEzSnScYzMDseJi9ASNx`
-4. Do not publish this token, instead encrypt it using https://ci.appveyor.com/tools/encrypt
-5. Add a `appveyor.yml` to the root of your project. The minimum configuration probably is:
+## Supported Coverage Frameworks
 
-```
-version: 1.0.{build}
-
-install:
-    - nuget restore
-    
-build:
-  project: YOURPROJECT.sln
-  verbosity: detailed
-
-environment:
-    COVERALLS_REPO_TOKEN:  
-       secure: ybaVTwokoDe5aIFj3RF2Aea5999hmNS7zaLNnSSy0tJkaC+3SJ3MpBbeTVZqF3q+
- 
-after_test: 
-    - packages\OpenCover.4.5.3522\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"packages\NUnit.Runners.2.6.4\tools\nunit-console.exe" -targetargs:"/noshadow /domain:single  YOURPROJECT.Tests\bin\debug\YOURPROJECT.Tests.dll" -output:coverage.xml
-        
-    - packages\coveralls.io.1.1.86\tools\coveralls.net.exe --opencover coverage.xml
-```
- 
-For a more elaborate example look at https://github.com/jdeering/coveralls.net/blob/master/appveyor.yml
- 
-
-## Supported Frameworks
+#### Coverage Tools
 
 * [OpenCover](https://github.com/sawilde/opencover)
 
+#### CI Services
+
+* AppVeyor
+* Jenkins
+
 ## Planned
+
+#### Coverage Tools
 
 These are the remaining targets, but I'm not sure how far I will be able to get on my own. If you would like to help, please
 fork this repository
@@ -63,6 +39,11 @@ fork this repository
 * [Mono Code Coverage (monocov)](http://www.mono-project.com/docs/debug+profile/profile/code-coverage/)
 * [Visual Studio Coverage](http://msdn.microsoft.com/en-us/library/dd299398%28v=vs.90%29.aspx)
 * [NCover](https://www.ncover.com/)
+
+#### CI Services
+
+* Travis CI
+* Bamboo
 
 ## Versioning
 

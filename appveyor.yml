@@ -111,7 +111,7 @@
 
   install:
     - nuget restore
-    - nuget install PublishCoverity
+    - nuget install PublishCoverity -ExcludeVersion
 
   build_script:
   - ps: |
@@ -120,7 +120,7 @@
       C:\Tools\Coverity\bin\cov-build.exe --dir cov-int $buildCmd $buildArgs
   
       # Compress scan data
-      PublishCoverity compress -o coverity.zip -i cov-int	
+      packages\PublishCoverity\PublishCoverity.exe compress -o coverity.zip -i cov-int	
 
       # Upload scan data
-      PublishCoverity publish -z coverity.zip -r coveralls-net/coveralls.net -t $env:CoverityProjectToken -e jason@deering.me
+      packages\PublishCoverity\PublishCoverity.exe publish -z coverity.zip -r coveralls-net/coveralls.net -t $env:CoverityProjectToken -e jason@deering.me

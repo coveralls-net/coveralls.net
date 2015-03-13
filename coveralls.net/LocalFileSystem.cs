@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Coveralls;
 
-namespace coveralls.net
+namespace Coveralls.Net
 {
     internal class LocalFileSystem : IFileSystem
     {

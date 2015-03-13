@@ -117,10 +117,6 @@
   - ps: |
       $buildCmd = "msbuild.exe"
       $buildArgs = @("/m", "/l:C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll")    
-      C:\Tools\Coverity\bin\cov-build.exe --dir cov-int $buildCmd $buildArgs
-  
-      # Compress scan data
-      packages\PublishCoverity\PublishCoverity.exe compress -o coverity.zip -i cov-int	
-
-      # Upload scan data
-      packages\PublishCoverity\PublishCoverity.exe publish -z coverity.zip -r coveralls-net/coveralls.net -t $env:CoverityProjectToken -e jason@deering.me
+      C:\Tools\Coverity\bin\cov-build.exe --dir cov-int $buildCmd $buildArgs  
+  - cmd: packages\PublishCoverity\PublishCoverity.exe compress -o coverity.zip -i cov-int
+  - cmd: packages\PublishCoverity\PublishCoverity.exe publish -z coverity.zip -r coveralls-net/coveralls.net -t $env:CoverityProjectToken -e jason@deering.me

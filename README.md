@@ -25,8 +25,8 @@ For detailed instructions, please visit the [wiki](https://github.com/coveralls-
 
 #### CI Services
 
-* AppVeyor
-* Jenkins
+* [AppVeyor](http://www.appveyor.com/)
+* [Jenkins](http://jenkins-ci.org/)
 
 ## Planned
 
@@ -42,8 +42,8 @@ fork this repository
 
 #### CI Services
 
-* Travis CI
-* Bamboo
+* [Travis CI](https://travis-ci.org)
+* [Bamboo](https://www.atlassian.com/software/bamboo)
 
 ## Versioning
 

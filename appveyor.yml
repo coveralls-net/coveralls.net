@@ -107,7 +107,7 @@
 
   environment:
     CoverityProjectToken:
-      secure: +VAAznzxTI0Qnyi7WhS4BLFurv44+WtkNP/Wa39zlLY=
+      secure: d8DfQb7jeKo/QQGV1bv10ba8+8b0HstE8QFt1C0kV6w=
 
   install:
     - nuget restore
@@ -119,4 +119,4 @@
       C:\Tools\Coverity\bin\cov-build.exe --dir cov-int $buildCmd $buildArgs  
   - cmd: nuget install PublishCoverity -ExcludeVersion
   - cmd: PublishCoverity\PublishCoverity.exe compress -o coverity.zip -i cov-int
-  - cmd: PublishCoverity\PublishCoverity.exe publish -z coverity.zip -r coveralls.net -t %CoverityProjectToken% -e jason@deering.me --nologo
+  - cmd: PublishCoverity\PublishCoverity.exe publish -z coverity.zip -r jdeering/coveralls.net -t %CoverityProjectToken% -e jason@deering.me --nologo

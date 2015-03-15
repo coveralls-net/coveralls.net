@@ -1,0 +1,20 @@
+version: 1.2.{build}-pr
+
+configuration: Debug
+
+assembly_info:
+  patch: true
+  file: AssemblyInfo.*
+  assembly_version: "{version}"
+  assembly_file_version: "{version}"
+  assembly_informational_version: "{version}"
+
+nuget:
+  disable_publish_on_pr: true
+
+install:
+  - nuget restore
+
+build:
+  project: coveralls.net.sln
+  verbosity: minimal

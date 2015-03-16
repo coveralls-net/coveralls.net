@@ -10,27 +10,31 @@ namespace Coveralls.Net
 {
     internal class Program
     {
-        internal static CommandLineOptions Options;
-
         internal static void Main(string[] args)
         {
-            Options = Parser.Default.ParseArguments<CommandLineOptions>(args).Value;
-            
-            if (Options.DebugMode)
+            try
+            {
+                var options = Parser.Default.ParseArguments<CommandLineOptions>(args).Value;
+                Run(options);
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(Resources.GenericError);
+                Console.Error.WriteLine(e.Message);
+                Environment.Exit(1);
+            }
+        }
+
+        internal static void Run(CommandLineOptions options)
+        {
+            if (options.DebugMode)
             {
                 Console.WriteLine(Resources.RepoTokenDebug, Environment.GetEnvironmentVariable("COVERALLS_REPO_TOKEN"));
             }
 
-            try
+            using (var coveralls = new CoverallsBootstrap(options))
             {
-                var coveralls = new CoverallsBootstrap(Options)
-                {
-                    FileSystem = new LocalFileSystem()
-                };
-
-                // Use specified repo token over Environment variable
-                if (Options.CoverallsRepoToken.IsNotBlank())
-                    coveralls.RepoToken = Options.CoverallsRepoToken;
+                coveralls.FileSystem = new LocalFileSystem();
 
                 if (!coveralls.CoverageFiles.Any())
                 {
@@ -49,49 +53,24 @@ namespace Coveralls.Net
                     return;
                 }
 
-                var sourceFiles = coveralls.CoverageFiles;
-                foreach (var file in sourceFiles)
+                foreach (var file in coveralls.CoverageFiles)
+                {
                     file.Path = file.Path.ToRelativePath(Directory.GetCurrentDirectory());
-
-                var coverallsData = new CoverallsData
-                {
-                    ServiceName = coveralls.ServiceName,
-                    ServiceJobId = coveralls.ServiceJobId,
-                    RepoToken = coveralls.RepoToken,
-                    SourceFiles = coveralls.CoverageFiles.ToArray(),
-                    Git = coveralls.Repository.Data
-                };
-
-                if (Options.DebugMode)
-                {
-                    Console.Write(Resources.CoverallsDebug, 
-                        coverallsData.ServiceName,
-                        coverallsData.ServiceJobId,
-                        coverallsData.SourceFiles.Count(),
-                        coverallsData.Git.Head.Id
-                    );
                 }
 
+                var coverallsData = coveralls.GetData();
                 var json = JsonConvert.SerializeObject(coverallsData);
                 SendToCoveralls(json);
-            }
-            catch (Exception e)
-            {
-                Console.Error.WriteLine(e.Message);
-                if (e.InnerException != null)
-                    Console.Error.WriteLine(e.InnerException.Message);
 
-                Environment.Exit(1);
+                if (options.DebugMode)
+                {
+                    Console.WriteLine(Resources.CoverallsJsonHeader, JsonPrettyPrint(json));
+                }
             }
         }
 
-        internal static void SendToCoveralls(string json)
+        internal static bool SendToCoveralls(string json)
         {
-            if (Options.DebugMode)
-            {
-                Console.WriteLine(Resources.CoverallsJsonHeader, JsonPrettyPrint(json));
-            }
-
             // Send to coveralls.io
             HttpResponseMessage response;
             using (var client = new HttpClient())
@@ -105,13 +84,14 @@ namespace Coveralls.Net
 
             if (!response.IsSuccessStatusCode)
             {
-                var msg = string.Format("Error sending to coveralls.io ({0} - {1}).", 
+                var msg = string.Format("Error {0} sending to coveralls.io: {1}", 
                     response.StatusCode,
                     response.ReasonPhrase);
-                msg += "\n - Error code 422 indicate a problem with your token. Try using the --debug commandline option.";
-
-                throw new CoverallsException(msg);
+                msg += "\n - Error code 422 indicate a problem with your token. Use the --debug option for more details.";
+                Console.Error.WriteLine(msg);
             }
+
+            return response.IsSuccessStatusCode;
         }
 
         internal static string JsonPrettyPrint(string json)

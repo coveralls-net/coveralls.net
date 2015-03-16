@@ -77,14 +77,13 @@ namespace Coveralls
         {
             get
             {
+                _repoToken = _opts.CoverallsRepoToken;
                 if (_repoToken.IsBlank())
                 {
                     _repoToken = Environment.GetEnvironmentVariable("COVERALLS_REPO_TOKEN");
                 }
-
                 return _repoToken;
             }
-            set { _repoToken = value; }
         }
 
 
@@ -117,7 +116,8 @@ namespace Coveralls
                         }
                     }
 
-                    if(coverageFileList.Any()) _files = coverageFileList;
+                    if (coverageFileList.Any())
+                        this._files = coverageFileList;
                 }
 
                 return _files;
@@ -159,5 +159,16 @@ namespace Coveralls
             return new OpenCoverParser(FileSystem);
         }
 
+        public CoverallsData GetData()
+        {
+            return new CoverallsData
+            {
+                ServiceName = this.ServiceName,
+                ServiceJobId = this.ServiceJobId,
+                RepoToken = this.RepoToken,
+                SourceFiles = this.CoverageFiles.ToArray(),
+                Git = this.Repository.Data
+            };
+        }
     }
 }

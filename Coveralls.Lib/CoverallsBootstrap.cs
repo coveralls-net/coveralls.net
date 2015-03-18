@@ -77,14 +77,13 @@ namespace Coveralls
         {
             get
             {
+                _repoToken = _opts.CoverallsRepoToken;
                 if (_repoToken.IsBlank())
                 {
                     _repoToken = Environment.GetEnvironmentVariable("COVERALLS_REPO_TOKEN");
                 }
-
                 return _repoToken;
             }
-            set { _repoToken = value; }
         }
 
 
@@ -95,34 +94,30 @@ namespace Coveralls
             {
                 if (_files == null || !_files.Any())
                 {
-                    List<CoverageFile> allCoverageFiles = new List<CoverageFile>();
+                    var coverageFileList = new List<CoverageFile>();
 
-                    foreach (string inputFile in _opts.InputFiles)
+                    foreach (var inputFile in _opts.InputFiles)
                     {
                         var parser = CreateParser();
                         var reportXml = FileSystem.ReadFileText(inputFile);
                         if (reportXml.IsNotBlank())
                         {
                             parser.Report = XDocument.Parse(reportXml);
-                            allCoverageFiles.AddRange(parser.Generate());
+                            coverageFileList.AddRange(parser.Generate());
                         }
                     }
 
-                    // If we want the md5 digest and not the full source, loop through the coverage files
-                    // and set the option on the class.
-
                     if (_opts.SendFullSources)
                     {
-                        foreach(CoverageFile coverageFile in allCoverageFiles)
+                        // Send full source instead of MD5 digest
+                        foreach (var coverageFile in coverageFileList)
                         {
                             coverageFile.Digest = false;
                         }
                     }
 
-                    if(allCoverageFiles.Any())
-                    {
-                        _files = allCoverageFiles;
-                    }
+                    if (coverageFileList.Any())
+                        this._files = coverageFileList;
                 }
 
                 return _files;
@@ -164,5 +159,16 @@ namespace Coveralls
             return new OpenCoverParser(FileSystem);
         }
 
+        public CoverallsData GetData()
+        {
+            return new CoverallsData
+            {
+                ServiceName = this.ServiceName,
+                ServiceJobId = this.ServiceJobId,
+                RepoToken = this.RepoToken,
+                SourceFiles = this.CoverageFiles.ToArray(),
+                Git = this.Repository.Data
+            };
+        }
     }
 }

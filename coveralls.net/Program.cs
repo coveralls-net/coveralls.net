@@ -1,100 +1,76 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using CommandLine;
-using Coveralls;
+using Coveralls.Net.Properties;
 using Newtonsoft.Json;
 
-namespace coveralls.net
+namespace Coveralls.Net
 {
     internal class Program
     {
-        internal static CommandLineOptions Options;
-
         internal static void Main(string[] args)
         {
-            Options = Parser.Default.ParseArguments<CommandLineOptions>(args).Value;
-            
-            if (Options.DebugMode)
-            {
-                Console.WriteLine("[debug] > $env.COVERALLS_REPO_TOKEN: {0}",
-                    Environment.GetEnvironmentVariable("COVERALLS_REPO_TOKEN"));
-            }
-
             try
             {
-                var coveralls = new CoverallsBootstrap(Options)
-                {
-                    FileSystem = new LocalFileSystem()
-                };
+                var options = Parser.Default.ParseArguments<CommandLineOptions>(args).Value;
+                Run(options);
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(Resources.GenericError);
+                Console.Error.WriteLine(e.Message);
+                Environment.Exit(1);
+            }
+        }
 
-                // Use specified repo token over Environment variable
-                if (Options.CoverallsRepoToken.IsNotBlank())
-                    coveralls.RepoToken = Options.CoverallsRepoToken;
+        internal static void Run(CommandLineOptions options)
+        {
+            if (options.DebugMode)
+            {
+                Console.WriteLine(Resources.RepoTokenDebug, Environment.GetEnvironmentVariable("COVERALLS_REPO_TOKEN"));
+            }
+
+            using (var coveralls = new CoverallsBootstrap(options))
+            {
+                coveralls.FileSystem = new LocalFileSystem();
 
                 if (!coveralls.CoverageFiles.Any())
                 {
-                    Console.WriteLine("No coverage statistics files.");
+                    Console.WriteLine(Resources.NoCoverageFilesErrorMessage);
                     return;
                 }
 
                 if (coveralls.RepoToken.IsBlank())
                 {
-                    Console.WriteLine("Blank or invalid Coveralls Repo Token.");
+                    Console.WriteLine(Resources.BlankTokenErrorMessage);
 
                     if (coveralls.ServiceName == "appveyor")
                     {
-                        Console.WriteLine(" - Did you prefix your token with 'secure:' without encrypting it?");
-                        Console.WriteLine(" - Is this a Pull Request? AppVeyor does not decrypt environment variables for pull requests.");
+                        Console.Write(Resources.AppVeyorBlankToken);
                     }
                     return;
                 }
 
-                var sourceFiles = coveralls.CoverageFiles;
-                foreach (var file in sourceFiles)
-                    file.Path = file.Path.ToRelativePath(Directory.GetCurrentDirectory());
-
-                var coverallsData = new CoverallsData
+                foreach (var file in coveralls.CoverageFiles)
                 {
-                    ServiceName = coveralls.ServiceName,
-                    ServiceJobId = coveralls.ServiceJobId,
-                    RepoToken = coveralls.RepoToken,
-                    SourceFiles = coveralls.CoverageFiles.ToArray(),
-                    Git = coveralls.Repository.Data
-                };
+                    file.Path = file.Path.ToRelativePath(Directory.GetCurrentDirectory());
+                }
 
-                Console.WriteLine("     Service: {0}", coverallsData.ServiceName);
-                Console.WriteLine("      Job ID: {0}", coverallsData.ServiceJobId);
-                Console.WriteLine("       Files: {0}", coverallsData.SourceFiles.Count());
-                Console.WriteLine("      Commit: {0}", coverallsData.Git.Head.Id);
-                Console.WriteLine("Pull Request: {0}", coverallsData.Git.Head.Id);
-
+                var coverallsData = coveralls.GetData();
                 var json = JsonConvert.SerializeObject(coverallsData);
                 SendToCoveralls(json);
-            }
-            catch (Exception e)
-            {
-                Console.Error.WriteLine(e.Message);
-                if (e.InnerException != null)
-                    Console.Error.WriteLine(e.InnerException.Message);
 
-                Environment.Exit(1);
+                if (options.DebugMode)
+                {
+                    Console.WriteLine(Resources.CoverallsJsonHeader, JsonPrettyPrint(json));
+                }
             }
         }
 
-        internal static void SendToCoveralls(string json)
+        internal static bool SendToCoveralls(string json)
         {
-            if (Options.DebugMode)
-            {
-                Console.WriteLine("[debug] > Coveralls Data: \n{0}",
-                    JsonPrettyPrint(json));
-            }
-
             // Send to coveralls.io
             HttpResponseMessage response;
             using (var client = new HttpClient())
@@ -108,13 +84,14 @@ namespace coveralls.net
 
             if (!response.IsSuccessStatusCode)
             {
-                var msg = string.Format("Error sending to coveralls.io ({0} - {1}).", 
+                var msg = string.Format("Error {0} sending to coveralls.io: {1}", 
                     response.StatusCode,
                     response.ReasonPhrase);
-                msg += "\n - Error code 422 indicate a problem with your token. Try using the --debug commandline option.";
-
-                throw new CoverallsException(msg);
+                msg += "\n - Error code 422 indicate a problem with your token. Use the --debug option for more details.";
+                Console.Error.WriteLine(msg);
             }
+
+            return response.IsSuccessStatusCode;
         }
 
         internal static string JsonPrettyPrint(string json)

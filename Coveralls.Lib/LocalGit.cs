@@ -8,7 +8,7 @@ namespace Coveralls
 {
     public class LocalGit : GitRepository
     {
-        private Repository _repository;
+        protected Repository _repository;
         public LocalGit()
         {
             var workingDirectory = Directory.GetCurrentDirectory();

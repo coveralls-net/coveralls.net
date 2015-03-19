@@ -139,7 +139,7 @@ namespace Coveralls.Tests
             var opts = Substitute.For<ICommandOptions>();
             var coveralls = new CoverallsBootstrap(opts);
 
-            coveralls.Repository.Should().BeOfType<LocalGit>();
+            coveralls.Repository.Should().BeOfType<JenkinsGit>();
         }
 
         [Test]

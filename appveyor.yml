@@ -1,4 +1,4 @@
-version: 1.3.2
+version: 1.3.2.2
 
 skip_tags: true
 
@@ -23,7 +23,7 @@ build:
 
 before_deploy:
   - cd coveralls.net\package
-  - nuget pack coveralls.net.nuspec -Version "%APPVEYOR_BUILD_VERSION%"
+  - nuget pack coveralls.net.nuspec -Version "1.3.2"
   - ps: Get-ChildItem .\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
 
 deploy:

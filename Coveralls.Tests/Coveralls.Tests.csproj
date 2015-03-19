@@ -68,7 +68,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LocalGitTests.cs" />
     <Compile Include="JenkinsGitTests.cs" />
     <Compile Include="CoverallsDataTests.cs" />
     <Compile Include="GitDataSerializationTests.cs" />

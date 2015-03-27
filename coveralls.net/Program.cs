@@ -19,8 +19,9 @@ namespace Coveralls.Net
             }
             catch (Exception e)
             {
-                Console.Error.WriteLine(Resources.GenericError);
-                Console.Error.WriteLine(e.Message);
+                Console.WriteLine(Resources.GenericError);
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
                 Environment.Exit(1);
             }
         }
@@ -88,7 +89,7 @@ namespace Coveralls.Net
                     response.StatusCode,
                     response.ReasonPhrase);
                 msg += "\n - Error code 422 indicate a problem with your token. Use the --debug option for more details.";
-                Console.Error.WriteLine(msg);
+                Console.WriteLine(msg);
             }
 
             return response.IsSuccessStatusCode;

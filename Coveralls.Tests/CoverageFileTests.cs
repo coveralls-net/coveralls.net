@@ -13,33 +13,10 @@ namespace Coveralls.Tests
     public class CoverageFileTests
     {
         [Test]
-        public void Source_DigestTrue_ReturnsNull()
-        {
-            var sourceText = "Line1\r\nLine2\r\nLine3";
-            var coverageFile = new CoverageFile();
-            coverageFile.Digest = true;
-            coverageFile.Source = sourceText;
-
-            coverageFile.Source.Should().BeNull();
-        }
-
-        [Test]
-        public void SourceDigest_DigestFalse_ReturnsNull()
-        {
-            var sourceText = "Line1\r\nLine2\r\nLine3";
-            var coverageFile = new CoverageFile();
-            coverageFile.Digest = false;
-            coverageFile.Source = sourceText;
-
-            coverageFile.SourceDigest.Should().BeNull();
-        }
-
-        [Test]
         public void Source_SetToGet_ConvertsToUnixLineBreaks()
         {
             var sourceText = "Line1\r\nLine2\r\nLine3";
             var coverageFile = new CoverageFile();
-            coverageFile.Digest = false;
 
             coverageFile.Source = sourceText;
 
@@ -51,7 +28,6 @@ namespace Coveralls.Tests
         {
             var sourceText = "Line1\nLine2\nLine3";
             var coverageFile = new CoverageFile();
-            coverageFile.Digest = false;
 
             coverageFile.Source = sourceText;
 

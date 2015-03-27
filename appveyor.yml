@@ -1,4 +1,4 @@
-version: 1.3.3.{build}-rc
+version: 1.3.3-rc.{build}
 
 skip_tags: true
 
@@ -33,3 +33,12 @@ test_script:
 
 after_test:
   - coveralls.net\package\tools\coveralls.net.exe --opencover coverage.xml
+
+deploy:
+  - provider: GitHub
+    release: v$(appveyor_build_version)
+    auth_token:
+      secure: WRmagJhEEWkaFh1uKE4V2ppO8s6SxDDX4GKUbsphUuAeutB/B/H5OJp/g/V3lNiX
+    artifact: /.*\.nupkg/
+    draft: false
+    prerelease: true

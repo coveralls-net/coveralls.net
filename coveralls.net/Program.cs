@@ -21,6 +21,7 @@ namespace Coveralls.Net
             {
                 Console.WriteLine(Resources.GenericError);
                 Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
                 Environment.Exit(1);
             }
         }

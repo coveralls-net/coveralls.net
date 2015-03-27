@@ -19,7 +19,7 @@ namespace Coveralls
         [JsonProperty("source", NullValueHandling = NullValueHandling.Ignore)]
         public string Source
         {
-            get { return Digest ? null : _source; }
+            get { return _source; }
             set
             {
                 _coverage = null;
@@ -42,38 +42,7 @@ namespace Coveralls
         }
 
         [JsonProperty("source_digest", NullValueHandling = NullValueHandling.Ignore)]
-        public string SourceDigest
-        {
-            get
-            {
-                if (!Digest) return null;
-
-                var hash = MD5.Create();
-                var md5Digest = hash.ComputeHash(Encoding.UTF8.GetBytes(_source));
-
-                var builder = new StringBuilder();
-                foreach (var b in md5Digest) 
-                {
-                    builder.Append(b.ToString("x2"));
-                }
-                return builder.ToString();
-            }
-        }
-
-        private bool _digest = true;
-
-        [JsonIgnore]
-        public bool Digest
-        { 
-            get 
-            { 
-                return _digest; 
-            }
-            set 
-            { 
-                _digest = value; 
-            }
-        }
+        public string SourceDigest { get; set; }
 
         private IEnumerable<int?> _coverage;
 

@@ -143,20 +143,7 @@ namespace Coveralls.Tests
         }
 
         [Test]
-        public void CoverageFiles_NoReportFile_ThrowsException()
-        {
-            var fileSystem = Substitute.For<IFileSystem>();
-            fileSystem.ReadFileText("").ReturnsForAnyArgs(a => null);
-
-            var opts = Substitute.For<ICommandOptions>();
-            var coveralls = new CoverallsBootstrap(opts);
-            coveralls.FileSystem = fileSystem;
-
-            coveralls.CoverageFiles.Should().BeNull();
-        }
-
-        [Test]
-        public void CoverageFiles_EmptyReportFile_CoverageFilesIsNull()
+        public void CoverageFiles_EmptyReportFile_CoverageFilesIsEmpty()
         {
             var fileSystem = Substitute.For<IFileSystem>();
             fileSystem.ReadFileText("").ReturnsForAnyArgs("");
@@ -165,7 +152,7 @@ namespace Coveralls.Tests
             var coveralls = new CoverallsBootstrap(opts);
             coveralls.FileSystem = fileSystem;
 
-            coveralls.CoverageFiles.Should().BeNull();
+            coveralls.CoverageFiles.Should().BeEmpty();
         }
 
         [Test]

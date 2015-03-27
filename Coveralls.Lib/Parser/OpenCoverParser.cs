@@ -7,7 +7,7 @@ namespace Coveralls
 {
     public class OpenCoverParser : BaseParser
     {
-        public OpenCoverParser(IFileSystem fileSystem) : base(fileSystem)
+        public OpenCoverParser()
         {
         }
 
@@ -29,8 +29,7 @@ namespace Coveralls
 
                     var coverageFile = new CoverageFile
                     {
-                        Path = fullPath.ToUnixPath(),
-                        Source = FileSystem.ReadFileText(fullPath)
+                        Path = fullPath.ToUnixPath()
                     };
 
                     foreach (var @class in module.XPathSelectElements("./Classes/Class"))

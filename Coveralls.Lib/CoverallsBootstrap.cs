@@ -37,7 +37,7 @@ namespace Coveralls
 
         public void Dispose()
         {
-            _repository.Dispose();
+            if(_repository != null) _repository.Dispose();
             GC.SuppressFinalize(this);
         }
 
@@ -132,8 +132,7 @@ namespace Coveralls
                         }
                     }
 
-                    if (coverageFileList.Any())
-                        this._files = coverageFileList;
+                    _files = coverageFileList;
                 }
 
                 return _files;

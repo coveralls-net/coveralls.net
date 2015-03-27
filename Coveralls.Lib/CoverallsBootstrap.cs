@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Xml.Linq;
 
 namespace Coveralls
@@ -34,7 +37,7 @@ namespace Coveralls
 
         public void Dispose()
         {
-            _repository.Dispose();
+            if(_repository != null) _repository.Dispose();
             GC.SuppressFinalize(this);
         }
 
@@ -109,15 +112,27 @@ namespace Coveralls
 
                     if (_opts.SendFullSources)
                     {
-                        // Send full source instead of MD5 digest
                         foreach (var coverageFile in coverageFileList)
                         {
-                            coverageFile.Digest = false;
+                            coverageFile.Source = FileSystem.ReadFileText(coverageFile.Path);
+                        }
+                    }
+                    else
+                    {
+                        foreach (var coverageFile in coverageFileList)
+                        {
+                            var hash = FileSystem.ComputeHash(coverageFile.Path);
+
+                            var builder = new StringBuilder();
+                            foreach (var b in hash)
+                            {
+                                builder.Append(b.ToString("x2"));
+                            }
+                            coverageFile.SourceDigest = builder.ToString();
                         }
                     }
 
-                    if (coverageFileList.Any())
-                        this._files = coverageFileList;
+                    _files = coverageFileList;
                 }
 
                 return _files;
@@ -154,9 +169,9 @@ namespace Coveralls
             switch (_opts.Parser)
             {
                 case ParserType.OpenCover:
-                    return new OpenCoverParser(FileSystem);
+                    return new OpenCoverParser();
             }
-            return new OpenCoverParser(FileSystem);
+            return new OpenCoverParser();
         }
 
         public CoverallsData GetData()

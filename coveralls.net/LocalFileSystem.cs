@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Security.Cryptography;
 using Coveralls;
 
 namespace Coveralls.Net
@@ -7,15 +8,32 @@ namespace Coveralls.Net
     {
         public string ReadFileText(string path)
         {
-            if (!Path.IsPathRooted(path))
-                path = Directory.GetCurrentDirectory() + "\\" + path;
+            var rootedPath = RootedPath(path);
 
-            if (File.Exists(path))
+            if (File.Exists(rootedPath))
             {
-                var content = File.ReadAllText(path);
+                var content = File.ReadAllText(rootedPath);
                 return content;
             }
             return null;
+        }
+
+        public byte[] ComputeHash(string path)
+        {
+            var rootedPath = RootedPath(path);
+
+            using (var md5 = MD5.Create())
+            {
+                using (var stream = new BufferedStream(File.OpenRead(rootedPath), 1200000))
+                {
+                    return md5.ComputeHash(stream);
+                }
+            }
+        }
+
+        private string RootedPath(string path)
+        {
+            return Path.IsPathRooted(path) ? path : string.Format(@"{0}\{1}", Directory.GetCurrentDirectory(), path);
         }
     }
 }

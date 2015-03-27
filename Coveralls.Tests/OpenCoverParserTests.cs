@@ -12,8 +12,7 @@ namespace Coveralls.Tests
         [Test]
         public void EmptyReport_NoResults()
         {
-            var fileSystem = Substitute.For<IFileSystem>();
-            var parser = new OpenCoverParser(fileSystem) { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.OpenCover.EmptyReport.xml") };
+            var parser = new OpenCoverParser() { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.OpenCover.EmptyReport.xml") };
 
             var results = parser.Generate();
 
@@ -23,8 +22,7 @@ namespace Coveralls.Tests
         [Test]
         public void SingleFileReport_OneCoverageFile()
         {
-            var fileSystem = Substitute.For<IFileSystem>();
-            var parser = new OpenCoverParser(fileSystem) { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.OpenCover.SingleFileCoverage.xml") };
+            var parser = new OpenCoverParser() { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.OpenCover.SingleFileCoverage.xml") };
 
             var results = parser.Generate();
 
@@ -34,8 +32,7 @@ namespace Coveralls.Tests
         [Test]
         public void SingleFileReport_CoverageFile_ShouldHaveCorrectFileName()
         {
-            var fileSystem = Substitute.For<IFileSystem>();
-            var parser = new OpenCoverParser(fileSystem) { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.OpenCover.SingleFileCoverage.xml") };
+            var parser = new OpenCoverParser() { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.OpenCover.SingleFileCoverage.xml") };
 
             var coverageFile = parser.Generate().First();
 
@@ -43,29 +40,13 @@ namespace Coveralls.Tests
         }
 
         [Test]
-        public void SingleFileReport_CoverageFile_LineCountShouldBeCorrect()
-        {
-            var fileSystem = Substitute.For<IFileSystem>();
-            fileSystem.ReadFileText(@"c:\src\SymSharp\Symitar\Utilities.cs")
-                .Returns(TestHelpers.LoadResourceText("Coveralls.Tests.Files.Utilities.cs"));
-            var parser = new OpenCoverParser(fileSystem) { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.OpenCover.SingleFileCoverage.xml") };
-            
-            var coverageFile = parser.Generate().First();
-            coverageFile.Digest = false;
-
-            coverageFile.Source.Split('\n').Length.Should().Be(140);
-        }
-
-        [Test]
         public void SingleFileReport_CoverageFile_LineCoverageShouldMatchForSomeLines()
         {
-            var fileSystem = Substitute.For<IFileSystem>();
-            fileSystem.ReadFileText(@"c:\src\SymSharp\Symitar\Utilities.cs")
-                .Returns(TestHelpers.LoadResourceText("Coveralls.Tests.Files.Utilities.cs"));
-            var parser = new OpenCoverParser(fileSystem) { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.OpenCover.SingleFileCoverage.xml") };
+            var parser = new OpenCoverParser() { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.OpenCover.SingleFileCoverage.xml") };
 
             var coverageFile = parser.Generate().First();
-            coverageFile.Digest = false;
+
+            coverageFile.Source = TestHelpers.LoadResourceText("Coveralls.Tests.Files.Utilities.cs");
 
             var lines = coverageFile.Source.Split(new[] {'\n'});
 

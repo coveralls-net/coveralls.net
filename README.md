@@ -9,7 +9,7 @@ Coveralls uploader for .Net code coverage reporting
 
 ## Getting started
 
-Coveralls is a service which keep track of code coverate statistics. The process is as follows
+Coveralls is a service which keep track of code coverage statistics. The process is as follows:
 
 * Push your code to GitHub
 * Build server builds, runs unit tests, and using `coveralls.net`, sends coverage information to [coveralls.io](http://coveralls.io)
@@ -30,8 +30,8 @@ For detailed instructions, please visit the [wiki](https://github.com/coveralls-
 
 ## Planned
 
-These are the remaining targets, but I'm not sure how far I will be able to get on my own. If you would like to help, please
-fork this repository
+These are the current (hopeful) targets, but I'm not sure how far I will be able to get on my own. 
+If you would like to help, please fork this repository
 
 #### Coverage Tools
 
@@ -44,6 +44,7 @@ fork this repository
 
 * [Travis CI](https://travis-ci.org)
 * [Bamboo](https://www.atlassian.com/software/bamboo)
+* [TeamCity](https://www.jetbrains.com/teamcity/)
 
 ## Versioning
 

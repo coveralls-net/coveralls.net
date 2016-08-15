@@ -42,5 +42,30 @@ namespace Coveralls.Tests
             var remotes = JsonConvert.DeserializeObject<GitRemotes>(data);
             remotes.Uri.Should().Be("/jdeering/coveralls.net.git");
         }
+        
+
+        [Test]
+        public void Serialize_RelativeUrlFormat_UriIsCorrect()
+        {
+            var data = @"{
+                ""name"" : ""origin"",
+                ""url"" : ""/jdeering/coveralls.net.git"",
+            }";
+
+            var remotes = JsonConvert.DeserializeObject<GitRemotes>(data);
+            remotes.Uri.Should().Be("/jdeering/coveralls.net.git");
+        }
+        
+
+        [Test]
+        public void Serialize_JsonStringIsCorrect()
+        {
+            var remote = new GitRemotes();
+            remote.Name = "origin";
+            remote.Uri = new System.Uri("/jdeering/coveralls.net.git", System.UriKind.Relative);
+            
+            var data = JsonConvert.SerializeObject(remote);
+            data.Should().Be(@"{""name"":""origin"",""url"":""/jdeering/coveralls.net.git""}");
+        }
     }
 }

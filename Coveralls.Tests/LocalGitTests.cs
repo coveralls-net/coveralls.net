@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Xml.Linq;
 using Coveralls;
 using FluentAssertions;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace Coveralls.Tests
@@ -14,7 +15,10 @@ namespace Coveralls.Tests
         [Test]
         public void Branches_ShouldContainMaster()
         {
-            var git = new LocalGit();
+            var fileSystem = Substitute.For<IFileSystem>();
+            fileSystem.GetCurrentDirectory().Returns(Directory.GetCurrentDirectory());
+
+            var git = new LocalGit(fileSystem);
             git.Branches.Should().Contain("master");
         }
     }

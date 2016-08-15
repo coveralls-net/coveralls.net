@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
 using Coveralls;
@@ -39,6 +40,16 @@ namespace Coveralls.Tests
         }
 
         [Test]
+        public void Branches_EnvVariableSet_IsTheOnlyValue()
+        {
+            Environment.SetEnvironmentVariable("APPVEYOR_REPO_BRANCH", "master");
+
+            var git = new AppVeyorGit();
+
+            git.Branches.Single().Should().Be("master");
+        }
+
+        [Test]
         public void Head_EnvVariablesNotSet_HasNullValues()
         {
             var git = new AppVeyorGit();
@@ -63,6 +74,19 @@ namespace Coveralls.Tests
             git.Head.Message.Should().Be("Initial commit");
             git.Head.Author.Should().Be("jdeering");
             git.Head.AuthorEmail.Should().Be("jason@deering.me");
+        }
+
+        [Test]
+        public void Commits_EnvVariablesSet_OnlyContainsHead()
+        {
+            Environment.SetEnvironmentVariable("APPVEYOR_REPO_COMMIT", "1234abcd");
+            Environment.SetEnvironmentVariable("APPVEYOR_REPO_COMMIT_MESSAGE", "Initial commit");
+            Environment.SetEnvironmentVariable("APPVEYOR_REPO_COMMIT_AUTHOR", "jdeering");
+            Environment.SetEnvironmentVariable("APPVEYOR_REPO_COMMIT_AUTHOREMAIL", "jason@deering.me");
+
+            var git = new AppVeyorGit();
+
+            git.Commits.Single().Should().Be(git.Head);
         }
 
         [Test]

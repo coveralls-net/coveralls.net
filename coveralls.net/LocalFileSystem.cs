@@ -31,9 +31,14 @@ namespace Coveralls.Net
             }
         }
 
+        public string GetCurrentDirectory()
+        {
+            return Directory.GetCurrentDirectory();
+        }
+
         private string RootedPath(string path)
         {
-            return Path.IsPathRooted(path) ? path : string.Format(@"{0}\{1}", Directory.GetCurrentDirectory(), path);
+            return Path.IsPathRooted(path) ? path : string.Format(@"{0}\{1}", GetCurrentDirectory(), path);
         }
     }
 }

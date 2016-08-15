@@ -24,7 +24,9 @@ namespace Coveralls
             {
                 _coverage = null;
                 _sourceLineCount = 0;
-                if (string.IsNullOrEmpty(value)) {
+                if (string.IsNullOrEmpty(value))
+                {
+                    // Set to null instead of blank so it is ignored when serialized
                     _source = null;
                     return;
                 }

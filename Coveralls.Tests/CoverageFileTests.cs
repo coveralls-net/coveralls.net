@@ -13,6 +13,17 @@ namespace Coveralls.Tests
     public class CoverageFileTests
     {
         [Test]
+        public void Source_SetEmptyString_BecomesNull()
+        {
+            var sourceText = "";
+            var coverageFile = new CoverageFile();
+
+            coverageFile.Source = sourceText;
+
+            coverageFile.Source.Should().BeNull();
+        }
+
+        [Test]
         public void Source_SetToGet_ConvertsToUnixLineBreaks()
         {
             var sourceText = "Line1\r\nLine2\r\nLine3";

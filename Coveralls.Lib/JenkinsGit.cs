@@ -5,6 +5,9 @@ namespace Coveralls
 {
     public class JenkinsGit : LocalGit
     {
+        public JenkinsGit(IFileSystem fileSystem) : base(fileSystem)
+        { }
+
         public override IEnumerable<string> Branches { get { return new List<string>() { CurrentBranch }; } }
 
         private string _branch;

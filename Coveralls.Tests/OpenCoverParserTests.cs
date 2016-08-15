@@ -10,6 +10,15 @@ namespace Coveralls.Tests
     public class OpenCoverParserTests
     {
         [Test]
+        public void NullReport_NoResults()
+        {
+            var parser = new OpenCoverParser() { Report = null };
+
+            var results = parser.Generate();
+
+            results.Count().Should().Be(0);
+        }
+        [Test]
         public void EmptyReport_NoResults()
         {
             var parser = new OpenCoverParser() { Report = TestHelpers.LoadResourceXml("Coveralls.Tests.Files.OpenCover.EmptyReport.xml") };

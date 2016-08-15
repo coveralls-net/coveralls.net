@@ -153,14 +153,19 @@ namespace Coveralls
                             break;
                         case ServiceType.Jenkins:
                             // Jenkins doesn't provide data about the commit in the environment.
-                            _repository = new JenkinsGit();
+                            _repository = new JenkinsGit(FileSystem);
                             break;
                         default:
-                            _repository = new LocalGit();
+                            _repository = new LocalGit(FileSystem);
                             break;
                     }
                 }
                 return _repository;
+            }
+
+            set
+            {
+                _repository = value;
             }
         }
 

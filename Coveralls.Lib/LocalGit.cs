@@ -8,10 +8,14 @@ namespace Coveralls
 {
     public class LocalGit : GitRepository
     {
+        private IFileSystem _fileSystem;
         protected Repository _repository;
-        public LocalGit()
+
+        public LocalGit(IFileSystem fileSystem)
         {
-            var workingDirectory = Directory.GetCurrentDirectory();
+            _fileSystem = fileSystem;
+
+            var workingDirectory = _fileSystem.GetCurrentDirectory();
 
             var directory = new DirectoryInfo(workingDirectory);
             while (!directory.EnumerateDirectories().Any(x => x.Name == ".git"))

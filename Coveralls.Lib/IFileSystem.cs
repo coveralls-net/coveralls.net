@@ -11,5 +11,6 @@ namespace Coveralls
     {
         string ReadFileText(string path);
         byte[] ComputeHash(string path);
+        string GetCurrentDirectory();
     }
 }

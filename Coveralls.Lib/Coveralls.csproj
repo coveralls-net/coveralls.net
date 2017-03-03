@@ -76,6 +76,7 @@
     <Compile Include="Parser\ICoverageParser.cs" />
     <Compile Include="IFileSystem.cs" />
     <Compile Include="IGitRepository.cs" />
+    <Compile Include="Parser\CoberturaCoverageParser.cs" />
     <Compile Include="Parser\OpenCoverParser.cs" />
     <Compile Include="ParserType.cs" />
     <Compile Include="Parser\BaseParser.cs" />

@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoberturaCoverageParserTests.cs" />
+    <Compile Include="CommandLineOptionsTests.cs" />
     <Compile Include="LocalGitTests.cs" />
     <Compile Include="JenkinsGitTests.cs" />
     <Compile Include="CoverallsDataTests.cs" />
@@ -93,6 +94,10 @@
     <ProjectReference Include="..\Coveralls.Lib\Coveralls.csproj">
       <Project>{f43802c1-065a-4735-8e2d-eca06493b79b}</Project>
       <Name>Coveralls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\coveralls.net\coveralls.net.csproj">
+      <Project>{96d17631-ac88-4dd8-8d4d-aaa200e49010}</Project>
+      <Name>coveralls.net</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

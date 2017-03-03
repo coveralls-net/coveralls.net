@@ -1,4 +1,4 @@
-﻿using Coveralls.Parser;
+﻿using Coveralls;
 using FluentAssertions;
 using NUnit.Framework;
 using System.IO;

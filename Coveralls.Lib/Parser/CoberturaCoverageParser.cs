@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.XPath;
 
-namespace Coveralls.Parser
+namespace Coveralls
 {
     public class CoberturaCoverageParser : BaseParser
     {

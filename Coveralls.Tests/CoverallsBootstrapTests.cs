@@ -59,6 +59,15 @@ namespace Coveralls.Tests
         }
 
         [Test]
+        public void Parser_ParserAutoDetectSpecified_UsesAutoParser()
+        {
+            var opts = Substitute.For<ICommandOptions>();
+            opts.Parser.ReturnsForAnyArgs(ParserType.AutoDetect);
+            var coveralls = new CoverallsBootstrap(opts);
+            coveralls.CreateParser().Should().BeOfType<AutoParser>();
+        }
+
+        [Test]
         public void Parser_ParserTypeUnknown_FailsToInitialize()
         {
             var opts = Substitute.For<ICommandOptions>();

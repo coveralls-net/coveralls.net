@@ -1,11 +1,6 @@
 ﻿using Coveralls.Net;
 using FluentAssertions;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Coveralls.Tests
 {
@@ -20,11 +15,19 @@ namespace Coveralls.Tests
         }
 
         [Test]
-        public void CommandLineOptions_UseCoberturaSpecified_SetsParserCobertura()
+        public void CommandLineOptions_UseCoberturaSpecified_SetsParserToCobertura()
         {
             var opts = new CommandLineOptions();
             opts.UseCobertura = true;
             opts.Parser.Should().Be(ParserType.Cobertura);
+        }
+
+        [Test]
+        public void CommandLineOptions_UseAutoDetectSpecified_SetsParserToAutoDetect()
+        {
+            var opts = new CommandLineOptions();
+            opts.UseAutoDetect = true;
+            opts.Parser.Should().Be(ParserType.AutoDetect);
         }
     }
 }

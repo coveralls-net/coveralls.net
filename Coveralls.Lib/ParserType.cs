@@ -5,6 +5,7 @@
         Default, // OpenCover
         OpenCover,
         Unknown,
-        Cobertura
+        Cobertura,
+        AutoDetect
     }
 }

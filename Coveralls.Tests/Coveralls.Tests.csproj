@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoParserTests.cs" />
     <Compile Include="CoberturaCoverageParserTests.cs" />
     <Compile Include="CommandLineOptionsTests.cs" />
     <Compile Include="LocalGitTests.cs" />

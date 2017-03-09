@@ -175,6 +175,9 @@ namespace Coveralls
             {
                 case ParserType.OpenCover:
                     return new OpenCoverParser();
+
+                case ParserType.DotCover:
+                    return new DotCoverParser();
             }
             return new OpenCoverParser();
         }

@@ -37,7 +37,7 @@ namespace Coveralls.Net
             }
         }
 
-        [Option('p', "parser", HelpText = "Parser to use (Currently only supports OpenCover)")]
+        [Option('p', "parser", HelpText = "Parser to use (Currently only supports OpenCover or DotCover)")]
         public ParserType Parser { get; set; }
 
         [Option('d', "debug", HelpText = "Debug mode. WILL PRINT SENSITIVE DATA")]

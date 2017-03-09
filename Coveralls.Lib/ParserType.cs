@@ -4,6 +4,7 @@
     {
         Default, // OpenCover
         OpenCover,
+        DotCover,
         Unknown
     }
 }

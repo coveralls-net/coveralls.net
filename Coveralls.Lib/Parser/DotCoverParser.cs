@@ -30,9 +30,6 @@ namespace Coveralls
             foreach (var statement in Report.Root.XPathSelectElements("//Root/Assembly/Namespace/Type/Method/Statement"))
             {
                 var covered = BoolAttributeValue(statement, "Covered");
-                if (!covered)
-                    continue;
-
                 var fileIndex = IntAttributeValue(statement, "FileIndex");
                 var startLine = IntAttributeValue(statement, "Line");
                 var endLine = IntAttributeValue(statement, "EndLine");
@@ -46,7 +43,8 @@ namespace Coveralls
                 {
                     if (!lineVisitsForThisFile.ContainsKey(line))
                         lineVisitsForThisFile[line] = 0;
-                    lineVisitsForThisFile[line]++;
+                    if(covered)
+                        lineVisitsForThisFile[line]++;
                 }
             }
 
@@ -61,7 +59,7 @@ namespace Coveralls
                 };
                 foreach (var visit in file.Value)
                 {
-                    coverageFile.Record(visit.Key - 1, visit.Value);
+                    coverageFile.Record(visit.Key, visit.Value);
                 }
                 files.Add(coverageFile);
             }

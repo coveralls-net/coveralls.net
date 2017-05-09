@@ -41,21 +41,30 @@ namespace Coveralls.Tests
         }
 
         [Test]
-        public void Parser_UseOpenCoverSpecified_UsesOpenCoverParser()
-        {
-            var opts = Substitute.For<ICommandOptions>();
-            opts.UseOpenCover.Returns(true);
-            var coveralls = new CoverallsBootstrap(opts);
-            coveralls.CreateParser().Should().BeOfType<OpenCoverParser>();
-        }
-
-        [Test]
         public void Parser_ParserOpenCoverSpecified_UsesOpenCoverParser()
         {
             var opts = Substitute.For<ICommandOptions>();
             opts.Parser.ReturnsForAnyArgs(ParserType.OpenCover);
             var coveralls = new CoverallsBootstrap(opts);
             coveralls.CreateParser().Should().BeOfType<OpenCoverParser>();
+        }
+
+        [Test]
+        public void Parser_ParserCoberturaSpecified_UsesCoberturaParser()
+        {
+            var opts = Substitute.For<ICommandOptions>();
+            opts.Parser.ReturnsForAnyArgs(ParserType.Cobertura);
+            var coveralls = new CoverallsBootstrap(opts);
+            coveralls.CreateParser().Should().BeOfType<CoberturaCoverageParser>();
+        }
+
+        [Test]
+        public void Parser_ParserAutoDetectSpecified_UsesAutoParser()
+        {
+            var opts = Substitute.For<ICommandOptions>();
+            opts.Parser.ReturnsForAnyArgs(ParserType.AutoDetect);
+            var coveralls = new CoverallsBootstrap(opts);
+            coveralls.CreateParser().Should().BeOfType<AutoParser>();
         }
 
         [Test]

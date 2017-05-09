@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Coveralls.Net
 {
-    internal class CommandLineOptions : ICommandOptions
+    public class CommandLineOptions : ICommandOptions
     {
         private List<string> _inputFiles;
 
@@ -37,14 +37,14 @@ namespace Coveralls.Net
             }
         }
 
-        [Option('p', "parser", HelpText = "Parser to use (Currently only supports OpenCover)")]
+        [Option('p', "parser", HelpText = "Parser to use (Currently supports OpenCover, Cobertura and AutoDetect)")]
         public ParserType Parser { get; set; }
 
         [Option('d', "debug", HelpText = "Debug mode. WILL PRINT SENSITIVE DATA")]
         public bool DebugMode { get; set; }
 
         private bool _useOpenCover;
-        [Option("opencover")]
+        [Option("opencover", HelpText = "Use the OpenCover Parser")]
         public bool UseOpenCover
         {
             get { return _useOpenCover; }
@@ -52,6 +52,30 @@ namespace Coveralls.Net
             {
                 _useOpenCover = value;
                 if (_useOpenCover) Parser = ParserType.OpenCover;
+            }
+        }
+
+        private bool _useCobertura;
+        [Option("cobertura", HelpText = "Use the Cobertura Parser")]
+        public bool UseCobertura
+        {
+            get { return _useCobertura; }
+            set
+            {
+                _useCobertura = value;
+                if (_useCobertura) Parser = ParserType.Cobertura;
+            }
+        }
+
+        private bool _useAutoDetect;
+        [Option("autodetect", HelpText = "Use the AutoDetect Parser (chooses parser based on input file)")]
+        public bool UseAutoDetect
+        {
+            get { return _useAutoDetect; }
+            set
+            {
+                _useAutoDetect = value;
+                if (_useAutoDetect) Parser = ParserType.AutoDetect;
             }
         }
 
@@ -92,6 +116,7 @@ namespace Coveralls.Net
                 this.Parser == other.Parser &&
                 this.DebugMode == other.DebugMode &&
                 this.UseOpenCover == other.UseOpenCover &&
+                this.UseCobertura == other.UseCobertura &&
                 this.CoverallsRepoToken == other.CoverallsRepoToken;
         }
 

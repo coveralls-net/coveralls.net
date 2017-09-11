@@ -71,7 +71,6 @@
     <Compile Include="AutoParserTests.cs" />
     <Compile Include="CoberturaCoverageParserTests.cs" />
     <Compile Include="CommandLineOptionsTests.cs" />
-    <Compile Include="LocalGitTests.cs" />
     <Compile Include="JenkinsGitTests.cs" />
     <Compile Include="CoverallsDataTests.cs" />
     <Compile Include="GitDataSerializationTests.cs" />

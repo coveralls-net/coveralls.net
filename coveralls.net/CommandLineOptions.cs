@@ -1,39 +1,42 @@
 ﻿using CommandLine;
 using Coveralls;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Coveralls.Net
 {
     public class CommandLineOptions : ICommandOptions
     {
+        private bool _sendFullSources;
+        private IFileSystem _fileSystem;
         private List<string> _inputFiles;
 
+        public CommandLineOptions()
+        {
+        }
+
+        public CommandLineOptions(IFileSystem fileSystem)
+        {
+            _fileSystem = fileSystem;
+        }
+
         [Value(0)]
+        public string InputFile { get; set; }
+
+        [Option('f', "pattern", HelpText = "File name search pattern ('*' for wildcards)")]
+        public string FileSearchPattern { get; set; }
+
         public IEnumerable<string> InputFiles
         {
-            get { return _inputFiles; }
-            set
+            get
             {
-                // Alter the input list to expand wildcards
+                if (InputFile.IsBlank()) return new List<string>();
+                if (_fileSystem.FileExists(InputFile)) return new List<string> { InputFile };
+                if (!_fileSystem.DirectoryExists(InputFile)) return new List<string>(); // cannot find file or directory provided
+                if (FileSearchPattern.IsBlank()) return new List<string>(); // pattern must be provided for directories
 
-                if (value != null && value.Any())
-                {
-                    _inputFiles = new List<string>();
-
-                    foreach (string input in value)
-                    {
-                        string fileName = System.IO.Path.GetFileName(input);
-                        string path = System.IO.Path.GetDirectoryName(input);
-
-                        if (string.IsNullOrEmpty(path))
-                        {
-                            path = System.Environment.CurrentDirectory;
-                        }
-
-                        _inputFiles.AddRange(System.IO.Directory.GetFiles(path, fileName));
-                    }
-                }
+                return _fileSystem.FileSearch(InputFile, FileSearchPattern, false);
             }
         }
 
@@ -79,7 +82,6 @@ namespace Coveralls.Net
             }
         }
 
-        private bool _sendFullSources;
         [Option('f', "full-sources", DefaultValue = false, HelpText="Send full sources instead of the digest" )]
         public bool SendFullSources
         {

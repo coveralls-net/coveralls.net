@@ -2,16 +2,16 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>coveralls.io</id>
-        <version>1.3</version>
+        <version>1.4.0</version>
         <title>Coveralls.Net</title>
-        <authors>jdeering</authors>
+        <authors>Jason Deering</authors>
         <owners>jdeering</owners>
         <licenseUrl>http://www.gnu.org/licenses/gpl-3.0.txt</licenseUrl>
-        <projectUrl>https://github.com/jdeering/coveralls.net</projectUrl>
+        <projectUrl>https://github.com/coveralls-net/coveralls.net</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Program for sending coverage reports to coveralls.io</description>
         <releaseNotes />
-        <copyright>Copyright 2015</copyright>
+        <copyright>Copyright 2015-2017</copyright>
         <tags>coveralls coveralls.io code coverage reporting</tags>
     </metadata>
 </package>

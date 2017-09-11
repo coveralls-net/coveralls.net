@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Security.Cryptography;
 using Coveralls;
 
@@ -39,6 +40,28 @@ namespace Coveralls.Net
         private string RootedPath(string path)
         {
             return Path.IsPathRooted(path) ? path : string.Format(@"{0}\{1}", GetCurrentDirectory(), path);
+        }
+
+        public bool FileExists(string path)
+        {
+            return File.Exists(path);
+        }
+
+        public bool DirectoryExists(string path)
+        {
+            return Directory.Exists(path);
+        }
+
+        public IEnumerable<string> FileSearch(string directory, string fileSearchPattern)
+        {
+            return FileSearch(directory, fileSearchPattern, false);
+        }
+        
+        public IEnumerable<string> FileSearch(string directory, string fileSearchPattern, bool recursive)
+        {
+            var searchOption = recursive ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly;
+
+            return Directory.GetFiles(directory, fileSearchPattern, searchOption);
         }
     }
 }

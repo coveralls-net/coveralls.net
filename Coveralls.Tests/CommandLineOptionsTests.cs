@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Coveralls.Net;
 using FluentAssertions;
 using NSubstitute;
@@ -69,6 +71,27 @@ namespace Coveralls.Tests
             opts.InputFile = "./";
 
             opts.InputFiles.Should().HaveCount(1);
+        }
+
+        [Test(Description = "Defauilt constructor should default to local file system. This reproduces issue #36.")]
+        public void CommandLineOptions_Defaults_to_LocalFileSystem()
+        {
+            var inputFile = Path.GetTempFileName();
+            try
+            {
+                var opts = new CommandLineOptions {InputFile = inputFile};
+                opts.InputFiles.Single().Should().Be(opts.InputFile);
+            } finally { File.Delete(inputFile); }
+        }
+
+        [Test]
+        public void CommandLineOptions_should_resemble_134_cli_behavior()
+        {
+            const string mask = "*.Coverage.xml";
+            var opts = new CommandLineOptions { InputFile = mask };
+            var dummy = opts.InputFiles;
+            opts.InputFile.Should().Be(Directory.GetCurrentDirectory());
+            opts.FileSearchPattern.Should().Be(mask);
         }
     }
 }

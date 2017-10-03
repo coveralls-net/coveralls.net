@@ -1,4 +1,5 @@
-﻿using CommandLine;
+﻿using System;
+using CommandLine;
 using Coveralls;
 using System.Collections.Generic;
 using System.IO;
@@ -12,12 +13,12 @@ namespace Coveralls.Net
         private IFileSystem _fileSystem;
         private List<string> _inputFiles;
 
-        public CommandLineOptions()
-        {
-        }
+        public CommandLineOptions() : this (new LocalFileSystem())
+        {}
 
         public CommandLineOptions(IFileSystem fileSystem)
         {
+            if (fileSystem == null) throw new ArgumentNullException("fileSystem");
             _fileSystem = fileSystem;
         }
 
@@ -33,6 +34,14 @@ namespace Coveralls.Net
             {
                 if (InputFile.IsBlank()) return new List<string>();
                 if (_fileSystem.FileExists(InputFile)) return new List<string> { InputFile };
+
+                // backwards compatibility to v1.3.x, cf.: issue #36
+                if (InputFile.Contains("*") && FileSearchPattern.IsBlank())
+                {
+                    FileSearchPattern = InputFile;
+                    InputFile = _fileSystem.GetCurrentDirectory();
+                }
+
                 if (!_fileSystem.DirectoryExists(InputFile)) return new List<string>(); // cannot find file or directory provided
                 if (FileSearchPattern.IsBlank()) return new List<string>(); // pattern must be provided for directories
 
@@ -82,7 +91,7 @@ namespace Coveralls.Net
             }
         }
 
-        [Option('f', "full-sources", DefaultValue = false, HelpText="Send full sources instead of the digest" )]
+        [Option('s', "full-sources", DefaultValue = false, HelpText="Send full sources instead of the digest" )]
         public bool SendFullSources
         {
             get { return _sendFullSources; }

@@ -74,6 +74,8 @@ namespace Coveralls.Tests
             git.Head.Message.Should().Be("Initial commit");
             git.Head.Author.Should().Be("jdeering");
             git.Head.AuthorEmail.Should().Be("jason@deering.me");
+            git.Head.Committer.Should().Be("jdeering");
+            git.Head.CommitterEmail.Should().Be("jason@deering.me");
         }
 
         [Test]

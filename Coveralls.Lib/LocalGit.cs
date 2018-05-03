@@ -50,7 +50,9 @@ namespace Coveralls
                         Id = c.Id.Sha,
                         Message = c.Message,
                         Author = c.Author.Name,
-                        AuthorEmail = c.Author.Email
+                        AuthorEmail = c.Author.Email,
+                        Committer = c.Committer.Name,
+                        CommitterEmail = c.Committer.Email
                     });
             }
         }

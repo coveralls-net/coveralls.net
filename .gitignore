@@ -23,3 +23,6 @@ package
 TestResult.xml
 results.xml
 coverage.xml
+
+# Ignore local Visual Studio settings
+.vs/

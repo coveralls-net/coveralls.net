@@ -33,6 +33,10 @@ namespace Coveralls
                         AuthorEmail = Environment.GetEnvironmentVariable("APPVEYOR_REPO_COMMIT_AUTHOREMAIL"),
                         PullRequestId = Environment.GetEnvironmentVariable("APPVEYOR_PULL_REQUEST_NUMBER")
                     };
+
+                    // AppVeyor only supplies author data
+                    _head.Committer = _head.Author;
+                    _head.CommitterEmail = _head.AuthorEmail;
                 }
                 return _head;
             }

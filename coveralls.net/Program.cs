@@ -14,8 +14,7 @@ namespace Coveralls.Net
         {
             try
             {
-                var options = Parser.Default.ParseArguments<CommandLineOptions>(args).Value;
-                Run(options);
+                Parser.Default.ParseArguments<CommandLineOptions>(args).WithParsed(Run);
             }
             catch (Exception e)
             {

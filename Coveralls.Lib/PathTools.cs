@@ -19,19 +19,12 @@ namespace Coveralls
             if (string.IsNullOrEmpty(baseFolder)) return fullPath;
 
             if (fullPath.Equals(baseFolder)) return "";
-
-            var pathUri = new Uri(fullPath);
-
-            if (!baseFolder.EndsWith(Path.DirectorySeparatorChar.ToString(CultureInfo.InvariantCulture), StringComparison.Ordinal))
-            {
+            if (baseFolder[baseFolder.Length - 1] != '\\' && baseFolder[baseFolder.Length - 1] != '/')
                 baseFolder += Path.DirectorySeparatorChar;
-            }
-            var folderUri = new Uri(baseFolder);
 
-            var relativeUri = folderUri.MakeRelativeUri(pathUri);
-            var relativePath = relativeUri.ToString().Replace('/', Path.DirectorySeparatorChar);
-
-            return Uri.UnescapeDataString(relativePath).ToUnixPath();
+            var pathUri = new Uri(fullPath, UriKind.Absolute);
+            var baseUri = new Uri(baseFolder, UriKind.Absolute);
+            return baseUri.MakeRelativeUri(pathUri).ToString();
         }
     }
 }

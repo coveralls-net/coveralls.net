@@ -19,7 +19,7 @@ namespace Coveralls
                 {
                     _branch = Environment.GetEnvironmentVariable("GIT_BRANCH");
                     
-                    if (_branch.IsBlank()) _branch = _repository.Head.Name;
+                    if (_branch.IsBlank()) _branch = _repository.Head.CanonicalName;
 
                     // The git branch is of the form origin/<branch> or origin/pr/1152/merge.  The links on the coveralls page
                     // will link to that branch, but only the first form (without origin) will work.  Strip away all but the last

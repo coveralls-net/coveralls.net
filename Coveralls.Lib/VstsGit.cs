@@ -30,6 +30,7 @@ namespace Coveralls
                         Id = Environment.GetEnvironmentVariable("BUILD_SOURCEVERSION"),
                         Author = Environment.GetEnvironmentVariable("BUILD_REQUESTEDFOR"),
                         AuthorEmail = Environment.GetEnvironmentVariable("BUILD_REQUESTEDFOREMAIL"),
+                        Message = Environment.GetEnvironmentVariable("BUILD_SOURCEVERSIONMESSAGE"),
                         PullRequestId = Environment.GetEnvironmentVariable("SYSTEM_PULLREQUEST_PULLREQUESTID")
                     };
 

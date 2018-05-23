@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="VstsGit.cs" />
     <Compile Include="AppVeyorGit.cs" />
     <Compile Include="CoverageFile.cs" />
     <Compile Include="CoverallsBootstrap.cs" />

@@ -185,9 +185,12 @@ namespace Coveralls
             {
                 case ParserType.OpenCover:
                     return new OpenCoverParser();
-
+                case ParserType.Cobertura:
+                    return new CoberturaCoverageParser();
                 case ParserType.DotCover:
                     return new DotCoverParser();
+                case ParserType.AutoDetect:
+                    return new AutoParser();
             }
             return new OpenCoverParser();
         }

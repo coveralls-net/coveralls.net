@@ -26,6 +26,12 @@ namespace Coveralls
         [JsonProperty("author_email", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string AuthorEmail { get; set; }
 
+        [JsonProperty("committer_name", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Committer { get; set; }
+
+        [JsonProperty("committer_email", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string CommitterEmail { get; set; }
+
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Message { get; set; }
 

@@ -4,7 +4,9 @@
     {
         Default, // OpenCover
         OpenCover,
-        DotCover,
-        Unknown
+        Unknown,
+        Cobertura,
+        AutoDetect,
+        DotCover
     }
 }

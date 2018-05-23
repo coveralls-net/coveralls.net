@@ -9,5 +9,6 @@ namespace Coveralls
         bool UseOpenCover { get; }
         string CoverallsRepoToken { get; }
         bool SendFullSources { get; }
+        bool UseCobertura { get; }
     }
 }

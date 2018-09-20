@@ -32,10 +32,21 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2
   inputs:
-    command: pack
+    packagesToPack: 'coveralls.net/coveralls.net.csproj'
+    command: 'pack'
+    packDirectory: '$(build.artifactStagingDirectory)'
+    configuration: 'release'
     versioningScheme: byPrereleaseNumber
     majorVersion: '$(Major)'
     minorVersion: '$(Minor)'
     patchVersion: '$(Patch)'
+  
+  - task: DotNetCoreCLI@2
+  inputs:
+    command: 'push'
+
+    nuGetFeedType: 'external'
+    packagesToPush: '$(build.artifactStagingDirectory)/*.nupkg'
+    publishFeedCredentials: 'NuGet'

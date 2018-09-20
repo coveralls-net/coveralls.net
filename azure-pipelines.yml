@@ -7,6 +7,9 @@ pool:
   vmImage: 'VS2017-Win2016'
 
 variables:
+  Major: '1'
+  Minor: '5'
+  Patch: '0'
   solution: 'coveralls.net.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
@@ -28,3 +31,11 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: NuGetCommand@3
+  inputs:
+    command: pack
+    versioningScheme: byPrereleaseNumber
+    majorVersion: '$(Major)'
+    minorVersion: '$(Minor)'
+    patchVersion: '$(Patch)'

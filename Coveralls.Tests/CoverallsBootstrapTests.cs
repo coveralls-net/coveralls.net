@@ -136,7 +136,6 @@ namespace Coveralls.Tests
         {
             var opts = Substitute.For<ICommandOptions>();
             var coveralls = new CoverallsBootstrap(opts);
-            coveralls.FileSystem = Stub.LocalFileSystem();
 
             coveralls.Repository.Should().BeOfType<LocalGit>();
         }
@@ -159,7 +158,6 @@ namespace Coveralls.Tests
 
             var opts = Substitute.For<ICommandOptions>();
             var coveralls = new CoverallsBootstrap(opts);
-            coveralls.FileSystem = Stub.LocalFileSystem();
 
             coveralls.Repository.Should().BeOfType<JenkinsGit>();
         }
@@ -305,10 +303,10 @@ namespace Coveralls.Tests
             Environment.SetEnvironmentVariable("COVERALLS_REPO_TOKEN", "1234abcd");
             Environment.SetEnvironmentVariable("JENKINS_HOME", "True");
             Environment.SetEnvironmentVariable("BUILD_NUMBER", "23");
+            Environment.SetEnvironmentVariable("GIT_BRANCH", "master");
 
             var opts = Substitute.For<ICommandOptions>();
             var coveralls = new CoverallsBootstrap(opts);
-            coveralls.FileSystem = Stub.LocalFileSystem();
 
             var data = coveralls.GetData();
             data.ServiceName.Should().Be("jenkins");

@@ -48,13 +48,11 @@ namespace Coveralls
             get
             {
                 var branch = Environment.GetEnvironmentVariable("GIT_BRANCH");
-                _head = base.Head;
-                if (_head != null)
+                _head = base.Head ?? new CommitData();
+
+                if (branch.IsNotBlank() && branch.Contains("pr"))
                 {
-                    if (branch.IsNotBlank() && branch.Contains("pr"))
-                    {
-                        _head.PullRequestId = branch.Split('/')[2];
-                    }
+                    _head.PullRequestId = branch.Split('/')[2];
                 }
                 return _head;
             }

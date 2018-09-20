@@ -32,7 +32,7 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: NuGetCommand@3
+- task: NuGetCommand@2
   inputs:
     command: pack
     versioningScheme: byPrereleaseNumber

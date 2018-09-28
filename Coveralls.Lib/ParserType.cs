@@ -6,6 +6,7 @@
         OpenCover,
         Unknown,
         Cobertura,
-        AutoDetect
+        AutoDetect,
+        DotCover
     }
 }

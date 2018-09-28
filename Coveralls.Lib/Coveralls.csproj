@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="VstsGit.cs" />
     <Compile Include="AppVeyorGit.cs" />
     <Compile Include="CoverageFile.cs" />
     <Compile Include="CoverallsBootstrap.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="JenkinsGit.cs" />
     <Compile Include="LocalGit.cs" />
     <Compile Include="Parser\AutoParser.cs" />
+    <Compile Include="Parser\DotCoverParser.cs" />
     <Compile Include="Parser\ICoverageParser.cs" />
     <Compile Include="IFileSystem.cs" />
     <Compile Include="IGitRepository.cs" />

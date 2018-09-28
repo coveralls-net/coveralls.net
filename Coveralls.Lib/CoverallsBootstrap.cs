@@ -12,6 +12,7 @@ namespace Coveralls
     {
         AppVeyor,
         Jenkins,
+        Vsts,
         Unknown
     }
 
@@ -31,6 +32,8 @@ namespace Coveralls
                 _service = ServiceType.AppVeyor;
             else if (Environment.GetEnvironmentVariable("JENKINS_HOME").IsNotBlank())
                 _service = ServiceType.Jenkins;
+            else if (Environment.GetEnvironmentVariable("TF_BUILD").IsNotBlank())
+                _service = ServiceType.Vsts;
             else
                 _service = ServiceType.Unknown;
         }
@@ -53,6 +56,8 @@ namespace Coveralls
                         return "appveyor";
                     case ServiceType.Jenkins:
                         return "jenkins";
+                    case ServiceType.Vsts:
+                        return "vsts";
                     default:
                         return "coveralls.net";
                 }
@@ -69,6 +74,8 @@ namespace Coveralls
                         return Environment.GetEnvironmentVariable("APPVEYOR_JOB_ID");
                     case ServiceType.Jenkins:
                         return Environment.GetEnvironmentVariable("BUILD_NUMBER");
+                    case ServiceType.Vsts:
+                        return Environment.GetEnvironmentVariable("BUILD_BUILDID");
                     default:
                         return "0";
                 }
@@ -155,6 +162,9 @@ namespace Coveralls
                             // Jenkins doesn't provide data about the commit in the environment.
                             _repository = new JenkinsGit(FileSystem);
                             break;
+                        case ServiceType.Vsts:
+                            _repository = new VstsGit();
+                            break;
                         default:
                             _repository = new LocalGit(FileSystem);
                             break;
@@ -177,6 +187,8 @@ namespace Coveralls
                     return new OpenCoverParser();
                 case ParserType.Cobertura:
                     return new CoberturaCoverageParser();
+                case ParserType.DotCover:
+                    return new DotCoverParser();
                 case ParserType.AutoDetect:
                     return new AutoParser();
             }

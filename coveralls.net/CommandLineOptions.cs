@@ -49,7 +49,7 @@ namespace Coveralls.Net
             }
         }
 
-        [Option('p', "parser", HelpText = "Parser to use (Currently supports OpenCover, Cobertura and AutoDetect)")]
+        [Option('p', "parser", HelpText = "Parser to use (Currently supports OpenCover, Cobertura, DotCover and AutoDetect)")]
         public ParserType Parser { get; set; }
 
         [Option('d', "debug", HelpText = "Debug mode. WILL PRINT SENSITIVE DATA")]

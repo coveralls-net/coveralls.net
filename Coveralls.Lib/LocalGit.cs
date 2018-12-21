@@ -21,10 +21,11 @@ namespace Coveralls
             while (!directory.EnumerateDirectories().Any(x => x.Name == ".git"))
             {
                 directory = directory.Parent;
-                if (directory == directory.Root) break;
+                // if parent is null, we are at root directory
+                if (directory.Parent == null) break;
             }
 
-            _repository = new Repository(directory.FullName + "\\.git");
+            _repository = new Repository(Path.Combine(directory.FullName, ".git"));
         }
 
         public sealed override void Dispose()
@@ -37,7 +38,7 @@ namespace Coveralls
 
         public override IEnumerable<string> Branches
         {
-            get { return _repository.Branches.Select(x => x.Name); }
+            get { return _repository.Branches.Select(x => x.CanonicalName); }
         }
 
         public override IEnumerable<CommitData> Commits
@@ -57,7 +58,7 @@ namespace Coveralls
             }
         }
 
-        public override string CurrentBranch { get { return _repository.Head.Name; } }
+        public override string CurrentBranch { get { return _repository.Head.CanonicalName; } }
         public override CommitData Head
         {
             get { return Commits.First(); } 

@@ -1,5 +1,7 @@
 version: 1.4.1.{build}
 
+image: Visual Studio 2017
+
 skip_tags: true
 
 configuration: Debug
@@ -15,7 +17,7 @@ nuget:
   disable_publish_on_pr: true
 
 install:
-  - nuget restore
+  - dotnet restore
 
 build:
   project: coveralls.net.sln

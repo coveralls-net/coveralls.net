@@ -3,16 +3,22 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <PackageId>coveralls.net</PackageId>
-    <Authors>jdeering</Authors>
+    <PackageId>coveralls.netcore</PackageId>
+    <Authors>southernsun</Authors>
     <Copyright>Copyright ©  2015</Copyright>
     <Description>program for sending coverage reports to coveralls.io</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
     <AssemblyName>coveralls.net</AssemblyName>
     <RootNamespace>coveralls.net</RootNamespace>
-    <Version>2.0.0</Version>
+    <Version>1.0.0</Version>
+    <Product>based on coveralls.net</Product>
+    <PackageLicenseFile></PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/southernsun/coveralls.net</PackageProjectUrl>
+    <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/southernsun/coveralls.net</RepositoryUrl>
+    <PackageReleaseNotes>a .net core clone of coveralls.net from Jason Deering at https://github.com/coveralls-net/coveralls.net</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

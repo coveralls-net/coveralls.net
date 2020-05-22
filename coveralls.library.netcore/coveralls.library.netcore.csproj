@@ -6,7 +6,7 @@
     <Product>Coveralls</Product>
     <Company />
     <Copyright>Copyright ©  2015</Copyright>
-    <FileVersion>2.0.0.0</FileVersion>
+    <FileVersion>1.0.0.0</FileVersion>
     <AssemblyName>Coveralls.Library</AssemblyName>
     <RootNamespace>Coveralls.Library</RootNamespace>
   </PropertyGroup>

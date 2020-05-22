@@ -1,10 +1,5 @@
 using System;
-using System.IO;
-using System.Reflection;
-using System.Xml.Linq;
-using Coveralls;
 using FluentAssertions;
-using NSubstitute;
 using NUnit.Framework;
 
 namespace Coveralls.Tests

@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
 using FluentAssertions;
-using NSubstitute;
 using NUnit.Framework;
 
 namespace Coveralls.Tests

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+using Coveralls.Library.Parser;
 
-namespace Coveralls
+namespace Coveralls.Library
 {
     internal enum ServiceType
     {

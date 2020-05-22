@@ -2,7 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
-namespace Coveralls
+namespace Coveralls.Library
 {
     [Serializable, ExcludeFromCodeCoverage]
     public class CoverallsException : Exception

@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using LibGit2Sharp;
 
-namespace Coveralls
+namespace Coveralls.Library
 {
     public class LocalGit : GitRepository
     {

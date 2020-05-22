@@ -2,6 +2,7 @@
 using CommandLine;
 using System.Collections.Generic;
 using System.Linq;
+using Coveralls.Library;
 
 namespace Coveralls.Net
 {

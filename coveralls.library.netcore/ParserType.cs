@@ -1,4 +1,4 @@
-﻿namespace Coveralls
+﻿namespace Coveralls.Library
 {
     public enum ParserType
     {

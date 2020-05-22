@@ -2,7 +2,7 @@
 using System.IO;
 using System.Xml.XPath;
 
-namespace Coveralls
+namespace Coveralls.Library.Parser
 {
     public class CoberturaCoverageParser : BaseParser
     {

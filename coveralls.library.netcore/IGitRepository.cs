@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Coveralls
+namespace Coveralls.Library
 {
     public interface IGitRepository : IDisposable
     {

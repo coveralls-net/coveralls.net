@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Xml.XPath;
 
-namespace Coveralls
+namespace Coveralls.Library.Parser
 {
     public class OpenCoverParser : BaseParser
     {

@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace Coveralls
+namespace Coveralls.Library
 {
     public class CoverageFile
     {

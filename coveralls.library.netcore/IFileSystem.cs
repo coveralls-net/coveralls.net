@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Coveralls
+namespace Coveralls.Library
 {
     public interface IFileSystem
     {

@@ -3,6 +3,8 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using CommandLine;
+using Coveralls.Library;
+using coveralls.net;
 using Newtonsoft.Json;
 
 namespace Coveralls.Net

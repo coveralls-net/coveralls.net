@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace Coveralls
+namespace Coveralls.Library
 {
     public static class PathTools
     {

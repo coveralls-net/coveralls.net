@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Coveralls
+namespace Coveralls.Library
 {
     public sealed class GitData
     {

@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "coveralls.net", "coveralls.net\coveralls.net.csproj", "{96D17631-AC88-4DD8-8D4D-AAA200E49010}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F8FA6EC0-C413-45C0-9BB3-6CAC1DB30093}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
@@ -19,13 +17,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coveralls.Tests", "Coveralls.Tests\Coveralls.Tests.csproj", "{BEAECEE6-B0FC-4CFF-9F75-10DA2A817172}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "coveralls.netcore", "coveralls.netcore\coveralls.netcore.csproj", "{90D83FDC-94D0-4D23-AAF8-E986ABA71995}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coveralls", "Coveralls.Lib\Coveralls.csproj", "{F43802C1-065A-4735-8E2D-ECA06493B79B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "coveralls.library.netcore", "coveralls.library.netcore\coveralls.library.netcore.csproj", "{D9D35302-D65E-4983-B622-FBE12376EB21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "coveralls.netcore", "coveralls.netcore\coveralls.netcore.csproj", "{90D83FDC-94D0-4D23-AAF8-E986ABA71995}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "coveralls.library.netcore", "coveralls.library.netcore\coveralls.library.netcore.csproj", "{D9D35302-D65E-4983-B622-FBE12376EB21}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "coveralls.tests.netcore", "coveralls.tests.netcore\coveralls.tests.netcore.csproj", "{40263129-D9C3-402C-8711-5EFFB8172C8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,15 +29,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{96D17631-AC88-4DD8-8D4D-AAA200E49010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{96D17631-AC88-4DD8-8D4D-AAA200E49010}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{96D17631-AC88-4DD8-8D4D-AAA200E49010}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BEAECEE6-B0FC-4CFF-9F75-10DA2A817172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BEAECEE6-B0FC-4CFF-9F75-10DA2A817172}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BEAECEE6-B0FC-4CFF-9F75-10DA2A817172}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F43802C1-065A-4735-8E2D-ECA06493B79B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F43802C1-065A-4735-8E2D-ECA06493B79B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F43802C1-065A-4735-8E2D-ECA06493B79B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{90D83FDC-94D0-4D23-AAF8-E986ABA71995}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{90D83FDC-94D0-4D23-AAF8-E986ABA71995}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90D83FDC-94D0-4D23-AAF8-E986ABA71995}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -50,6 +37,10 @@ Global
 		{D9D35302-D65E-4983-B622-FBE12376EB21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9D35302-D65E-4983-B622-FBE12376EB21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9D35302-D65E-4983-B622-FBE12376EB21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40263129-D9C3-402C-8711-5EFFB8172C8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40263129-D9C3-402C-8711-5EFFB8172C8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40263129-D9C3-402C-8711-5EFFB8172C8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40263129-D9C3-402C-8711-5EFFB8172C8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

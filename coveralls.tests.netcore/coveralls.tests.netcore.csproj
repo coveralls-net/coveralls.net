@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Files\Utilities.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Files\app.ts" />
+    <None Remove="Files\Cobertura.SingleFileCoverage.xml" />
+    <None Remove="Files\OpenCover.EmptyReport.xml" />
+    <None Remove="Files\OpenCover.SingleFileCoverage.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.0.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.0.0" />
+    <PackageReference Include="coverlet.collector" Version="1.0.1" />
+    <PackageReference Include="NSubstitute" Version="4.2.1" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\coveralls.library.netcore\coveralls.library.netcore.csproj" />
+    <ProjectReference Include="..\coveralls.netcore\coveralls.netcore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Files\app.ts" />
+    <EmbeddedResource Include="Files\Cobertura.SingleFileCoverage.xml" />
+    <EmbeddedResource Include="Files\OpenCover.EmptyReport.xml" />
+    <EmbeddedResource Include="Files\OpenCover.SingleFileCoverage.xml" />
+    <EmbeddedResource Include="Files\Utilities.cs" />
+  </ItemGroup>
+
+</Project>

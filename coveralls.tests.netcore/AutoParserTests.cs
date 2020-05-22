@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 using System.Linq;
+using Coveralls.Library.Parser;
 
 namespace Coveralls.Tests
 {

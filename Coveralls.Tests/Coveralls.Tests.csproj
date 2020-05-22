@@ -16,11 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Coveralls.Lib\Coveralls.csproj" />
-    <ProjectReference Include="..\coveralls.net\coveralls.net.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Files\*" />
     <Compile Remove="Files\*" />
   </ItemGroup>

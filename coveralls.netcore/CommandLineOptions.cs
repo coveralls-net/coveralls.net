@@ -10,7 +10,6 @@ namespace Coveralls.Net
     {
         private bool _sendFullSources;
         private IFileSystem _fileSystem;
-        private List<string> _inputFiles;
 
         public CommandLineOptions() : this (new LocalFileSystem())
         {}

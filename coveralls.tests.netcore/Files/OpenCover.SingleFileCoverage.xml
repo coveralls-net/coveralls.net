@@ -1,0 +1,532 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CoverageSession xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+    <Modules>
+        <Module skippedDueTo="Filter" hash="B5-D0-3C-D0-D3-0E-6D-9A-B0-27-ED-4B-C0-AC-D5-4F-18-84-56-AE">
+            <FullName>C:\Windows\Microsoft.Net\assembly\GAC_32\mscorlib\v4.0_4.0.0.0__b77a5c561934e089\mscorlib.dll</FullName>
+            <ModuleName>mscorlib</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="E2-DA-17-B7-8D-65-C9-A7-DC-AA-70-F5-C0-F4-F6-88-06-2B-68-8D">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe</FullName>
+            <ModuleName>vstest.console</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="86-AC-D6-5D-91-9A-F3-AA-B4-32-E5-5F-5B-BE-B0-02-78-F5-FD-44">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.ObjectModel</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="04-DF-13-16-0B-F4-57-A9-D9-9C-5A-63-DC-51-CD-BF-FD-3A-AF-DA">
+            <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll</FullName>
+            <ModuleName>System</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="B6-60-CE-70-25-03-8E-12-F0-FF-EB-DA-C8-94-AA-A9-02-DE-71-07">
+            <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Configuration\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll</FullName>
+            <ModuleName>System.Configuration</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="2C-B8-8B-0E-27-14-38-8E-71-A5-1D-A0-EE-33-D9-22-5F-A4-AF-79">
+            <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.dll</FullName>
+            <ModuleName>System.Xml</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="67-DC-13-00-4E-3F-CA-F8-1F-EE-74-29-06-1A-04-06-D7-0D-79-5E">
+            <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.ComponentModel.Composition\v4.0_4.0.0.0__b77a5c561934e089\System.ComponentModel.Composition.dll</FullName>
+            <ModuleName>System.ComponentModel.Composition</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="1D-4C-5A-E0-2F-C0-C3-3A-4E-2C-65-81-1A-A3-14-05-4F-49-BE-BD">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Microsoft.VisualStudio.TestPlatform.Common.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.Common</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="43-0F-9E-14-71-13-7F-E2-26-11-26-04-62-4A-0E-92-1F-0F-04-20">
+            <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll</FullName>
+            <ModuleName>System.Core</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="06-BE-FB-49-EF-02-AD-98-5C-5B-72-13-51-89-84-A2-91-5D-8B-5C">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Microsoft.VisualStudio.TestPlatform.Core.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.Core</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="99-0A-09-85-14-BD-E4-7D-C7-11-CF-5F-29-63-60-43-24-F2-16-CF">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Microsoft.VisualStudio.TestPlatform.Utilities.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.Utilities</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="5F-48-90-1B-6E-E9-62-87-25-54-6F-4E-30-6F-4E-A2-DD-F6-AF-D0">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Microsoft.VisualStudio.TestPlatform.Client.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.Client</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="C4-A2-27-56-A1-A0-C6-27-70-D9-77-45-7B-5E-40-61-AD-18-71-65">
+            <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.ServiceModel\v4.0_4.0.0.0__b77a5c561934e089\System.ServiceModel.dll</FullName>
+            <ModuleName>System.ServiceModel</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="F6-29-8B-2A-5B-7C-F6-3F-E0-47-31-3F-09-AD-2A-42-A4-C4-F3-B8">
+            <FullName>C:\Windows\Microsoft.Net\assembly\GAC_32\System.Transactions\v4.0_4.0.0.0__b77a5c561934e089\System.Transactions.dll</FullName>
+            <ModuleName>System.Transactions</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="">
+            <FullName>RefEmit_InMemoryManifestModule</FullName>
+            <ModuleName>MetadataViewProxies_9d39c341-2977-4873-a9f7-763562e3d8c5</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="EC-EB-0C-B7-2A-06-A8-2E-67-58-FF-C7-30-AF-90-EA-DB-3F-D9-A5">
+            <FullName>C:\Windows\assembly\GAC_MSIL\Microsoft.VisualStudio.Diagnostics.Measurement\12.0.0.0__b03f5f7f11d50a3a\Microsoft.VisualStudio.Diagnostics.Measurement.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.Diagnostics.Measurement</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="2A-AF-F1-4F-17-70-38-B9-47-C0-95-72-84-97-C5-49-91-16-5D-53">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Extensions\Microsoft.VisualStudio.TestPlatform.Extensions.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.Extensions</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="F2-34-EF-81-79-DD-A6-D2-29-6B-7E-06-E2-9C-42-7F-EE-73-FD-46">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Extensions\Microsoft.VisualStudio.TestPlatform.Extensions.GenericTestAdapter.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.Extensions.GenericTestAdapter</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="43-C4-CD-E8-C4-F2-D3-78-D4-D7-85-25-2D-DF-A7-4F-97-BA-73-4E">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Extensions\Microsoft.VisualStudio.TestPlatform.Extensions.MSAppContainerAdapter.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.Extensions.MSAppContainerAdapter</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="0F-F6-59-47-CA-CF-EE-BB-7A-75-E3-32-7A-F4-71-62-D2-1A-68-B0">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Extensions\Microsoft.VisualStudio.TestPlatform.UnitTestFramework.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.UnitTestFramework</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="74-27-CE-1C-50-B6-F7-A1-A9-30-56-7F-52-53-35-B1-1A-D0-98-B9">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Extensions\Microsoft.VisualStudio.TestPlatform.Extensions.MSPhoneAdapter.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.Extensions.MSPhoneAdapter</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="69-0D-AC-4D-B4-54-59-DE-D5-3C-B6-40-C4-E6-88-FF-51-02-DE-3A">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Extensions\Microsoft.VisualStudio.TestPlatform.Extensions.OrderedTestAdapter.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.Extensions.OrderedTestAdapter</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="99-71-41-AC-91-88-1B-A5-A7-8E-4C-A2-DB-46-F5-D9-A3-35-4C-E4">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Extensions\Microsoft.VisualStudio.TestPlatform.Extensions.TfsLogger.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.Extensions.TfsLogger</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="22-48-03-F7-21-B3-A9-C1-DC-50-F0-AE-A9-81-AC-1A-CF-78-5F-3E">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Extensions\Microsoft.VisualStudio.TestPlatform.Extensions.TmiAdapter.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.Extensions.TmiAdapter</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="DC-F8-9B-F7-2C-08-0C-DA-07-27-F8-D5-02-E6-16-D6-41-91-92-AB">
+            <FullName>C:\Windows\assembly\GAC_MSIL\Microsoft.VisualStudio.QualityTools.Common\12.0.0.0__b03f5f7f11d50a3a\Microsoft.VisualStudio.QualityTools.Common.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.QualityTools.Common</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="FE-44-CA-BB-43-B4-12-2D-A1-CC-82-7D-38-12-69-FC-2B-B4-4E-D3">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Extensions\Microsoft.VisualStudio.TestPlatform.Extensions.TrxLogger.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.Extensions.TrxLogger</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="54-01-51-B7-33-46-19-F1-4C-48-2C-68-35-80-2F-24-E0-63-41-84">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Extensions\Microsoft.VisualStudio.TestPlatform.Extensions.VSTestIntegration.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.Extensions.VSTestIntegration</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="B6-BE-C7-09-6A-69-79-02-C4-B3-2E-2E-B9-3D-72-09-BB-84-01-6E">
+            <FullName>C:\Windows\assembly\GAC_MSIL\Microsoft.VisualStudio.QualityTools.UnitTestFramework\10.0.0.0__b03f5f7f11d50a3a\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.QualityTools.UnitTestFramework</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="B6-92-70-2B-74-74-8B-7D-92-C2-67-1D-CA-15-D4-44-41-B2-4E-15">
+            <FullName>C:\Windows\Microsoft.Net\assembly\GAC_32\System.Data\v4.0_4.0.0.0__b77a5c561934e089\System.Data.dll</FullName>
+            <ModuleName>System.Data</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="47-E0-71-7A-71-73-8A-74-ED-67-A4-2E-2D-FC-DF-E5-71-84-BB-70">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Extensions\Microsoft.VisualStudio.TestTools.CppUnitTestFramework.ComInterfaces.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestTools.CppUnitTestFramework.ComInterfaces</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="CC-A6-78-0A-8A-B6-B7-C5-81-69-21-E8-E0-E2-2D-B1-79-29-92-04">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Extensions\Microsoft.VisualStudio.TestTools.CppUnitTestFramework.CppPhoneUnitTestExtension.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestTools.CppUnitTestFramework.CppPhoneUnitTestExtension</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="05-85-6C-E2-56-69-E3-16-5E-B3-FF-51-8F-E0-36-DE-4F-BC-AE-80">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Extensions\Microsoft.VisualStudio.TestTools.CppUnitTestFramework.CppUnitTestExtension.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestTools.CppUnitTestFramework.CppUnitTestExtension</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="28-86-08-88-E5-45-6F-EC-A8-91-6B-ED-AF-77-B2-61-58-C7-6E-FA">
+            <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SMDiagnostics\v4.0_4.0.0.0__b77a5c561934e089\SMDiagnostics.dll</FullName>
+            <ModuleName>SMDiagnostics</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="">
+            <FullName>RefEmit_InMemoryManifestModule</FullName>
+            <ModuleName>MetadataViewProxies_9d39c341-2977-4873-a9f7-763562e3d8c5</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="86-AC-D6-5D-91-9A-F3-AA-B4-32-E5-5F-5B-BE-B0-02-78-F5-FD-44">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.ObjectModel</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="C3-CE-D3-8A-3E-7D-6E-5F-7D-6F-D6-44-18-0E-95-00-DF-14-57-43">
+            <FullName>C:\Users\Mark\Documents\Visual Studio 2013\Projects\OpenCoverTesting\TestProject\bin\debug\TestProject.dll</FullName>
+            <ModuleName>TestProject</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="0B-5B-83-64-D5-80-F2-FF-11-1E-85-83-58-AA-2C-A4-8D-67-C6-C3">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Microsoft.VisualStudio.TestPlatform.Utilities.AppContainer.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.Utilities.AppContainer</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="70-49-08-2C-C5-F6-DC-B7-3A-98-6B-94-A2-1D-15-50-93-60-67-57">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Microsoft.VisualStudio.TestPlatform.Utilities.PhoneAppContainer.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.Utilities.PhoneAppContainer</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="86-AC-D6-5D-91-9A-F3-AA-B4-32-E5-5F-5B-BE-B0-02-78-F5-FD-44">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.ObjectModel</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="C3-CE-D3-8A-3E-7D-6E-5F-7D-6F-D6-44-18-0E-95-00-DF-14-57-43">
+            <FullName>C:\Users\Mark\Documents\Visual Studio 2013\Projects\OpenCoverTesting\TestProject\bin\debug\TestProject.dll</FullName>
+            <ModuleName>TestProject</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="86-AC-D6-5D-91-9A-F3-AA-B4-32-E5-5F-5B-BE-B0-02-78-F5-FD-44">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.ObjectModel</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="C3-CE-D3-8A-3E-7D-6E-5F-7D-6F-D6-44-18-0E-95-00-DF-14-57-43">
+            <FullName>C:\Users\Mark\Documents\Visual Studio 2013\Projects\OpenCoverTesting\TestProject\bin\debug\TestProject.dll</FullName>
+            <ModuleName>TestProject</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="86-AC-D6-5D-91-9A-F3-AA-B4-32-E5-5F-5B-BE-B0-02-78-F5-FD-44">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.ObjectModel</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="C3-CE-D3-8A-3E-7D-6E-5F-7D-6F-D6-44-18-0E-95-00-DF-14-57-43">
+            <FullName>C:\Users\Mark\Documents\Visual Studio 2013\Projects\OpenCoverTesting\TestProject\bin\debug\TestProject.dll</FullName>
+            <ModuleName>TestProject</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="86-AC-D6-5D-91-9A-F3-AA-B4-32-E5-5F-5B-BE-B0-02-78-F5-FD-44">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.ObjectModel</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="04-DF-13-16-0B-F4-57-A9-D9-9C-5A-63-DC-51-CD-BF-FD-3A-AF-DA">
+            <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll</FullName>
+            <ModuleName>System</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="54-01-51-B7-33-46-19-F1-4C-48-2C-68-35-80-2F-24-E0-63-41-84">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Extensions\Microsoft.VisualStudio.TestPlatform.Extensions.VSTestIntegration.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.Extensions.VSTestIntegration</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="C3-CE-D3-8A-3E-7D-6E-5F-7D-6F-D6-44-18-0E-95-00-DF-14-57-43">
+            <FullName>C:\Users\Mark\Documents\Visual Studio 2013\Projects\OpenCoverTesting\TestProject\bin\debug\TestProject.dll</FullName>
+            <ModuleName>TestProject</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="B6-BE-C7-09-6A-69-79-02-C4-B3-2E-2E-B9-3D-72-09-BB-84-01-6E">
+            <FullName>C:\Windows\assembly\GAC_MSIL\Microsoft.VisualStudio.QualityTools.UnitTestFramework\10.0.0.0__b03f5f7f11d50a3a\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.QualityTools.UnitTestFramework</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="43-0F-9E-14-71-13-7F-E2-26-11-26-04-62-4A-0E-92-1F-0F-04-20">
+            <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll</FullName>
+            <ModuleName>System.Core</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="50-D1-2E-18-09-00-96-D1-E5-5F-62-09-93-83-51-58-1F-78-2C-D9">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\msdia120typelib_clr0200.dll</FullName>
+            <ModuleName>msdia120typelib_clr0200</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="86-AC-D6-5D-91-9A-F3-AA-B4-32-E5-5F-5B-BE-B0-02-78-F5-FD-44">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.ObjectModel</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="54-01-51-B7-33-46-19-F1-4C-48-2C-68-35-80-2F-24-E0-63-41-84">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Extensions\Microsoft.VisualStudio.TestPlatform.Extensions.VSTestIntegration.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestPlatform.Extensions.VSTestIntegration</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="B6-92-70-2B-74-74-8B-7D-92-C2-67-1D-CA-15-D4-44-41-B2-4E-15">
+            <FullName>C:\Windows\Microsoft.Net\assembly\GAC_32\System.Data\v4.0_4.0.0.0__b77a5c561934e089\System.Data.dll</FullName>
+            <ModuleName>System.Data</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="C3-CE-D3-8A-3E-7D-6E-5F-7D-6F-D6-44-18-0E-95-00-DF-14-57-43">
+            <FullName>C:\Users\Mark\Documents\Visual Studio 2013\Projects\OpenCoverTesting\TestProject\bin\debug\TestProject.dll</FullName>
+            <ModuleName>TestProject</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="B6-60-CE-70-25-03-8E-12-F0-FF-EB-DA-C8-94-AA-A9-02-DE-71-07">
+            <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Configuration\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll</FullName>
+            <ModuleName>System.Configuration</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="2C-B8-8B-0E-27-14-38-8E-71-A5-1D-A0-EE-33-D9-22-5F-A4-AF-79">
+            <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.dll</FullName>
+            <ModuleName>System.Xml</ModuleName>
+            <Classes />
+        </Module>
+        <Module hash="00-E1-88-FB-D8-24-FF-C7-7D-2E-F0-DB-AB-41-5B-73-BF-5A-A5-18">
+          <Summary numSequencePoints="1454" visitedSequencePoints="680" numBranchPoints="548" visitedBranchPoints="261" sequenceCoverage="46.77" branchCoverage="47.63" maxCyclomaticComplexity="25" minCyclomaticComplexity="0" />
+          <FullName>c:\src\SymSharp\Symitar.Tests\bin\Debug\Symitar.dll</FullName>
+          <ModuleName>Symitar</ModuleName>
+          <Files>
+            <File uid="95" fullPath="c:\src\SymSharp\Symitar\Utilities.cs" />
+          </Files>
+            <Classes>
+              <Class>
+                <Summary numSequencePoints="86" visitedSequencePoints="82" numBranchPoints="34" visitedBranchPoints="33" sequenceCoverage="95.35" branchCoverage="97.06" maxCyclomaticComplexity="5" minCyclomaticComplexity="1" />
+                <FullName>Symitar.Utilities</FullName>
+                <Methods>
+                  <Method visited="true" cyclomaticComplexity="5" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="true" isGetter="false" isSetter="false">
+                    <Summary numSequencePoints="23" visitedSequencePoints="23" numBranchPoints="9" visitedBranchPoints="9" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="5" minCyclomaticComplexity="5" />
+                    <MetadataToken>100663507</MetadataToken>
+                    <Name>System.DateTime Symitar.Utilities::ParseSystemTime(System.String,System.String)</Name>
+                    <FileRef uid="95" />
+                    <SequencePoints>
+                      <SequencePoint vc="16" uspid="2940" ordinal="0" offset="0" sl="12" sc="9" el="12" ec="10" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="16" uspid="2941" ordinal="1" offset="1" sl="13" sc="13" el="13" ec="44" bec="2" bev="2" fileid="95" />
+                      <SequencePoint vc="2" uspid="2942" ordinal="2" offset="16" sl="14" sc="17" el="14" ec="82" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="14" uspid="2943" ordinal="3" offset="32" sl="18" sc="13" el="18" ec="44" bec="2" bev="2" fileid="95" />
+                      <SequencePoint vc="3" uspid="2944" ordinal="4" offset="47" sl="19" sc="13" el="19" ec="14" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="3" uspid="2945" ordinal="5" offset="48" sl="20" sc="17" el="20" ec="26" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="3" uspid="2946" ordinal="6" offset="50" sl="21" sc="17" el="21" ec="29" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="3" uspid="2947" ordinal="7" offset="53" sl="22" sc="13" el="22" ec="14" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="11" uspid="2948" ordinal="8" offset="56" sl="24" sc="13" el="24" ec="14" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="4" uspid="2949" ordinal="9" offset="59" sl="26" sc="17" el="26" ec="18" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="4" uspid="2950" ordinal="10" offset="60" sl="27" sc="21" el="27" ec="39" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="4" uspid="2951" ordinal="11" offset="75" sl="28" sc="17" el="28" ec="18" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="15" uspid="2952" ordinal="12" offset="76" sl="25" sc="17" el="25" ec="40" bec="2" bev="2" fileid="95" />
+                      <SequencePoint vc="11" uspid="2953" ordinal="13" offset="91" sl="29" sc="17" el="29" ec="58" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="11" uspid="2954" ordinal="14" offset="105" sl="30" sc="17" el="30" ec="61" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="11" uspid="2955" ordinal="15" offset="120" sl="31" sc="13" el="31" ec="14" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="5" uspid="2956" ordinal="16" offset="123" sl="34" sc="17" el="34" ec="35" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="19" uspid="2957" ordinal="17" offset="138" sl="33" sc="13" el="33" ec="36" bec="2" bev="2" fileid="95" />
+                      <SequencePoint vc="14" uspid="2958" ordinal="18" offset="153" sl="36" sc="13" el="36" ec="54" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="14" uspid="2959" ordinal="19" offset="167" sl="37" sc="13" el="37" ec="55" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="14" uspid="2960" ordinal="20" offset="181" sl="38" sc="13" el="38" ec="53" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="14" uspid="2961" ordinal="21" offset="195" sl="40" sc="13" el="47" ec="19" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="13" uspid="2962" ordinal="22" offset="211" sl="48" sc="9" el="48" ec="10" bec="0" bev="0" fileid="95" />
+                    </SequencePoints>
+                    <BranchPoints>
+                      <BranchPoint vc="2" uspid="2963" ordinal="0" offset="14" sl="13" path="0" offsetend="16" fileid="95" />
+                      <BranchPoint vc="14" uspid="2964" ordinal="1" offset="14" sl="13" path="1" offsetend="32" fileid="95" />
+                      <BranchPoint vc="3" uspid="2965" ordinal="2" offset="45" sl="18" path="0" offsetend="47" fileid="95" />
+                      <BranchPoint vc="11" uspid="2966" ordinal="3" offset="45" sl="18" path="1" offsetend="56" fileid="95" />
+                      <BranchPoint vc="11" uspid="2967" ordinal="4" offset="89" sl="25" path="0" offsetend="91" fileid="95" />
+                      <BranchPoint vc="4" uspid="2968" ordinal="5" offset="89" sl="25" path="1" offsetend="59" fileid="95" />
+                      <BranchPoint vc="14" uspid="2969" ordinal="6" offset="151" sl="33" path="0" offsetend="153" fileid="95" />
+                      <BranchPoint vc="5" uspid="2970" ordinal="7" offset="151" sl="33" path="1" offsetend="123" fileid="95" />
+                    </BranchPoints>
+                    <MethodPoint xsi:type="SequencePoint" vc="16" uspid="2940" ordinal="0" offset="0" sl="12" sc="9" el="12" ec="10" bec="0" bev="0" fileid="95" />
+                  </Method>
+                  <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="true" isGetter="false" isSetter="false">
+                    <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+                    <MetadataToken>100663508</MetadataToken>
+                    <Name>System.String Symitar.Utilities::FileTypeString(Symitar.FileType)</Name>
+                    <FileRef uid="95" />
+                    <SequencePoints>
+                      <SequencePoint vc="28" uspid="2971" ordinal="0" offset="0" sl="51" sc="9" el="51" ec="10" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="28" uspid="2972" ordinal="1" offset="1" sl="52" sc="13" el="52" ec="51" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="28" uspid="2973" ordinal="2" offset="11" sl="53" sc="9" el="53" ec="10" bec="0" bev="0" fileid="95" />
+                    </SequencePoints>
+                    <BranchPoints />
+                    <MethodPoint xsi:type="SequencePoint" vc="28" uspid="2971" ordinal="0" offset="0" sl="51" sc="9" el="51" ec="10" bec="0" bev="0" fileid="95" />
+                  </Method>
+                  <Method visited="true" cyclomaticComplexity="2" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="true" isGetter="false" isSetter="false">
+                    <Summary numSequencePoints="5" visitedSequencePoints="5" numBranchPoints="3" visitedBranchPoints="3" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" />
+                    <MetadataToken>100663509</MetadataToken>
+                    <Name>System.String Symitar.Utilities::ContainingFolder(System.Int32,Symitar.FileType)</Name>
+                    <FileRef uid="95" />
+                    <SequencePoints>
+                      <SequencePoint vc="4" uspid="2974" ordinal="0" offset="0" sl="56" sc="9" el="56" ec="10" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="4" uspid="2975" ordinal="1" offset="1" sl="57" sc="13" el="57" ec="25" bec="2" bev="2" fileid="95" />
+                      <SequencePoint vc="1" uspid="2976" ordinal="2" offset="12" sl="58" sc="17" el="58" ec="62" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="3" uspid="2977" ordinal="3" offset="23" sl="60" sc="13" el="60" ec="59" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="2" uspid="2978" ordinal="4" offset="39" sl="61" sc="9" el="61" ec="10" bec="0" bev="0" fileid="95" />
+                    </SequencePoints>
+                    <BranchPoints>
+                      <BranchPoint vc="1" uspid="2979" ordinal="0" offset="10" sl="57" path="0" offsetend="12" fileid="95" />
+                      <BranchPoint vc="3" uspid="2980" ordinal="1" offset="10" sl="57" path="1" offsetend="23" fileid="95" />
+                    </BranchPoints>
+                    <MethodPoint xsi:type="SequencePoint" vc="4" uspid="2974" ordinal="0" offset="0" sl="56" sc="9" el="56" ec="10" bec="0" bev="0" fileid="95" />
+                  </Method>
+                  <Method visited="true" cyclomaticComplexity="3" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="true" isGetter="false" isSetter="false">
+                    <Summary numSequencePoints="8" visitedSequencePoints="8" numBranchPoints="5" visitedBranchPoints="5" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="3" minCyclomaticComplexity="3" />
+                    <MetadataToken>100663510</MetadataToken>
+                    <Name>System.String Symitar.Utilities::ContainingFolder(System.String,Symitar.FileType)</Name>
+                    <FileRef uid="95" />
+                    <SequencePoints>
+                      <SequencePoint vc="8" uspid="2981" ordinal="0" offset="0" sl="64" sc="9" el="64" ec="10" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="8" uspid="2982" ordinal="1" offset="1" sl="65" sc="13" el="65" ec="43" bec="2" bev="2" fileid="95" />
+                      <SequencePoint vc="2" uspid="2983" ordinal="2" offset="14" sl="65" sc="44" el="65" ec="83" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="6" uspid="2984" ordinal="3" offset="25" sl="66" sc="13" el="66" ec="32" bec="2" bev="2" fileid="95" />
+                      <SequencePoint vc="2" uspid="2985" ordinal="4" offset="41" sl="66" sc="33" el="66" ec="78" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="4" uspid="2986" ordinal="5" offset="52" sl="68" sc="13" el="68" ec="39" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="4" uspid="2987" ordinal="6" offset="63" sl="69" sc="13" el="69" ec="82" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="4" uspid="2988" ordinal="7" offset="84" sl="70" sc="9" el="70" ec="10" bec="0" bev="0" fileid="95" />
+                    </SequencePoints>
+                    <BranchPoints>
+                      <BranchPoint vc="2" uspid="2989" ordinal="0" offset="12" sl="65" path="0" offsetend="14" fileid="95" />
+                      <BranchPoint vc="6" uspid="2990" ordinal="1" offset="12" sl="65" path="1" offsetend="25" fileid="95" />
+                      <BranchPoint vc="2" uspid="2991" ordinal="2" offset="39" sl="66" path="0" offsetend="41" fileid="95" />
+                      <BranchPoint vc="4" uspid="2992" ordinal="3" offset="39" sl="66" path="1" offsetend="52" fileid="95" />
+                    </BranchPoints>
+                    <MethodPoint xsi:type="SequencePoint" vc="8" uspid="2981" ordinal="0" offset="0" sl="64" sc="9" el="64" ec="10" bec="0" bev="0" fileid="95" />
+                  </Method>
+                  <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="true" isGetter="false" isSetter="false">
+                    <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+                    <MetadataToken>100663511</MetadataToken>
+                    <Name>System.String Symitar.Utilities::DecodeString(System.Byte[])</Name>
+                    <FileRef uid="95" />
+                    <SequencePoints>
+                      <SequencePoint vc="1" uspid="2993" ordinal="0" offset="0" sl="73" sc="9" el="73" ec="10" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="1" uspid="2994" ordinal="1" offset="1" sl="74" sc="13" el="74" ec="52" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="1" uspid="2995" ordinal="2" offset="15" sl="75" sc="9" el="75" ec="10" bec="0" bev="0" fileid="95" />
+                    </SequencePoints>
+                    <BranchPoints />
+                    <MethodPoint xsi:type="SequencePoint" vc="1" uspid="2993" ordinal="0" offset="0" sl="73" sc="9" el="73" ec="10" bec="0" bev="0" fileid="95" />
+                  </Method>
+                  <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="true" isGetter="false" isSetter="false">
+                    <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+                    <MetadataToken>100663512</MetadataToken>
+                    <Name>System.Byte[] Symitar.Utilities::EncodeString(System.String)</Name>
+                    <FileRef uid="95" />
+                    <SequencePoints>
+                      <SequencePoint vc="1" uspid="2996" ordinal="0" offset="0" sl="78" sc="9" el="78" ec="10" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="1" uspid="2997" ordinal="1" offset="1" sl="79" sc="13" el="79" ec="49" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="1" uspid="2998" ordinal="2" offset="15" sl="80" sc="9" el="80" ec="10" bec="0" bev="0" fileid="95" />
+                    </SequencePoints>
+                    <BranchPoints />
+                    <MethodPoint xsi:type="SequencePoint" vc="1" uspid="2996" ordinal="0" offset="0" sl="78" sc="9" el="78" ec="10" bec="0" bev="0" fileid="95" />
+                  </Method>
+                  <Method visited="true" cyclomaticComplexity="3" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="true" isGetter="false" isSetter="false">
+                    <Summary numSequencePoints="14" visitedSequencePoints="14" numBranchPoints="5" visitedBranchPoints="5" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="3" minCyclomaticComplexity="3" />
+                    <MetadataToken>100663513</MetadataToken>
+                    <Name>System.Int32 Symitar.Utilities::ConvertTime(System.String)</Name>
+                    <FileRef uid="95" />
+                    <SequencePoints>
+                      <SequencePoint vc="4" uspid="2999" ordinal="0" offset="0" sl="83" sc="9" el="83" ec="10" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="4" uspid="3000" ordinal="1" offset="1" sl="84" sc="13" el="84" ec="46" bec="2" bev="2" fileid="95" />
+                      <SequencePoint vc="2" uspid="3001" ordinal="2" offset="16" sl="85" sc="17" el="85" ec="56" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="2" uspid="3002" ordinal="3" offset="27" sl="87" sc="13" el="87" ec="50" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="2" uspid="3003" ordinal="4" offset="50" sl="89" sc="13" el="89" ec="35" bec="2" bev="2" fileid="95" />
+                      <SequencePoint vc="1" uspid="3004" ordinal="5" offset="62" sl="90" sc="17" el="90" ec="79" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="1" uspid="3005" ordinal="6" offset="78" sl="92" sc="13" el="92" ec="40" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="1" uspid="3006" ordinal="7" offset="82" sl="92" sc="41" el="92" ec="61" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="1" uspid="3007" ordinal="8" offset="86" sl="92" sc="62" el="92" ec="80" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="1" uspid="3008" ordinal="9" offset="90" sl="94" sc="13" el="94" ec="47" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="1" uspid="3009" ordinal="10" offset="98" sl="95" sc="13" el="95" ec="49" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="1" uspid="3010" ordinal="11" offset="112" sl="96" sc="13" el="96" ec="49" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="1" uspid="3011" ordinal="12" offset="129" sl="98" sc="13" el="98" ec="29" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="1" uspid="3012" ordinal="13" offset="135" sl="99" sc="9" el="99" ec="10" bec="0" bev="0" fileid="95" />
+                    </SequencePoints>
+                    <BranchPoints>
+                      <BranchPoint vc="2" uspid="3013" ordinal="0" offset="14" sl="84" path="0" offsetend="16" fileid="95" />
+                      <BranchPoint vc="2" uspid="3014" ordinal="1" offset="14" sl="84" path="1" offsetend="27" fileid="95" />
+                      <BranchPoint vc="1" uspid="3015" ordinal="2" offset="60" sl="89" path="0" offsetend="62" fileid="95" />
+                      <BranchPoint vc="1" uspid="3016" ordinal="3" offset="60" sl="89" path="1" offsetend="78" fileid="95" />
+                    </BranchPoints>
+                    <MethodPoint xsi:type="SequencePoint" vc="4" uspid="2999" ordinal="0" offset="0" sl="83" sc="9" el="83" ec="10" bec="0" bev="0" fileid="95" />
+                  </Method>
+                  <Method visited="true" cyclomaticComplexity="4" sequenceCoverage="78.95" branchCoverage="85.71" isConstructor="false" isStatic="true" isGetter="false" isSetter="false">
+                    <Summary numSequencePoints="19" visitedSequencePoints="15" numBranchPoints="7" visitedBranchPoints="6" sequenceCoverage="78.95" branchCoverage="85.71" maxCyclomaticComplexity="4" minCyclomaticComplexity="4" />
+                    <MetadataToken>100663514</MetadataToken>
+                    <Name>System.DateTime Symitar.Utilities::ConvertTime(System.Int32)</Name>
+                    <FileRef uid="95" />
+                    <SequencePoints>
+                      <SequencePoint vc="3" uspid="3017" ordinal="0" offset="0" sl="102" sc="9" el="102" ec="10" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="3" uspid="3018" ordinal="1" offset="1" sl="103" sc="13" el="103" ec="25" bec="2" bev="2" fileid="95" />
+                      <SequencePoint vc="1" uspid="3019" ordinal="2" offset="14" sl="104" sc="17" el="104" ec="91" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="2" uspid="3020" ordinal="3" offset="30" sl="106" sc="13" el="106" ec="27" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="2" uspid="3021" ordinal="4" offset="32" sl="106" sc="28" el="106" ec="40" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="2" uspid="3022" ordinal="5" offset="34" sl="106" sc="41" el="106" ec="53" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="12" uspid="3023" ordinal="6" offset="38" sl="109" sc="13" el="109" ec="14" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="12" uspid="3024" ordinal="7" offset="39" sl="110" sc="17" el="110" ec="25" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="12" uspid="3025" ordinal="8" offset="43" sl="111" sc="17" el="111" ec="30" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="12" uspid="3026" ordinal="9" offset="52" sl="112" sc="13" el="112" ec="14" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="14" uspid="3027" ordinal="10" offset="53" sl="108" sc="13" el="108" ec="32" bec="2" bev="2" fileid="95" />
+                      <SequencePoint vc="0" uspid="3028" ordinal="11" offset="72" sl="115" sc="13" el="115" ec="14" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="0" uspid="3029" ordinal="12" offset="73" sl="116" sc="17" el="116" ec="27" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="0" uspid="3030" ordinal="13" offset="77" sl="117" sc="17" el="117" ec="28" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="0" uspid="3031" ordinal="14" offset="83" sl="118" sc="13" el="118" ec="14" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="2" uspid="3032" ordinal="15" offset="84" sl="114" sc="13" el="114" ec="31" bec="2" bev="1" fileid="95" />
+                      <SequencePoint vc="2" uspid="3033" ordinal="16" offset="98" sl="120" sc="13" el="120" ec="28" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="2" uspid="3034" ordinal="17" offset="100" sl="122" sc="13" el="129" ec="15" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="2" uspid="3035" ordinal="18" offset="153" sl="130" sc="9" el="130" ec="10" bec="0" bev="0" fileid="95" />
+                    </SequencePoints>
+                    <BranchPoints>
+                      <BranchPoint vc="1" uspid="3036" ordinal="0" offset="12" sl="103" path="0" offsetend="14" fileid="95" />
+                      <BranchPoint vc="2" uspid="3037" ordinal="1" offset="12" sl="103" path="1" offsetend="30" fileid="95" />
+                      <BranchPoint vc="2" uspid="3038" ordinal="2" offset="68" sl="108" path="0" offsetchain="70" offsetend="84" fileid="95" />
+                      <BranchPoint vc="12" uspid="3039" ordinal="3" offset="68" sl="108" path="1" offsetend="38" fileid="95" />
+                      <BranchPoint vc="2" uspid="3040" ordinal="4" offset="96" sl="114" path="0" offsetend="98" fileid="95" />
+                      <BranchPoint vc="0" uspid="3041" ordinal="5" offset="96" sl="114" path="1" offsetend="72" fileid="95" />
+                    </BranchPoints>
+                    <MethodPoint xsi:type="SequencePoint" vc="3" uspid="3017" ordinal="0" offset="0" sl="102" sc="9" el="102" ec="10" bec="0" bev="0" fileid="95" />
+                  </Method>
+                  <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="true" isGetter="false" isSetter="false">
+                    <Summary numSequencePoints="6" visitedSequencePoints="6" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+                    <MetadataToken>100663515</MetadataToken>
+                    <Name>System.Int32 Symitar.Utilities::ConvertTime(System.DateTime)</Name>
+                    <FileRef uid="95" />
+                    <SequencePoints>
+                      <SequencePoint vc="2" uspid="3042" ordinal="0" offset="0" sl="133" sc="9" el="133" ec="10" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="2" uspid="3043" ordinal="1" offset="1" sl="134" sc="13" el="134" ec="40" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="2" uspid="3044" ordinal="2" offset="9" sl="135" sc="13" el="135" ec="42" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="2" uspid="3045" ordinal="3" offset="22" sl="136" sc="13" el="136" ec="42" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="2" uspid="3046" ordinal="4" offset="38" sl="137" sc="13" el="137" ec="29" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="2" uspid="3047" ordinal="5" offset="42" sl="138" sc="9" el="138" ec="10" bec="0" bev="0" fileid="95" />
+                    </SequencePoints>
+                    <BranchPoints />
+                    <MethodPoint xsi:type="SequencePoint" vc="2" uspid="3042" ordinal="0" offset="0" sl="133" sc="9" el="133" ec="10" bec="0" bev="0" fileid="95" />
+                  </Method>
+                  <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="true" isStatic="true" isGetter="false" isSetter="false">
+                    <Summary numSequencePoints="2" visitedSequencePoints="2" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+                    <MetadataToken>100663516</MetadataToken>
+                    <Name>System.Void Symitar.Utilities::.cctor()</Name>
+                    <FileRef uid="95" />
+                    <SequencePoints>
+                      <SequencePoint vc="1" uspid="3048" ordinal="0" offset="0" sl="8" sc="9" el="8" ec="105" bec="0" bev="0" fileid="95" />
+                      <SequencePoint vc="1" uspid="3049" ordinal="1" offset="45" sl="9" sc="9" el="9" ec="112" bec="0" bev="0" fileid="95" />
+                    </SequencePoints>
+                    <BranchPoints />
+                    <MethodPoint xsi:type="SequencePoint" vc="1" uspid="3048" ordinal="0" offset="0" sl="8" sc="9" el="8" ec="105" bec="0" bev="0" fileid="95" />
+                  </Method>
+                </Methods>
+              </Class>
+            </Classes>
+        </Module>
+        <Module skippedDueTo="Filter" hash="7E-D6-0C-5F-08-95-B3-B7-AE-9C-0F-24-97-E9-46-63-43-CF-F3-C3">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Extensions\CppUnitFramework\Microsoft.VisualStudio.TestTools.CppUnitTestFramework.TestEngine.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestTools.CppUnitTestFramework.TestEngine</ModuleName>
+            <Classes />
+        </Module>
+        <Module skippedDueTo="Filter" hash="49-FB-E6-5F-63-17-3F-47-76-D5-73-EE-00-1C-ED-B8-E9-ED-07-82">
+            <FullName>C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Extensions\CppUnitFramework\Microsoft.VisualStudio.TestTools.CppUnitTestFramework.Discoverer.dll</FullName>
+            <ModuleName>Microsoft.VisualStudio.TestTools.CppUnitTestFramework.Discoverer</ModuleName>
+            <Classes />
+        </Module>
+    </Modules>
+</CoverageSession>

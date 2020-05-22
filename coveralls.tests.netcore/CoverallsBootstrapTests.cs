@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Coveralls.Library;
+using Coveralls.Library.Parser;
 using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
-using Coveralls.Library;
 
 namespace Coveralls.Tests
 {

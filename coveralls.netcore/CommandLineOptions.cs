@@ -43,7 +43,7 @@ namespace Coveralls.Net
                 if (!_fileSystem.DirectoryExists(InputFile)) return new List<string>(); // cannot find file or directory provided
                 if (FileSearchPattern.IsBlank()) return new List<string>(); // pattern must be provided for directories
 
-                return _fileSystem.FileSearch(InputFile, FileSearchPattern, false);
+                return _fileSystem.FileSearch(InputFile, FileSearchPattern, Recursive);
             }
         }
 
@@ -77,7 +77,16 @@ namespace Coveralls.Net
             }
         }
 
+        [Option("recursive", HelpText = "Search directories recursively.")]
+        public bool Recursive
+        {
+            get => _recursive;
+            set => _recursive = value;
+        }
+
         private bool _useAutoDetect;
+        private bool _recursive;
+
         [Option("autodetect", HelpText = "Use the AutoDetect Parser (chooses parser based on input file)")]
         public bool UseAutoDetect
         {

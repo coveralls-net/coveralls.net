@@ -10,5 +10,6 @@ namespace Coveralls.Library
         string CoverallsRepoToken { get; }
         bool SendFullSources { get; }
         bool UseCobertura { get; }
+        bool Recursive { get; }
     }
 }

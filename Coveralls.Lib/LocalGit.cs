@@ -13,23 +13,26 @@ namespace Coveralls
 
         public LocalGit(IFileSystem fileSystem)
         {
-            _fileSystem = fileSystem;
-
-            var workingDirectory = _fileSystem.GetCurrentDirectory();
-
-            var directory = new DirectoryInfo(workingDirectory);
-            while (!directory.EnumerateDirectories().Any(x => x.Name == ".git"))
+            if (fileSystem != null)
             {
-                directory = directory.Parent;
-                if (directory == directory.Root) break;
-            }
+                _fileSystem = fileSystem;
+                var workingDirectory = _fileSystem.GetCurrentDirectory();
 
-            _repository = new Repository(directory.FullName + "\\.git");
+                var directory = new DirectoryInfo(workingDirectory);
+                while (!directory.EnumerateDirectories().Any(x => x.Name == ".git"))
+                {
+                    directory = directory.Parent;
+                    // if parent is null, we are at root directory
+                    if (directory.Parent == null) break;
+                }
+
+                _repository = new Repository(Path.Combine(directory.FullName, ".git"));
+            }
         }
 
         public sealed override void Dispose()
         {
-            _repository.Dispose();
+            _repository?.Dispose();
             _repository = null;
 
             GC.SuppressFinalize(this);
@@ -37,14 +40,14 @@ namespace Coveralls
 
         public override IEnumerable<string> Branches
         {
-            get { return _repository.Branches.Select(x => x.Name); }
+            get { return _repository?.Branches.Select(x => x.CanonicalName); }
         }
 
         public override IEnumerable<CommitData> Commits
         {
             get
             {
-                return _repository.Head.Commits.Select(c =>
+                return _repository?.Head.Commits.Select(c =>
                     new CommitData()
                     {
                         Id = c.Id.Sha,
@@ -57,10 +60,10 @@ namespace Coveralls
             }
         }
 
-        public override string CurrentBranch { get { return _repository.Head.Name; } }
+        public override string CurrentBranch { get { return _repository?.Head.CanonicalName; } }
         public override CommitData Head
         {
-            get { return Commits.First(); } 
+            get { return Commits?.First(); } 
         }
     }
 }

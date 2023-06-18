@@ -258,3 +258,4 @@ coverage.xml
 
 # Ignore local Visual Studio settings
 .vs/
+_ReSharper*

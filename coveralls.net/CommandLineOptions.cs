@@ -91,7 +91,7 @@ namespace Coveralls.Net
             }
         }
 
-        [Option('s', "full-sources", DefaultValue = false, HelpText="Send full sources instead of the digest" )]
+        [Option('s', "full-sources", Default = false, HelpText="Send full sources instead of the digest" )]
         public bool SendFullSources
         {
             get { return _sendFullSources; }
